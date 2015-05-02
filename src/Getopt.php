@@ -15,7 +15,6 @@ define('ETHNA_OPTVALUE_IS_DISABLED', 1);
 define('ETHNA_OPTVALUE_IS_REQUIRED', 2);
 define('ETHNA_OPTVALUE_IS_OPTIONAL', 3);
 
-// {{{ Ethna_Getopt
 /**
  *  コマンドラインオプション解釈クラス
  *  PEAR への依存を排除するため、 Console_Getopt クラスを最実装したもの
@@ -39,7 +38,6 @@ class Getopt
      *         慮していません。
      *
      *  @return array - オプションとパラメータを含む配列、
-     *                  もしくは Ethna_Error
      */
     public function readPHPArgv()
     {
@@ -61,7 +59,7 @@ class Getopt
      *  @param array  $longoptions - 使用できる長いオプション目録を指定します。
      *
      *  @return array - パースされたオプションと非オプションのコマンドライン引数
-     *                  の 2つの要素からなる配列、もしくは Ethna_Error 。
+     *                  の 2つの要素からなる配列
      */
     public function getopt($args, $shortoptions, $longoptions = NULL)
     {
@@ -242,7 +240,6 @@ class Getopt
      *
      *  @param  string $sopts 短いオプション目録
      *  @return array  オプションと引数指定種別の配列
-     *                 エラーの場合は Ethna_Error
      *  @access protected
      */
     protected function _parseShortOption($sopts)
@@ -288,7 +285,6 @@ class Getopt
      *
      *  @param  array $lopts 長いオプション目録
      *  @return array オプションと引数指定種別の配列
-     *                エラーの場合は Ethna_Error
      *  @access protected
      */
     protected function _parseLongOption($lopts)
