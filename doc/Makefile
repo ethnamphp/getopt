@@ -1,3 +1,0 @@
-doc:
-	./makedoc.sh
-
