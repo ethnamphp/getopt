@@ -136,6 +136,8 @@ EOD;
             echo $handler_list->getMessage();
             exit(1);
         }
+
+        var_dump($handler_list);
         usort($handler_list, array($this, "_handler_sort_callback"));
 
         return $handler_list;
