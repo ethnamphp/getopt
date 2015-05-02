@@ -16,7 +16,6 @@
  */
 namespace Ethnam\Generator;
 use \Ethna_Controller;
-use \Ethna_Getopt;
 use \Ethna_Util;
 use \Ethna;
 use \Ethna_Plugin_Subcommand_Base;
@@ -59,7 +58,7 @@ EOD;
     {
 
         // fetch arguments
-        $opt = new Ethna_Getopt();
+        $opt = new Getopt();
         $arg_list = $opt->readPHPArgv();
         if (Ethna::isError($arg_list)) {
             echo $arg_list->getMessage()."\n";
