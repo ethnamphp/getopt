@@ -4,12 +4,10 @@
  *  Ethna Command
  *
  */
- // suppose this file is located at 'project/vendor/dqneo/ethnam/bin/command.php'
-$binDir = __DIR__;
-$ethnamDir = $binDir . '/..';
-$vendorDir = $ethnamDir . '/../..'; // 'project/vendor'
 
-require_once  $vendorDir . '/autoload.php';
+$binDir = __DIR__; // 'vendor/bin' or 'ethnam-generator/bin'
+
+require_once  $binDir . '/../autoload.php';
 
 $handle = new Ethna_Command();
 $handle->run();
