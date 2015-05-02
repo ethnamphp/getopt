@@ -42,7 +42,7 @@ class Ethna_Plugin_Subcommand_Help extends Ethna_Plugin_Subcommand_Base
             printf("  -v, --version    show version and exit\n");
             printf("\navailable commands are as follows:\n\n");
             foreach ($handler_list as $handler) {
-                printf("  %s\n", $handler->getId());
+                printf("  %s\n", $handler);
             }
             return true;
         }
