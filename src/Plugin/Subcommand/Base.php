@@ -136,9 +136,6 @@ abstract class Ethna_Plugin_Subcommand_Base
         // ex: $sopts = 'fb:';
         $opt = new Getopt();
         $opts_args = $opt->getopt($this->arg_list, $sopts, $lopts);
-        if (Ethna::isError($opts_args)) {
-            return $opts_args;
-        }
 
         // parse opts
         // ex: "-ff --bar=baz" gets
