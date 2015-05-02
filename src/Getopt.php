@@ -9,15 +9,9 @@
  *  @version    $Id$
  */
 
-if (!defined('ETHNA_OPTVALUE_IS_DISABLED')) {
-    define('ETHNA_OPTVALUE_IS_DISABLED', 1);
-}
-if (!defined('ETHNA_OPTVALUE_IS_REQUIRED')) {
-    define('ETHNA_OPTVALUE_IS_REQUIRED', 2);
-}
-if (!defined('ETHNA_OPTVALUE_IS_OPTIONAL')) {
-    define('ETHNA_OPTVALUE_IS_OPTIONAL', 3);
-}
+define('ETHNA_OPTVALUE_IS_DISABLED', 1);
+define('ETHNA_OPTVALUE_IS_REQUIRED', 2);
+define('ETHNA_OPTVALUE_IS_OPTIONAL', 3);
 
 // {{{ Ethna_Getopt
 /**
@@ -328,4 +322,3 @@ class Ethna_Getopt
 }
 
 // }}}
-
