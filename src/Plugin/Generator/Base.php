@@ -9,7 +9,7 @@
  *  @version    $Id$
  */
 
-// {{{ Ethna_Plugin_Generator
+// {{{ Ethna_Plugin_Generator_Base
 /**
  *  スケルトン生成プラグイン
  *

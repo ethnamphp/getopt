@@ -16,7 +16,7 @@
  * @author BoBpp <bobpp@users.sourceforge.jp>
  * @package Ethna
  */
-class Ethna_Plugin_Generator_Test extends Ethna_Plugin_Generator
+class Ethna_Plugin_Generator_Test extends Ethna_Plugin_Generator_Base
 {
     /**
      * ファイル生成を行う

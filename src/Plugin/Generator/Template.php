@@ -17,7 +17,7 @@
  *  @access     public
  *  @package    Ethna
  */
-class Ethna_Plugin_Generator_Template extends Ethna_Plugin_Generator
+class Ethna_Plugin_Generator_Template extends Ethna_Plugin_Generator_Base
 {
     /**
      *  テンプレートのスケルトンを生成する

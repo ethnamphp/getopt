@@ -17,7 +17,7 @@
  *  @access     public
  *  @package    Ethna
  */
-class Ethna_Plugin_Generator_EntryPoint extends Ethna_Plugin_Generator
+class Ethna_Plugin_Generator_EntryPoint extends Ethna_Plugin_Generator_Base
 {
     /**
      *  エントリポイントのスケルトンを生成する

@@ -17,7 +17,7 @@
  *  @access     public
  *  @package    Ethna
  */
-class Ethna_Plugin_Generator_ActionTest extends Ethna_Plugin_Generator
+class Ethna_Plugin_Generator_ActionTest extends Ethna_Plugin_Generator_Base
 {
     /**
      *  アクション用テストのスケルトンを生成する

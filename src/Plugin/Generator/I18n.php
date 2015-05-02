@@ -17,7 +17,7 @@
  *  @access     public
  *  @package    Ethna
  */
-class Ethna_Plugin_Generator_I18n extends Ethna_Plugin_Generator
+class Ethna_Plugin_Generator_I18n extends Ethna_Plugin_Generator_Base
 {
     /**#@+
      *  @access protected
