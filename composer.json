@@ -1,5 +1,5 @@
 {
-  "name":"dqneo/ethnam",
+  "name":"dqneo/ethnam-generator",
   "description": "web application framework.",
   "type": "library",
   "license": "BSD-4-Clause",
@@ -16,9 +16,6 @@
     "phpunit/phpunit": "3.7.*"
   },
   "bin" : [
-    "bin/ethna"
-  ],
-  "autoload": {
-    "files": [ "bootstrap.php" ]
-  }
+    "bin/ethnam-generator"
+  ]
 }
