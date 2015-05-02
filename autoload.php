@@ -20,7 +20,6 @@ spl_autoload_register(function($className){
     if (
         strpos($className, 'Ethna_Plugin_Subcommand') === 0 ||
         strpos($className, 'Ethna_Plugin_Generator') === 0 ||
-        strpos($className, 'Ethna_Getopt') === 0 ||
         strpos($className, 'Ethna_Generator') === 0
     ) {
         $separated = explode('_', $className);
