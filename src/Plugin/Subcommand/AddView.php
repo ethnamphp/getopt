@@ -113,7 +113,7 @@ class Ethna_Plugin_Subcommand_AddView extends Ethna_Plugin_Subcommand_AddAction
             }
         }
 
-        $r = Ethna_Generator::generate('Template', $basedir,
+        $r = Ethna_Plugin_Subcommand_Base::generate('Template', $basedir,
                                         $target_name, $skelfile, $locale);
         if (Ethna::isError($r)) {
             printf("error occurred while generating skelton. please see also following error message(s)\n\n");
