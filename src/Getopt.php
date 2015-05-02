@@ -66,11 +66,11 @@ class Getopt
     public function getopt($args, $shortoptions, $longoptions = NULL)
     {
         $shortopts = $this->_parseShortOption($shortoptions);
-        if (Ethna::isError($shortopts)) {
+        if (\Ethna::isError($shortopts)) {
             return $shortopts;
         }
         $longopts = $this->_parseLongOption($longoptions);
-        if (Ethna::isError($longopts)) {
+        if (\Ethna::isError($longopts)) {
             return $longopts;
         }
 
