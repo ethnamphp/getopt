@@ -10,6 +10,7 @@
  */
 
 use \Ethnam\Generator\Getopt;
+use \Ethnam\Generator\Command as Ethna_Command;
 
 // {{{ Ethna_Plugin_Subcommand_Base
 /**
@@ -175,5 +176,86 @@ abstract class Ethna_Plugin_Subcommand_Base
         echo "usage:\n";
         echo $this->getUsage() . "\n\n";
     }
+
+    /**
+     *  スケルトンを生成する
+     *
+     *  @access public
+     *  @param  string  $type       生成する対象
+     *  @param  string  $app_dir    アプリケーションのディレクトリ
+     *                              (nullのときはアプリケーションを特定しない)
+     *  @param  mixed   residue     プラグインのgenerate()にそのまま渡す
+     *  @static
+     */
+    public static function generate()
+    {
+        $arg_list   = func_get_args();
+        $type       = array_shift($arg_list);
+        $app_dir    = array_shift($arg_list);
+
+        if ($app_dir === null) {
+            $ctl = Ethna_Command::getEthnaController();
+        } else {
+            $ctl = Ethna_Command::getAppController($app_dir);
+        }
+        if (Ethna::isError($ctl)) {
+            return $ctl;
+        }
+
+        $plugin_manager = $ctl->getPlugin();
+        if (Ethna::isError($plugin_manager)) {
+            return $plugin_manager;
+        }
+
+        $generator = $plugin_manager->getPlugin('Generator', $type);
+        if (Ethna::isError($generator)) {
+            return $generator;
+        }
+
+        // 引数はプラグイン依存とする
+        $ret = call_user_func_array(array($generator, 'generate'), $arg_list);
+        return $ret;
+    }
+
+    /**
+     *  スケルトンを削除する
+     *
+     *  @access public
+     *  @param  string  $type       生成する対象
+     *  @param  string  $app_dir    アプリケーションのディレクトリ
+     *                              (nullのときはアプリケーションを特定しない)
+     *  @param  mixed   residue     プラグインのremove()にそのまま渡す
+     *  @static
+     */
+    public static function remove()
+    {
+        $arg_list   = func_get_args();
+        $type       = array_shift($arg_list);
+        $app_dir    = array_shift($arg_list);
+
+        if ($app_dir === null) {
+            $ctl = Ethna_Command::getEthnaController();
+        } else {
+            $ctl = Ethna_Command::getAppController($app_dir);
+        }
+        if (Ethna::isError($ctl)) {
+            return $ctl;
+        }
+
+        $plugin_manager = $ctl->getPlugin();
+        if (Ethna::isError($plugin_manager)) {
+            return $plugin_manager;
+        }
+
+        $generator = $plugin_manager->getPlugin('Generator', $type);
+        if (Ethna::isError($generator)) {
+            return $generator;
+        }
+
+        // 引数はプラグイン依存とする
+        $ret = call_user_func_array(array($generator, 'remove'), $arg_list);
+        return $ret;
+    }
+
 }
 // }}}
