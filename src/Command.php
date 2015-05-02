@@ -123,26 +123,6 @@ EOD;
     }
     // }}}
 
-    // {{{ getHandlerList
-    /**
-     *  get an object list of all available handlers
-     *
-     *  @access public
-     */
-    public function getHandlerList()
-    {
-        $handler_list = $this->plugin->getPluginList('Subcommand');
-        if (Ethna::isError($handler_list)) {
-            echo $handler_list->getMessage();
-            exit(1);
-        }
-
-        var_dump($handler_list);
-        usort($handler_list, array($this, "_handler_sort_callback"));
-
-        return $handler_list;
-    }
-
     /**
      *  sort callback method
      */

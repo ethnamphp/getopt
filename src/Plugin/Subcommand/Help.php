@@ -19,6 +19,7 @@
  */
 class Ethna_Plugin_Subcommand_Help extends Ethna_Plugin_Subcommand_Base
 {
+
     /**
      *  show help
      *
@@ -35,7 +36,7 @@ class Ethna_Plugin_Subcommand_Help extends Ethna_Plugin_Subcommand_Base
         // action_name
         $handle_name = array_shift($arg_list);
         if (!strlen($handle_name)) {
-            $handler_list = $this->eh->getHandlerList();
+            $handler_list = ["help"];
             printf("usage: ethna [option] [command] [args...]\n\n");
             printf("available options are as follows:\n\n");
             printf("  -v, --version    show version and exit\n");
