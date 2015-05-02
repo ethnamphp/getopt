@@ -45,7 +45,7 @@ class Getopt
         global $argv;
 
         if (ini_get('register_argc_argv') == false) {
-            return Ethna::raiseError(
+            throw new \Exception(
                        'Could not read cmd args (register_argc_argv=Off?'
                    );
         }
@@ -101,7 +101,7 @@ class Getopt
                  $opt_and_value = explode('=', $lopt);
                  $opt = $opt_and_value[0];
                  if (!array_key_exists($opt, $longopts)) {
-                     return Ethna::raiseError("unrecognized option --$opt");
+                     throw new \Exception("unrecognized option --$opt");
                  }
 
                  //  オプションの値を取り出す
@@ -123,14 +123,14 @@ class Getopt
                  switch ($required) {
                      case ETHNA_OPTVALUE_IS_REQUIRED:
                          if ($value === NULL) {
-                             return Ethna::raiseError(
+                             throw new \Exception(
                                         "option --$opt requires an argument"
                                     );
                          }
                          break;
                      case ETHNA_OPTVALUE_IS_DISABLED:
                          if ($value !== NULL) {
-                             return Ethna::raiseError(
+                             throw new \Exception(
                                         "option --$opt doesn't allow an argument"
                                     );
                          }
@@ -196,7 +196,7 @@ class Getopt
                             }
                             if ($required == ETHNA_OPTVALUE_IS_REQUIRED
                               && empty($value)) {
-                                 return Ethna::raiseError(
+                                 throw new \Exception(
                                             "option -$opt requires an argument"
                                         );
                              }
@@ -210,7 +210,7 @@ class Getopt
                              //   なるので、値設定のチェックは不要
                              break;
                          default:
-                             return Ethna::raiseError("unrecognized option -$opt");
+                             throw new \Exception("unrecognized option -$opt");
                              break;
                      }
 
@@ -256,7 +256,7 @@ class Getopt
         }
 
         if (!preg_match('/^[A-Za-z:]+$/', $sopts)) {
-            return Ethna::raiseError('invalid short options.');
+            throw new \Exception('invalid short options.');
         }
 
         $analyze_result = array();
@@ -302,7 +302,7 @@ class Getopt
         }
 
         if (!is_array($lopts)) {
-            return Ethna::raiseError('invalid long options.');
+            throw new \Exception('invalid long options.');
         }
 
         $analyze_result = array();
