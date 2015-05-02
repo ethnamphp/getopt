@@ -1,17 +1,10 @@
 <?php
-
 /**
- *  Ethna_* クラス群のオートロード
+ *  オートロード
  */
 spl_autoload_register(function($className){
-    //Ethnaクラス
-    if ($className === 'Ethna') {
-        include_once __DIR__ . '/src/Ethna.php';
-    }
-
-    //Ethna_*クラス
     //単純に_区切りをディレクトリ区切りにマッピングする
-    if (strpos($className, 'Ethna_') === 0) {
+    if (strpos($className, 'Ethna_Command') === 0) {
         $separated = explode('_', $className);
         array_shift($separated);  // remove first element
         //読み込み失敗しても死ぬ必要はないのでrequireではなくincludeする
