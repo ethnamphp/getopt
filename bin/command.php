@@ -4,10 +4,10 @@
  *  Ethna Command
  *
  */
-
+use Ethnam\Generator\Command;
 $binDir = __DIR__; // 'vendor/bin' or 'ethnam-generator/bin'
 
 require_once  $binDir . '/../autoload.php';
 
-$handle = new Ethna_Command();
+$handle = new Command;
 $handle->run();

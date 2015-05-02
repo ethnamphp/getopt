@@ -14,7 +14,13 @@
  *  @access     public
  *  @package    Ethna
  */
-class Ethna_Command
+namespace Ethnam\Generator;
+use \Ethna_Controller;
+use \Ethna_Getopt;
+use \Ethna_Util;
+use \Ethna_Plugin_Subcommand_Base;
+
+class Command
 {
     private $version = <<<EOD
 Ethnam %s (using PHP %s)

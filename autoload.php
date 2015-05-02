@@ -4,7 +4,20 @@
  */
 spl_autoload_register(function($className){
     //単純に_区切りをディレクトリ区切りにマッピングする
-    if (strpos($className, 'Ethna_Command') === 0 ||
+    if (strpos($className, 'Ethnam\\Generator\\') === 0) {
+        $separated = explode('\\', $className);
+        //var_dump($separated);exit;
+        array_shift($separated);  // remove 'Ethnam'
+        array_shift($separated);  // remove 'Generator'
+
+        //読み込み失敗したら死んで欲しい(´・ω・`)
+        require_once __DIR__ . '/src/' . join('/', $separated) . '.php';
+    }
+});
+
+spl_autoload_register(function($className){
+    //単純に_区切りをディレクトリ区切りにマッピングする
+    if (
         strpos($className, 'Ethna_Plugin_Subcommand') === 0 ||
         strpos($className, 'Ethna_Plugin_Generator') === 0 ||
         strpos($className, 'Ethna_Getopt') === 0 ||
