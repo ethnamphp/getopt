@@ -17,8 +17,5 @@
   },
   "bin" : [
     "bin/ethnam-generator"
-  ],
-  "autoload": {
-    "files": [ "bootstrap.php" ]
-  }
+  ]
 }
