@@ -5,9 +5,13 @@
  *
  */
 use Ethnam\Generator\Command;
-$binDir = __DIR__; // 'vendor/bin' or 'ethnam-generator/bin'
+$binDir = __DIR__; // 'ethnam-generator/bin'
 
-require_once  $binDir . '/../autoload.php';
+
+//require_once  $binDir . '/../autoload.php';
+
+// 'vendor/autoload.php';
+require_once  $binDir . '/../../../autoload.php';
 
 $handle = new Command;
 $handle->run();
