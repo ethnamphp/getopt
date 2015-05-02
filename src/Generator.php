@@ -17,6 +17,7 @@
  *  @access     public
  *  @package    Ethna
  */
+use Ethnam\Generator\Command as Ethna_Command;
 class Ethna_Generator
 {
     /**

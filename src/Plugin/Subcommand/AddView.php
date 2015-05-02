@@ -8,6 +8,7 @@
  *  @package    Ethna
  *  @version    $Id$
  */
+use Ethnam\Generator\Command as Ethna_Command;
 
 // {{{ Ethna_Plugin_Subcommand_AddView
 /**

@@ -39,7 +39,7 @@ abstract class Ethna_Plugin_Subcommand_Base
     public $logger;
 
     /**
-     *  Ethna_Command constructor (stub for php4)
+     *
      *
      *  @access public
      */
