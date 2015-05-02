@@ -23,7 +23,9 @@ define('ETHNA_OPTVALUE_IS_OPTIONAL', 3);
  *  @package    Ethna
  *  @see        http://pear.php.net/manual/en/package.console.console-getopt.php
  */
-class Ethna_Getopt
+namespace Ethnam\Generator;
+
+class Getopt
 {
     /**
      *  PHP 設定を考慮して、$argv 配列を読みます。
