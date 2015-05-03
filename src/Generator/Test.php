@@ -4,7 +4,6 @@
  * Ethna_Generator_Test.php
  * 
  * @author BoBpp <bobpp@users.sourceforge.jp>
- * @license http://www.opensource.org/licenses/bsd-license.php The BSD License
  */
  
 // {{{ Ethna_Generator_Test

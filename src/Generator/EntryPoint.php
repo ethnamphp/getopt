@@ -4,7 +4,6 @@
  *  EntryPoint.php
  *
  *  @author     ICHII Takashi <ichii386@schweetheart.jp>
- *  @license    http://www.opensource.org/licenses/bsd-license.php The BSD License
  */
 
 // {{{ Ethna_Generator_EntryPoint

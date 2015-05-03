@@ -4,7 +4,6 @@
  *  AddAction.php
  *
  *  @author     Masaki Fujimoto <fujimoto@php.net>
- *  @license    http://www.opensource.org/licenses/bsd-license.php The BSD License
  */
 
 // {{{ Ethna_Subcommand_AddAction

@@ -4,7 +4,6 @@
  *  Getopt.php
  *
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com>
- *  @license    Public Domain
  */
 
 namespace Ethnam\Generator;

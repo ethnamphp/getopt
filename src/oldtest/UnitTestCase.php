@@ -3,7 +3,6 @@
  *  UnitTestCase.php
  *
  *  @author     Takuya Ookubo <sfio@sakura.ai.to>
- *  @license    http://www.opensource.org/licenses/bsd-license.php The BSD License
  */
 
 /**
