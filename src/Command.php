@@ -38,7 +38,6 @@ EOD;
      */
     public function __construct()
     {
-        Ethna::clearErrorCallback();
     }
     // }}}
 
@@ -117,6 +116,7 @@ EOD;
                     }, ucfirst($subCommand));
 
         $ctl = new Ethna_Controller(GATEWAY_CLI);
+        Ethna::clearErrorCallback();
 
         $class = 'Ethna_Plugin_Subcommand_' . $name;
         $plugin = new $class($ctl, null, $name);
