@@ -214,7 +214,7 @@ abstract class Ethna_Plugin_Subcommand_Base
      *  スケルトンを削除する
      *
      *  @access public
-     *  @param  string  $type       生成する対象
+     *  @param  string  $name       生成する対象
      *  @param  string  $app_dir    アプリケーションのディレクトリ
      *                              (nullのときはアプリケーションを特定しない)
      *  @param  mixed   residue     プラグインのremove()にそのまま渡す
@@ -223,7 +223,7 @@ abstract class Ethna_Plugin_Subcommand_Base
     public static function remove()
     {
         $arg_list   = func_get_args();
-        $type       = array_shift($arg_list);
+        $name       = array_shift($arg_list);
         $app_dir    = array_shift($arg_list);
 
         if ($app_dir === null) {
@@ -235,15 +235,8 @@ abstract class Ethna_Plugin_Subcommand_Base
             return $ctl;
         }
 
-        $plugin_manager = $ctl->getPlugin();
-        if (Ethna::isError($plugin_manager)) {
-            return $plugin_manager;
-        }
-
-        $generator = $plugin_manager->getPlugin('Generator', $type);
-        if (Ethna::isError($generator)) {
-            return $generator;
-        }
+        $className = 'Ethna_Plugin_Generator_' . $name;
+        $generator = new $className($ctl);
 
         // 引数はプラグイン依存とする
         $ret = call_user_func_array(array($generator, 'remove'), $arg_list);
