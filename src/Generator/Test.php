@@ -1,7 +1,7 @@
 <?php
 // vim: foldmethod=marker
 /**
- * Ethna_Plugin_Generator_Test.php
+ * Ethna_Generator_Test.php
  * 
  * @author BoBpp <bobpp@users.sourceforge.jp>
  * @license http://www.opensource.org/licenses/bsd-license.php The BSD License
@@ -9,14 +9,14 @@
  * @version $Id$
  */
  
-// {{{ Ethna_Plugin_Generator_Test
+// {{{ Ethna_Generator_Test
 /**
  * Normal Test Case Generator.
  * 
  * @author BoBpp <bobpp@users.sourceforge.jp>
  * @package Ethna
  */
-class Ethna_Plugin_Generator_Test extends Ethna_Plugin_Generator_Base
+class Ethna_Generator_Test extends Ethna_Generator_Base
 {
     /**
      * ファイル生成を行う

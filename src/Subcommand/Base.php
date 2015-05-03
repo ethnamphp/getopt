@@ -197,7 +197,7 @@ abstract class Ethna_Subcommand_Base
             return $ctl;
         }
 
-        $className = 'Ethna_Plugin_Generator_' . $name;
+        $className = 'Ethna_Generator_' . $name;
         $generator = new $className($ctl);
 
         // 引数はプラグイン依存とする
@@ -230,7 +230,7 @@ abstract class Ethna_Subcommand_Base
             return $ctl;
         }
 
-        $className = 'Ethna_Plugin_Generator_' . $name;
+        $className = 'Ethna_Generator_' . $name;
         $generator = new $className($ctl);
 
         // 引数はプラグイン依存とする

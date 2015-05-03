@@ -9,7 +9,7 @@
  *  @version    $Id$
  */
 
-// {{{ Ethna_Plugin_Generator_ViewTest
+// {{{ Ethna_Generator_ViewTest
 /**
  *  スケルトン生成クラス
  *
@@ -17,7 +17,7 @@
  *  @access     public
  *  @package    Ethna
  */
-class Ethna_Plugin_Generator_ViewTest extends Ethna_Plugin_Generator_Base
+class Ethna_Generator_ViewTest extends Ethna_Generator_Base
 {
     /**
      *  ビュー用テストのスケルトンを生成する

@@ -9,7 +9,7 @@
  *  @version    $Id$
  */
 
-// {{{ Ethna_Plugin_Generator_Base
+// {{{ Ethna_Generator_Base
 /**
  *  スケルトン生成プラグイン
  *
@@ -17,7 +17,7 @@
  *  @access     public
  *  @package    Ethna
  */
-class Ethna_Plugin_Generator_Base
+class Ethna_Generator_Base
 {
     public $ctl;
 

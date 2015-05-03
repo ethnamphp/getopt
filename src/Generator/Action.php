@@ -9,7 +9,7 @@
  *  @version    $Id$
  */
 
-// {{{ Ethna_Plugin_Generator_Action
+// {{{ Ethna_Generator_Action
 /**
  *  スケルトン生成クラス
  *
@@ -17,7 +17,7 @@
  *  @access     public
  *  @package    Ethna
  */
-class Ethna_Plugin_Generator_Action extends Ethna_Plugin_Generator_Base
+class Ethna_Generator_Action extends Ethna_Generator_Base
 {
     /**
      *  アクションのスケルトンを生成する

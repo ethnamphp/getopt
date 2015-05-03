@@ -9,7 +9,7 @@
  *  @version    $Id$
  */
 
-// {{{ Ethna_Plugin_Generator_ActionTest
+// {{{ Ethna_Generator_ActionTest
 /**
  *  スケルトン生成クラス
  *
@@ -17,7 +17,7 @@
  *  @access     public
  *  @package    Ethna
  */
-class Ethna_Plugin_Generator_ActionTest extends Ethna_Plugin_Generator_Base
+class Ethna_Generator_ActionTest extends Ethna_Generator_Base
 {
     /**
      *  アクション用テストのスケルトンを生成する

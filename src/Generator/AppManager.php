@@ -9,7 +9,7 @@
  *  @version    $Id$
  */
 
-// {{{ Ethna_Plugin_Generator_AppManager
+// {{{ Ethna_Generator_AppManager
 /**
  *  スケルトン生成クラス
  *
@@ -17,7 +17,7 @@
  *  @access     public
  *  @package    Ethna
  */
-class Ethna_Plugin_Generator_AppManager extends Ethna_Plugin_Generator_Base
+class Ethna_Generator_AppManager extends Ethna_Generator_Base
 {
     /**
      *  アプリケーションマネージャのスケルトンを生成する
