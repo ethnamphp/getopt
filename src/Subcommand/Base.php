@@ -105,9 +105,8 @@ abstract class Base
      *
      * @param   array   $lopts  long options
      * @return  array   list($opts, $args)
-     * @access  protected
      */
-    public function _getopt($lopts = array())
+    protected function _getopt($lopts = array())
     {
         // create opts
         // ex: $lopts = array('foo', 'bar=');
