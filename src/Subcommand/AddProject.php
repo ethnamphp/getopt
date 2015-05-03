@@ -86,7 +86,7 @@ class AddProject extends Base
                 throw new \InvalidArgumentException("You specified locale, but invalid : $locale");
             }
         } else {
-            $locale = 'ja_JP';  //  default locale. 
+            $locale = 'ja_JP';  //  default locale.
         }
 
         // encoding
@@ -99,7 +99,7 @@ class AddProject extends Base
                 }
             }
         } else {
-            $encoding = 'UTF-8';  //  default encoding. 
+            $encoding = 'UTF-8';  //  default encoding.
         }
 
         $r = Base::generate('Project', null, $app_id, $basedir, $skeldir, $locale, $encoding);
