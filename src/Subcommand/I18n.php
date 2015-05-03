@@ -52,13 +52,7 @@ class I18n extends Base
         $use_gettext = (isset($opt_list['gettext'])) ? true : false;
 
         //  generate message catalog.
-        $ret = Base::generate('I18n', $basedir, $locale, $use_gettext, $arg_list);
-        if (Ethna::isError($ret)) {
-            printf("error occurred while generating skelton. please see also following error message(s)\n\n");
-            return $ret;
-        }
-
-        return $ret;
+        Base::generate('I18n', $basedir, $locale, $use_gettext, $arg_list);
     }
 
     /**
