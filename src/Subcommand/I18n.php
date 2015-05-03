@@ -42,7 +42,7 @@ class I18n extends Base
         if (isset($opt_list['locale'])) {
             $locale = end($opt_list['locale']);
             if (!preg_match('/^[A-Za-z_]+$/', $locale)) {
-                return Ethna::raiseError("You specified locale, but invalid : $locale", 'usage');
+                throw new \Exception("You specified locale, but invalid : $locale");
             }
         } else {
             $locale = 'ja_JP';  //  default locale.
