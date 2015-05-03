@@ -190,7 +190,7 @@ abstract class Base
             $ctl = Ethna_Command::getAppController($app_dir);
         }
 
-        $className = '' . $name;
+        $className = '\\Ethnam\\Generator\\Generator\\' . $name;
         $generator = new $className($ctl);
 
         // 引数はプラグイン依存とする
