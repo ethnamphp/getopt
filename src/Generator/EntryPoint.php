@@ -37,9 +37,8 @@ class EntryPoint extends Base
                               $action_name, $this->ctl->getExt('php'));
             break;
         default:
-            $ret = Ethna::raiseError(
+            throw new \Exception(
                 'add-entry-point accepts only GATEWAY_WWW or GATEWAY_CLI.');
-            return $ret;
         }
 
         // skelton
