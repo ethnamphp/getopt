@@ -9,7 +9,7 @@
  *  @version    $Id$
  */
 
-// {{{ Ethna_Plugin_Subcommand_I18n
+// {{{ Ethna_Subcommand_I18n
 /**
  *  i18n handler
  *
@@ -17,7 +17,7 @@
  *  @access     public
  *  @package    Ethna
  */
-class Ethna_Plugin_Subcommand_I18n extends Ethna_Plugin_Subcommand_Base
+class Ethna_Subcommand_I18n extends Ethna_Subcommand_Base
 {
     /**
      *  generate message catalog.
@@ -58,7 +58,7 @@ class Ethna_Plugin_Subcommand_I18n extends Ethna_Plugin_Subcommand_Base
         $use_gettext = (isset($opt_list['gettext'])) ? true : false;
 
         //  generate message catalog.
-        $ret = Ethna_Plugin_Subcommand_Base::generate('I18n', $basedir, $locale, $use_gettext, $arg_list);
+        $ret = Ethna_Subcommand_Base::generate('I18n', $basedir, $locale, $use_gettext, $arg_list);
         if (Ethna::isError($ret)) {
             printf("error occurred while generating skelton. please see also following error message(s)\n\n");
             return $ret;

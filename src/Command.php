@@ -18,7 +18,7 @@ namespace Ethnam\Generator;
 use \Ethna_Controller;
 use \Ethna_Util;
 use \Ethna;
-use \Ethna_Plugin_Subcommand_Base;
+use \Ethna_Subcommand_Base;
 
 class Command
 {
@@ -95,7 +95,7 @@ EOD;
         $ctl = new Ethna_Controller(GATEWAY_CLI);
         Ethna::clearErrorCallback();
 
-        $class = 'Ethna_Plugin_Subcommand_' . $name;
+        $class = 'Ethna_Subcommand_' . $name;
         $obj = new $class($ctl, null, $name);
         return $obj;
     }
@@ -104,7 +104,7 @@ EOD;
     /**
      *  sort callback method
      */
-    public static function _handler_sort_callback(Ethna_Plugin_Subcommand_Base $a, Ethna_Plugin_Subcommand_Base $b)
+    public static function _handler_sort_callback(Ethna_Subcommand_Base $a, Ethna_Subcommand_Base $b)
     {
         return strcmp($a->getId(), $b->getId());
     }

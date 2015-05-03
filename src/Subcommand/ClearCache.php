@@ -10,7 +10,7 @@
  */
 use Ethnam\Generator\Command as Ethna_Command;
 
-// {{{ Ethna_Plugin_Subcommand_ClearCache
+// {{{ Ethna_Subcommand_ClearCache
 /**
  *  clear-cache handler
  *
@@ -18,7 +18,7 @@ use Ethnam\Generator\Command as Ethna_Command;
  *  @access     public
  *  @package    Ethna
  */
-class Ethna_Plugin_Subcommand_ClearCache extends Ethna_Plugin_Subcommand_Base
+class Ethna_Subcommand_ClearCache extends Ethna_Subcommand_Base
 {
     /**
      *  clear cache files.

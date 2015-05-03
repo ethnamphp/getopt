@@ -12,7 +12,7 @@
 use \Ethnam\Generator\Getopt;
 use \Ethnam\Generator\Command as Ethna_Command;
 
-// {{{ Ethna_Plugin_Subcommand_Base
+// {{{ Ethna_Subcommand_Base
 /**
  *  コマンドラインハンドラプラグインの基底クラス
  *
@@ -20,7 +20,7 @@ use \Ethnam\Generator\Command as Ethna_Command;
  *  @access     public
  *  @package    Ethna
  */
-abstract class Ethna_Plugin_Subcommand_Base
+abstract class Ethna_Subcommand_Base
 {
     /** @protected    handler's id */
     protected $id;
