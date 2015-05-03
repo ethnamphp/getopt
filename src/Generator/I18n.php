@@ -4,6 +4,7 @@
  *
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com>
  */
+namespace Ethnam\Generator\Generator;
 
 /**
  *  i18n 向け、メッセージカタログ生成クラスのスーパークラス

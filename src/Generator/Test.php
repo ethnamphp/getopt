@@ -4,6 +4,7 @@
  * 
  * @author BoBpp <bobpp@users.sourceforge.jp>
  */
+namespace Ethnam\Generator\Generator;
  
 /**
  * Normal Test Case Generator.

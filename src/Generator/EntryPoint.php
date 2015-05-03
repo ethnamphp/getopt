@@ -4,6 +4,7 @@
  *
  *  @author     ICHII Takashi <ichii386@schweetheart.jp>
  */
+namespace Ethnam\Generator\Generator;
 
 /**
  *  スケルトン生成クラス
