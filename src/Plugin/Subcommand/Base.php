@@ -158,20 +158,16 @@ abstract class Ethna_Plugin_Subcommand_Base
     }
 
     /**
-     *  just perform
      *
-     *  @access public
      */
-    function perform()
+    public function perform()
     {
     }
 
     /**
-     *  show usage
      *
-     *  @access public
      */
-    function usage()
+    public function usage()
     {
         echo "usage:\n";
         echo $this->getUsage() . "\n\n";
