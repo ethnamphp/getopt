@@ -26,9 +26,6 @@ class I18n extends Base
                         'gettext',
                   )
              );
-        if (Ethna::isError($r)) {
-            return $r;
-        }
         list($opt_list, $arg_list) = $r;
 
         // basedir
