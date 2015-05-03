@@ -5,7 +5,6 @@
  *  @author     nozzzzz <nozzzzz@gmail.com>
  */
 
-// {{{ Ethna_Subcommand_AddAppManager
 /**
  *  add-app-manager handler
  *

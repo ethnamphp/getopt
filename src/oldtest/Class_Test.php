@@ -15,7 +15,6 @@ function dummy_error_callback_global($error)
     $GLOBALS['_dummy_error_callback_global'] = $error->getMessage();
 }
 
-//{{{    Ethna_Test
 /**
  *  Test Case For Ethna class
  *
@@ -37,7 +36,6 @@ class Ethna_Class_Test extends Ethna_UnitTestBase
         $this->dummy_error_value_class = $error->getMessage();
     }
 
-    //{{{  isError test
     function test_isError()
     {
         $error = new Ethna_Error();
@@ -71,7 +69,6 @@ class Ethna_Class_Test extends Ethna_UnitTestBase
     }
     // }}}
 
-    //{{{  raiseError test
     function test_raiseError()
     {
         $error = Ethna::raiseError('Error!!!!!');
@@ -84,7 +81,6 @@ class Ethna_Class_Test extends Ethna_UnitTestBase
     }
     // }}}
 
-    //{{{  raiseWarning test
     function test_raiseWarning()
     {
         $error = Ethna::raiseWarning('Error!!!!!');
@@ -97,7 +93,6 @@ class Ethna_Class_Test extends Ethna_UnitTestBase
     }
     // }}}
 
-    //{{{  raiseNotice test
     function test_raiseNotice()
     {
         $error = Ethna::raiseNotice('Error!!!!!');
@@ -110,7 +105,6 @@ class Ethna_Class_Test extends Ethna_UnitTestBase
     }
     // }}}
 
-    //{{{  callback test
     function test_error_callback_obj()
     {
         $this->assertNULL($GLOBALS['_dummy_error_callback_global']);

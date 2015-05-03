@@ -7,7 +7,6 @@
 
 require_once ETHNA_BASE . '/src/Plugin/Smarty/modifier.explode.php';
 
-//{{{    Ethna_Plugin_Smarty_modifier_explode_Test
 /**
  *  Test Case For modifier.explode.php
  *
@@ -15,7 +14,6 @@ require_once ETHNA_BASE . '/src/Plugin/Smarty/modifier.explode.php';
  */
 class Ethna_Plugin_Smarty_modifier_explode_Test extends Ethna_UnitTestBase
 {
-    // {{{  test_smarty_modifier_explode
     function test_smarty_modifier_explode()
     {
         //  配列でない場合

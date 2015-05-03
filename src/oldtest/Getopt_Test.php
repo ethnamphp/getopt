@@ -21,7 +21,6 @@ class Ethna_Getopt_Test extends Ethna_UnitTestBase
         $this->opt = new Ethna_Getopt();
     }
 
-    // {{{ readPHPArgv
     function test_readPHPArgv()
     {
         global $argv;
@@ -36,7 +35,6 @@ class Ethna_Getopt_Test extends Ethna_UnitTestBase
     }
     // }}}
 
-    //{{{ short option test
     function test_shortopt_required()
     {
         // no args
@@ -230,7 +228,6 @@ class Ethna_Getopt_Test extends Ethna_UnitTestBase
     }
     // }}}
 
-    // {{{  long option test
     function test_longopt_required()
     {
         // no args
@@ -393,7 +390,6 @@ class Ethna_Getopt_Test extends Ethna_UnitTestBase
     }
     // }}}
 
-    // {{{  short option, long option mixed.
     function test_mixed_option()
     {
         // no args

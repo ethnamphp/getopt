@@ -5,7 +5,6 @@
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  */
 
-// {{{ Ethna_Generator_Template
 /**
  *  スケルトン生成クラス
  *

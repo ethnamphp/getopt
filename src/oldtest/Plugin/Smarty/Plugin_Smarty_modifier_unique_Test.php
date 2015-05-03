@@ -7,7 +7,6 @@
 
 require_once ETHNA_BASE . '/src/Plugin/Smarty/modifier.unique.php';
 
-//{{{    Ethna_Plugin_Smarty_modifier_unique_Test
 /**
  *  Test Case For modifier.unique.php
  *
@@ -15,7 +14,6 @@ require_once ETHNA_BASE . '/src/Plugin/Smarty/modifier.unique.php';
  */
 class Ethna_Plugin_Smarty_modifier_unique_Test extends Ethna_UnitTestBase
 {
-    // {{{  test_smarty_modifier_unique
     function test_smarty_modifier_unique()
     {
         //  配列でない場合

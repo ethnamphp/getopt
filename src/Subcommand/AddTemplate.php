@@ -5,7 +5,6 @@
  *  @author     nnno <nnno@nnno.jp> 
  */
 
-// {{{ Ethna_Subcommand_AddTemplate
 /**
  *  add-template handler
  *

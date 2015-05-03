@@ -5,7 +5,6 @@
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com> 
  */
 
-// {{{ Ethna_Subcommand_I18n
 /**
  *  i18n handler
  *

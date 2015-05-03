@@ -5,7 +5,6 @@
  *  @author     Tomoyuki MARUTA <maru_cc@users.sourceforge.jp>
  */
 
-// {{{ Ethna_Subcommand_Help
 /**
  *  add-action handler
  *

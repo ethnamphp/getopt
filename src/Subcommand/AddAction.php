@@ -5,7 +5,6 @@
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  */
 
-// {{{ Ethna_Subcommand_AddAction
 /**
  *  add-action handler
  *

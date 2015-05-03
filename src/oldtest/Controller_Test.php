@@ -5,7 +5,6 @@
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com>
  */
 
-//{{{    Ethna_Controller_Test
 /**
  *  Test Case For Ethna_Controller_Test 
  *
@@ -25,7 +24,6 @@ class Ethna_Controller_Test extends Ethna_UnitTestBase
         unset($GLOBALS['_Ethna_controller']);
     }
 
-    // {{{ checkAppId
     function test_checkAppId()
     {
         //  予約語(app, ethna)は当然駄目
@@ -78,14 +76,12 @@ class Ethna_Controller_Test extends Ethna_UnitTestBase
     }
     // }}}
 
-    // {{{ test_getClientEncoding
     function test_getClientEncoding()
     {
         $this->assertEqual('UTF-8', $this->test_ctl->getClientEncoding());
     }
     // }}} 
 
-    // {{{ test_setClientEncoding
     function test_setClientEncoding()
     {
         $this->test_ctl->setClientEncoding('Shift_JIS');

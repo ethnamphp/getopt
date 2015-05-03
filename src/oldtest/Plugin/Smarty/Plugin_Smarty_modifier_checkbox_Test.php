@@ -7,7 +7,6 @@
 
 require_once ETHNA_BASE . '/src/Plugin/Smarty/modifier.checkbox.php';
 
-//{{{    Ethna_Plugin_Smarty_modifier_checkbox_Test
 /**
  *  Test Case For modifier.checkbox.php
  *
@@ -15,7 +14,6 @@ require_once ETHNA_BASE . '/src/Plugin/Smarty/modifier.checkbox.php';
  */
 class Ethna_Plugin_Smarty_modifier_checkbox_Test extends Ethna_UnitTestBase
 {
-    // {{{  test_smarty_modifier_checkbox
     function test_smarty_modifier_checkbox()
     {
         //  文字列型で0と空文字列以外は確実に checked

@@ -8,7 +8,6 @@
 
 require_once ETHNA_INSTALL_BASE . '/test/MockProject.php';
 
-//{{{  Ethna_Session_Test
 /**
  *  Test Case For Ethna_Session
  *

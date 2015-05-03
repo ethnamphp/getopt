@@ -7,7 +7,6 @@
 
 require_once ETHNA_BASE . '/test/MockProject.php';
 
-//{{{  Ethna_Subcommand_AddTemplate_Test
 /**
  *  Test Case For Ethna_Subcommand_AddTemplate_Test
  *

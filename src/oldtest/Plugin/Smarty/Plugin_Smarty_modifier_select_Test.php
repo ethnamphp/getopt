@@ -7,7 +7,6 @@
 
 require_once ETHNA_BASE . '/src/Plugin/Smarty/modifier.select.php';
 
-//{{{    Ethna_Plugin_Smarty_modifier_select_Test.php
 /**
  *  Test Case For modifier.select.php
  *
@@ -15,7 +14,6 @@ require_once ETHNA_BASE . '/src/Plugin/Smarty/modifier.select.php';
  */
 class Ethna_Plugin_Smarty_modifier_select_Test extends Ethna_UnitTestBase
 {
-    // {{{ test_smarty_modifier_select
     function test_smarty_modifier_select()
     {
         $r = smarty_modifier_select('a', 'b');

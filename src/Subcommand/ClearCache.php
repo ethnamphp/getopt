@@ -6,7 +6,6 @@
  */
 use Ethnam\Generator\Command as Ethna_Command;
 
-// {{{ Ethna_Subcommand_ClearCache
 /**
  *  clear-cache handler
  *
@@ -74,7 +73,6 @@ class Ethna_Subcommand_ClearCache extends Ethna_Subcommand_Base
         return true;
     }
 
-    // {{{ getDescription()
     /**
      *  @access public
      */
@@ -88,7 +86,6 @@ EOS;
     }
     // }}}
 
-    // {{{ getUsage()
     /**
      *  @access public
      */

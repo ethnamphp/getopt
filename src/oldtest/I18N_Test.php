@@ -5,7 +5,6 @@
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com>
  */
 
-//{{{    Ethna_I18N_Test
 /**
  *  Test Case For Ethna_I18N class
  *
@@ -21,7 +20,6 @@ class Ethna_I18N_Test extends Ethna_UnitTestBase
         $this->i18n = $ctl->getI18N();
     }
 
-    // {{{  test_get_ja_JP
     function test_get_ja_JP()
     {
         //  デフォルトは日本語のメッセージが返ってくる
@@ -37,7 +35,6 @@ class Ethna_I18N_Test extends Ethna_UnitTestBase
     }
     // }}}
 
-    // {{{  test_get_fallback_locale
     function test_get_fallback_locale()
     {
         //  ロケール切り替え
@@ -75,7 +72,6 @@ class Ethna_I18N_Test extends Ethna_UnitTestBase
     }
     // }}} 
 
-    // {{{ test_parseEthnaMsgCatalog
     function test_parseEthnaMsgCatalog()
     {
         $file = ETHNA_BASE . '/test/test_message_catalog.ini';

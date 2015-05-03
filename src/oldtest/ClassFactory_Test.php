@@ -7,7 +7,6 @@
 
 require_once ETHNA_BASE . '/test/MocktestManager.php';
 
-//{{{    Ethna_ClassFactory_Test
 /**
  *  Test Case For Ethna_ClassFactory_Test 
  *

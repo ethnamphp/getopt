@@ -6,7 +6,6 @@
  */
 use Ethnam\Generator\Command as Ethna_Command;
 
-// {{{ Ethna_Subcommand_AddView
 /**
  *  add-view handler
  *

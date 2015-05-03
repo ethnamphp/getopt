@@ -7,7 +7,6 @@
 
 require_once ETHNA_BASE . '/src/Plugin/Smarty/function.select.php';
 
-//{{{    Ethna_Plugin_Smarty_function_select_Test
 /**
  *  Test Case For function.select.php
  *
@@ -15,7 +14,6 @@ require_once ETHNA_BASE . '/src/Plugin/Smarty/function.select.php';
  */
 class Ethna_Plugin_Smarty_function_select_Test extends Ethna_UnitTestBase
 {
-    // {{{ test_smarty_function_select
     function test_smarty_function_select()
     {
         $params = array('list'  => array(

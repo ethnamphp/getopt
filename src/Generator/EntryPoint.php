@@ -5,7 +5,6 @@
  *  @author     ICHII Takashi <ichii386@schweetheart.jp>
  */
 
-// {{{ Ethna_Generator_EntryPoint
 /**
  *  スケルトン生成クラス
  *

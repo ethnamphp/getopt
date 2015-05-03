@@ -5,7 +5,6 @@
  * @author BoBpp <bobpp@users.sourceforge.jp>
  */
  
-// {{{ Ethna_Generator_Test
 /**
  * Normal Test Case Generator.
  * 

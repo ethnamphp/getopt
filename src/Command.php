@@ -77,7 +77,6 @@ EOD;
 
     }
 
-    // {{{ getHandler
     /**
      *  get handler object
      *
@@ -107,7 +106,6 @@ EOD;
     }
     // }}}
 
-    // {{{ getEthnaController
     /**
      *  Ethna_Controllerのインスタンスを取得する
      *  (Ethna_Commandの文脈で呼び出されることが前提)
@@ -121,7 +119,6 @@ EOD;
     }
     // }}}
 
-    // {{{ getAppController
     /**
      *  アプリケーションのコントローラファイル/クラスを検索する
      *
@@ -181,7 +178,6 @@ EOD;
     }
     // }}}
 
-    // {{{ getMasterSetting
     /**
      *  Ethna 本体の設定を取得する (ethnaコマンド用)
      *

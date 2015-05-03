@@ -8,7 +8,6 @@
 use \Ethnam\Generator\Getopt;
 use \Ethnam\Generator\Command as Ethna_Command;
 
-// {{{ Ethna_Subcommand_Base
 /**
  *  コマンドラインハンドラプラグインの基底クラス
  *

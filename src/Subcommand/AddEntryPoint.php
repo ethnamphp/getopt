@@ -5,7 +5,6 @@
  *  @author     ICHII Takashi <ichii386@schweetheart.jp>
  */
 
-// {{{ Ethna_Subcommand_AddEntryPoint
 /**
  *  add-action handler
  *

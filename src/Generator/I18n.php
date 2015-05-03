@@ -5,7 +5,6 @@
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com>
  */
 
-// {{{ Ethna_Generator_I18n
 /**
  *  i18n 向け、メッセージカタログ生成クラスのスーパークラス
  *
