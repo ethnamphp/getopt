@@ -15,9 +15,6 @@ namespace Ethnam\Generator\Subcommand;
 class AddAppManager extends Base
 {
     /**
-     *  add app-manager
-     *
-     *  @access public
      */
     public function perform()
     {

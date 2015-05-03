@@ -15,9 +15,7 @@ namespace Ethnam\Generator\Subcommand;
 class AddEntryPoint extends AddAction
 {
     /**
-     *  add action entry point
      *
-     *  @access public
      */
     public function perform()
     {

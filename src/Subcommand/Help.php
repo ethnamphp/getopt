@@ -16,9 +16,7 @@ class Help extends Base
 {
 
     /**
-     *  show help
      *
-     *  @access public
      */
     public function perform()
     {

@@ -15,9 +15,7 @@ namespace Ethnam\Generator\Subcommand;
 class AddTemplate extends AddView
 {
     /**
-     *  add template
      *
-     *  @access public
      */
     public function perform()
     {

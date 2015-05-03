@@ -18,9 +18,7 @@ class AddProject extends Base
 {
 
     /**
-     *  add project:)
      *
-     *  @access public
      */
     public function perform()
     {

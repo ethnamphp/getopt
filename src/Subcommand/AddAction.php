@@ -15,9 +15,6 @@ namespace Ethnam\Generator\Subcommand;
 class AddAction extends Base
 {
     /**
-     *  add action
-     *
-     *  @access public
      */
     public function perform()
     {

@@ -17,9 +17,7 @@ use Ethnam\Generator\Command as Ethna_Command;
 class AddView extends AddAction
 {
     /**
-     *  add view
      *
-     *  @access public
      */
     public function perform()
     {

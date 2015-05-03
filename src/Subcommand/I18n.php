@@ -7,7 +7,8 @@
 namespace Ethnam\Generator\Subcommand;
 
 /**
- *  i18n handler
+ *  i18n
+ *  generate message catalog.
  *
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com>
  *  @access     public
@@ -15,9 +16,7 @@ namespace Ethnam\Generator\Subcommand;
 class I18n extends Base
 {
     /**
-     *  generate message catalog.
      *
-     *  @access public
      */
     public function perform()
     {

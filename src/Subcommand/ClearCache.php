@@ -17,9 +17,7 @@ use Ethnam\Generator\Command as Ethna_Command;
 class ClearCache extends Base
 {
     /**
-     *  clear cache files.
      *
-     *  @access public
      *  @todo   implement Ethna_Renderer::clear_cache();
      *  @todo   implement Ethna_Plugin_Cachemanager::clear_cache();
      *  @todo   avoid echo, printf
