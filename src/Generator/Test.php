@@ -21,8 +21,6 @@ class Test extends Base
      * @access public
      * @param string $skelfile スケルトンファイル名
      * @param string $name     テストケース名
-     * @return mixed TRUE; OK
-     *               Ethna_Error: エラー発生
      */
     public function generate($skelfile, $name)
     {
@@ -64,7 +62,5 @@ class Test extends Base
             printf("test script(s) successfully created [%s]\n", $generatePath);
         }
 
-        $true = true;
-        return $true;
     }
 }

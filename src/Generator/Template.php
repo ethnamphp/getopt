@@ -23,7 +23,6 @@ class Template extends Base
      *  @param  string  $forward_name   テンプレート名
      *  @param  string  $skelton        スケルトンファイル名
      *  @param  string  $locale         ロケール名
-     *  @return true|Ethna_Error        true:成功 Ethna_Error:失敗
      */
     public function generate($forward_name, $skelton = null, $locale)
     {
@@ -60,7 +59,5 @@ class Template extends Base
             printf("template file(s) successfully created [%s]\n", $entity);
         }
 
-        $true = true;
-        return $true;
     }
 }

@@ -24,7 +24,6 @@ class ActionTest extends Base
      *  @param  string  $action_name    アクション名
      *  @param  string  $skelton        スケルトンファイル名
      *  @param  int     $gateway        ゲートウェイ
-     *  @return true|Ethna_Error        true:成功 Ethna_Error:失敗
      */
     public function generate($action_name, $skelton = null, $gateway = GATEWAY_WWW)
     {
@@ -73,7 +72,5 @@ class ActionTest extends Base
             printf("action test(s) successfully created [%s]\n", $entity);
         }
 
-        $true = true;
-        return $true;
     }
 }

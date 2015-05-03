@@ -22,7 +22,6 @@ class View extends Base
      *  @access public
      *  @param  string  $forward_name   ビュー名
      *  @param  string  $skelton        スケルトンファイル名
-     *  @return true|Ethna_Error        true:成功 Ethna_Error:失敗
      */
     public function generate($forward_name, $skelton = null, $gateway = GATEWAY_WWW)
     {
@@ -60,7 +59,5 @@ class View extends Base
             printf("view script(s) successfully created [%s]\n", $entity);
         }
 
-        $true = true;
-        return $true;
     }
 }
