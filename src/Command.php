@@ -27,7 +27,7 @@ ethnam-generator %s (using PHP %s)
 Copyright (c) 2004-%s, @DQNEO and Ethna/Ethnam commiters
 
 EOD;
-        printf($msg, self::VERSION , PHP_VERSION, date('Y'));
+        printf($msg, self::VERSION, PHP_VERSION, date('Y'));
     }
 
     /**
