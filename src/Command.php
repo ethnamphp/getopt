@@ -91,7 +91,7 @@ EOD;
         $ctl = new Ethna_Controller(GATEWAY_CLI);
         Ethna::clearErrorCallback();
 
-        $class = '' . $name;
+        $class = '\\Ethnam\\Generator\\Subcommand\\' . $name;
         $obj = new $class($ctl, null, $name);
         return $obj;
     }
