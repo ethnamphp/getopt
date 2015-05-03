@@ -39,15 +39,10 @@ EOD;
         //  含まれていた場合、それは -v|--version でなければならない
         list($my_arg_list, $arg_list) = $this->separateArgList($arg_list);
         $r = $opt->getopt($my_arg_list, "v", array("version"));
-        if (Ethna::isError($r)) {
-            $subCommand = 'help';
-        } else {
-            // ad-hoc:(
-            foreach ($r[0] as $opt) {
-                if ($opt[0] == "v" || $opt[0] == "--version") {
-                    printf($this->version, ETHNA_VERSION, PHP_VERSION, date('Y'));
-                    exit(2);
-                }
+        foreach ($r[0] as $opt) {
+            if ($opt[0] == "v" || $opt[0] == "--version") {
+                printf($this->version, ETHNA_VERSION, PHP_VERSION, date('Y'));
+                exit(2);
             }
         }
 
