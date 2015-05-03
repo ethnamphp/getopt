@@ -33,10 +33,9 @@ class Base
     /**
      *  スケルトンファイルの絶対パスを解決する
      *
-     *  @access private
      *  @param  string  $skel   スケルトンファイル
      */
-    public function _resolveSkelfile($skel)
+    protected function _resolveSkelfile($skel)
     {
         $file = realpath($skel);
         if (file_exists($file)) {
