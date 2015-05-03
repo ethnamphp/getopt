@@ -48,7 +48,7 @@ class AddAction extends Base
 
     /**
      */
-    private function _perform($target, $target_name, $opt_list)
+    protected function _perform($target, $target_name, $opt_list)
     {
         // basedir
         if (isset($opt_list['basedir'])) {
