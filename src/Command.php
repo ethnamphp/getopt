@@ -96,8 +96,8 @@ EOD;
         Ethna::clearErrorCallback();
 
         $class = 'Ethna_Plugin_Subcommand_' . $name;
-        $plugin = new $class($ctl, null, $name);
-        return $plugin;
+        $obj = new $class($ctl, null, $name);
+        return $obj;
     }
     // }}}
 
