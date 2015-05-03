@@ -49,11 +49,6 @@ class Ethna_Plugin_Subcommand_Help extends Ethna_Plugin_Subcommand_Base
 
         // getHandler
         $handler = $this->eh->newSubcommand($handle_name);
-        if (Ethna::isError($handler) || $handler === false) {
-            // command not found
-            return Ethna::raiseError('command not found.', 'usage');
-        }
-
         echo $handler->getDescription();
 
         return true;
