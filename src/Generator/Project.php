@@ -15,6 +15,31 @@ namespace Ethnam\Generator\Generator;
 class Project extends Base
 {
     /**
+     *  アプリケーションIDをチェックする
+     *
+     *  @param  string  $id     アプリケーションID
+     */
+    public static function checkAppId($id)
+    {
+        if (strcasecmp($id, 'ethna') === 0
+            || strcasecmp($id, 'app') === 0) {
+            throw new \InvalidArgumentException("Application Id [$id] is reserved\n");
+        }
+
+        //    アプリケーションIDはクラス名のprefixともなるため、
+        //    数字で始まっていてはいけない
+        //    @see http://www.php.net/manual/en/language.variables.php
+        if (preg_match('/^[a-zA-Z][a-zA-Z0-9]*$/', $id) === 0) {
+            $msg = (preg_match('/^[0-9]$/', $id[0]))
+                 ? "Application ID must NOT start with Number.\n"
+                 : "Only Numeric(0-9) and Alphabetical(A-Z) is allowed for Application Id\n";
+            throw new \InvalidArgumentException($msg);
+        }
+
+    }
+
+
+    /**
      *  プロジェクトスケルトンを生成する
      *
      *  @access public
@@ -59,10 +84,7 @@ class Project extends Base
 
         // double check.
         $id = strtolower($id);
-        $r = Ethna_Controller::checkAppId($id);
-        if (Ethna::isError($r)) {
-            return $r;
-        }
+        $r = self::checkAppId($id);
 
         // ディレクトリ作成
         if (is_dir($basedir) == false) {
