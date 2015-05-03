@@ -10,7 +10,11 @@ spl_autoload_register(function($className){
         array_shift($separated);  // remove 'Ethnam'
         array_shift($separated);  // remove 'Generator'
 
-        //読み込み失敗したら死んで欲しい(´・ω・`)
-        require_once __DIR__ . '/src/' . join('/', $separated) . '.php';
+        $file = __DIR__ . '/src/' . join('/', $separated) . '.php';
+        if (!file_exists($file)) {
+            //just for debug
+            throw new Exception("file not found: " . $file);
+        }
+        require_once $file;
     }
 });
