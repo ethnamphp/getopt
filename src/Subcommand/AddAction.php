@@ -43,10 +43,7 @@ class AddAction extends Base
         if ($action_name == null) {
             throw new \Exception('action name isn\'t set.');
         }
-        $r = Ethna_Controller::checkActionName($action_name);
-        if (Ethna::isError($r)) {
-            return $r;
-        }
+        Base::checkActionName($action_name);
 
         $ret = $this->_perform('Action', $action_name, $opt_list);
         return $ret;

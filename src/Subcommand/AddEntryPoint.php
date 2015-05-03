@@ -32,10 +32,8 @@ class AddEntryPoint extends AddAction
         if ($action_name == null) {
             return Ethna::raiseError('action name isn\'t set.', 'usage');
         }
-        $r = Ethna_Controller::checkActionName($action_name);
-        if (Ethna::isError($r)) {
-            return $r;
-        }
+
+        Base::checkActionName($action_name);
 
         // add entry point
         $ret = $this->_perform('EntryPoint', $action_name, $opt_list);
