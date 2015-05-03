@@ -28,7 +28,7 @@ class Ethna_Plugin_Generator_Base
      */
     function __construct($controller, $type, $name)
     {
-        // Ethna_Generatorでpluginを取得するときに使ったコントローラ
+        // Ethna_Plugin_Subcommand_Base::generateでpluginを取得するときに使ったコントローラ
         // ex, add-projectではEthna_Controller, app-actionではApp_Controller
         $this->ctl = $controller;
     }
