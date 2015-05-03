@@ -34,7 +34,7 @@ class Getopt
      *
      *  @return array - オプションとパラメータを含む配列、
      */
-    public function readPHPArgv()
+    public function readGlobalArgv()
     {
         global $argv;
 

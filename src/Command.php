@@ -32,7 +32,7 @@ EOD;
 
         // fetch arguments
         $opt = new Getopt();
-        $arg_list = $opt->readPHPArgv();
+        $arg_list = $opt->readGlobalArgv();
         array_shift($arg_list);  // remove "command.php"
 
         //  はじめの引数に - が含まれていればそれを分離する
