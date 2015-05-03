@@ -4,7 +4,6 @@
  *  Plugin_Smarty_modifier_checkbox_Test.php
  *
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com>
- *  @version    $Id$
  */
 
 require_once ETHNA_BASE . '/src/Plugin/Smarty/modifier.checkbox.php';

@@ -3,7 +3,6 @@
  *  Class_Test.php
  *
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com>
- *  @version    $Id$
  */
 
 class Dummy_Ethna_Error extends Ethna_Error

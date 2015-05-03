@@ -6,7 +6,6 @@
  *  @author     ICHII Takashi <ichii386@schweetheart.jp>
  *  @license    http://www.opensource.org/licenses/bsd-license.php The BSD License
  *  @package    Ethna
- *  @version    $Id$
  */
 
 // {{{ Ethna_Generator_EntryPoint

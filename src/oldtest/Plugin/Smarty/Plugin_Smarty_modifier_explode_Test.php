@@ -3,7 +3,6 @@
  *  Plugin_Smarty_modifier_explode_Test.php
  *
  *  @author     Sotaro Karasawa <sotaro.k /at/ gmail.com>
- *  @version    $Id$
  */
 
 require_once ETHNA_BASE . '/src/Plugin/Smarty/modifier.explode.php';

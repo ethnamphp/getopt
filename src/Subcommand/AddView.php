@@ -6,7 +6,6 @@
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  *  @license    http://www.opensource.org/licenses/bsd-license.php The BSD License
  *  @package    Ethna
- *  @version    $Id$
  */
 use Ethnam\Generator\Command as Ethna_Command;
 

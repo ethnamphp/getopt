@@ -6,7 +6,6 @@
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com>
  *  @license    http://www.opensource.org/licenses/bsd-license.php The BSD License
  *  @package    Ethna
- *  @version    $Id$
  */
 
 // {{{ Ethna_Generator_I18n

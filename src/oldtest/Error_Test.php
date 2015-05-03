@@ -3,7 +3,6 @@
  *  Error_Test.php
  *
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com>
- *  @version    $Id$
  */
 
 //{{{    Ethna_Error_Test

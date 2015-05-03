@@ -4,7 +4,6 @@
  *  MockProject.php
  *
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com>
- *  @version    $Id$
  */
 
 define('ETHNA_TEST_DIR', ETHNA_BASE . '/test');

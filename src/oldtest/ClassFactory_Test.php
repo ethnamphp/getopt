@@ -4,7 +4,6 @@
  *  ClassFactory_Test.php
  *
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com>
- *  @version    $Id$
  */
 
 require_once ETHNA_BASE . '/test/MocktestManager.php';

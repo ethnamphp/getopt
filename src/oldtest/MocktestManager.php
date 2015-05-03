@@ -4,7 +4,6 @@
  *
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com> 
  *  @package    Ethna 
- *  @version    $Id$
  */
 
 /**

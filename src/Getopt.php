@@ -6,7 +6,6 @@
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com>
  *  @license    Public Domain
  *  @package    Ethna
- *  @version    $Id$
  */
 
 namespace Ethnam\Generator;

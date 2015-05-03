@@ -5,7 +5,6 @@
  *  @author     nozzzzz <nozzzzz@gmail.com>
  *  @license    http://www.opensource.org/licenses/bsd-license.php The BSD License
  *  @package    Ethna
- *  @version    $Id$
  */
 
 // {{{ Ethna_Subcommand_AddAppManager

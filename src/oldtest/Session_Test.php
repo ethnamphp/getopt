@@ -3,7 +3,6 @@
  *  Session_Test.php
  *
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com>
- *  @version    $Id$
  *  @TODO       Create session mock and fix this test
  */
 

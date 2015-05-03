@@ -4,7 +4,6 @@
  *  Controller_Test.php
  *
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com>
- *  @version    $Id$
  */
 
 //{{{    Ethna_Controller_Test
