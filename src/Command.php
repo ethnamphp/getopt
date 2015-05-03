@@ -130,7 +130,7 @@ EOD;
         if (isset($app_controller[$app_dir])) {
             return $app_controller[$app_dir];
         } else if ($app_dir === null) {
-            return Ethna::raiseError('$app_dir not specified.');
+            throw new \Exception('$app_dir not specified.');
         }
 
         $ini_file = null;
@@ -146,25 +146,25 @@ EOD;
         }
 
         if ($ini_file === null) {
-            return Ethna::raiseError('no .ethna file found');
+            throw new \Exception('no .ethna file found');
         }
 
         $macro = parse_ini_file($ini_file);
         if (isset($macro['controller_file']) == false
             || isset($macro['controller_class']) == false) {
-            return Ethna::raiseError('invalid .ethna file');
+            throw new \Exception('invalid .ethna file');
         }
         $file = $macro['controller_file'];
         $class = $macro['controller_class'];
 
         $controller_file = "$app_dir/$file";
         if (is_file($controller_file) == false) {
-            return Ethna::raiseError("no such file $controller_file");
+            throw new \Exception("no such file $controller_file");
         }
 
         include_once $controller_file;
         if (class_exists($class) == false) {
-            return Ethna::raiseError("no such class $class");
+            throw new \Exception("no such class $class");
         }
 
         $global_controller = $GLOBALS['_Ethna_controller'];

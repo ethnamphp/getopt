@@ -189,9 +189,6 @@ abstract class Base
         } else {
             $ctl = Ethna_Command::getAppController($app_dir);
         }
-        if (\Ethna::isError($ctl)) {
-            throw new \Exception($ctl->getMessage());
-        }
 
         $className = '' . $name;
         $generator = new $className($ctl);
