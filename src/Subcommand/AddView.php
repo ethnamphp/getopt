@@ -6,7 +6,7 @@
  */
 namespace Ethnam\Generator\Subcommand;
 
-use Ethnam\Generator\Command as Ethna_Command;
+use Ethnam\Generator\Command;
 
 /**
  *  add-view handler
@@ -80,14 +80,14 @@ class AddView extends AddAction
         }
 
         // locale
-        $ctl = Ethna_Command::getAppController(getcwd());
+        $ctl = Command::getAppController(getcwd());
         if (isset($opt_list['locale'])) {
             $locale = end($opt_list['locale']);
             if (!preg_match('/^[A-Za-z_]+$/', $locale)) {
                 throw new \Exceptionxo("You specified locale, but invalid : $locale");
             }
         } else {
-            if (Ethna::isError($ctl)) {
+            if (\Ethna::isError($ctl)) {
                 $locale = 'ja_JP';
             } else {
                 $locale = $ctl->getLocale();
