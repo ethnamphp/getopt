@@ -2,7 +2,6 @@
 /**
  *  ViewClass_Test.php
  *
- *  @package Ethna
  *  @author halt feits <halt.feits@gmail.com>
  *  @author Yoshinari Takaoka <takaoka@beatcraft.com>
  */
@@ -14,7 +13,6 @@ require_once ETHNA_INSTALL_BASE . '/test/MockProject.php';
  *  但しフォームヘルパまわりのテストを除く
  *  フォームヘルパのテストについては、Ethna_View_FormHelper_Test.php を参照
  *
- *  @package Ethna
  *  @author halt feits <halt.feits@gmail.com>
  *  @author Yoshinari Takaoka <takaoka@beatcraft.com>
  *  @access public

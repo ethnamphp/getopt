@@ -5,7 +5,6 @@
  *
  *  @author     nnno <nnno@nnno.jp> 
  *  @license    http://www.opensource.org/licenses/bsd-license.php The BSD License
- *  @package    Ethna
  */
 
 // {{{ Ethna_Subcommand_AddTemplate
@@ -14,7 +13,6 @@
  *
  *  @author     nnno <nnno@nnno.jp>
  *  @access     public
- *  @package    Ethna
  */
 class Ethna_Subcommand_AddTemplate extends Ethna_Subcommand_AddView
 {

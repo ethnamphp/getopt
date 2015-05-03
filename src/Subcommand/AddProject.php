@@ -5,7 +5,6 @@
  *
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  *  @license    http://www.opensource.org/licenses/bsd-license.php The BSD License
- *  @package    Ethna
  */
 
 // {{{ Ethna_Subcommand_AddProject
@@ -14,7 +13,6 @@
  *
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  *  @access     public
- *  @package    Ethna
  */
 class Ethna_Subcommand_AddProject extends Ethna_Subcommand_Base
 {

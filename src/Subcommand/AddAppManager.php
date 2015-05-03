@@ -4,7 +4,6 @@
  *
  *  @author     nozzzzz <nozzzzz@gmail.com>
  *  @license    http://www.opensource.org/licenses/bsd-license.php The BSD License
- *  @package    Ethna
  */
 
 // {{{ Ethna_Subcommand_AddAppManager
@@ -13,7 +12,6 @@
  *
  *  @author     nozzzzz <nozzzzz@gmail.com>
  *  @access     public
- *  @package    Ethna
  */
 class Ethna_Subcommand_AddAppManager extends Ethna_Subcommand_Base
 {

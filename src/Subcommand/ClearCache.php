@@ -5,7 +5,6 @@
  *
  *  @author     ICHII Takashi <ichii386@schweetheart.jp>
  *  @license    http://www.opensource.org/licenses/bsd-license.php The BSD License
- *  @package    Ethna
  */
 use Ethnam\Generator\Command as Ethna_Command;
 
@@ -15,7 +14,6 @@ use Ethnam\Generator\Command as Ethna_Command;
  *
  *  @author     ICHII Takashi <ichii386@schweetheart.jp>
  *  @access     public
- *  @package    Ethna
  */
 class Ethna_Subcommand_ClearCache extends Ethna_Subcommand_Base
 {

@@ -5,7 +5,6 @@
  *
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  *  @license    http://www.opensource.org/licenses/bsd-license.php The BSD License
- *  @package    Ethna
  */
 
 use \Ethnam\Generator\Getopt;
@@ -17,7 +16,6 @@ use \Ethnam\Generator\Command as Ethna_Command;
  *
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  *  @access     public
- *  @package    Ethna
  */
 abstract class Ethna_Subcommand_Base
 {

@@ -2,7 +2,6 @@
 /**
  * TextSimpleReporter.php
  *
- * @package Ethna
  * @author  Sotaro KARASAWA <sotaro.k@gmail.com>
  */
 

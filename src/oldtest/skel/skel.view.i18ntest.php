@@ -3,7 +3,6 @@
  *  {$view_path}
  *
  *  @author     {$author}
- *  @package    {$project_id}
  */
 
  _et("view global");
@@ -13,7 +12,6 @@
  *
  *  @author     {$author}
  *  @access     public
- *  @package    {$project_id}
  */
 class {$view_class} extends {$project_id}_ViewClass
 {

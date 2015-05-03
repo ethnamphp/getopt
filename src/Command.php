@@ -3,7 +3,6 @@
  *
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  *  @license    http://www.opensource.org/licenses/bsd-license.php The BSD License
- *  @package    Ethna
  */
 
 namespace Ethnam\Generator;
@@ -13,7 +12,6 @@ namespace Ethnam\Generator;
  *
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  *  @access     public
- *  @package    Ethna
  */
 use \Ethna_Controller;
 use \Ethna_Util;

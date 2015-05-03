@@ -5,7 +5,6 @@
  *
  *  @author     Tomoyuki MARUTA <maru_cc@users.sourceforge.jp>
  *  @license    http://www.opensource.org/licenses/bsd-license.php The BSD License
- *  @package    Ethna
  */
 
 // {{{ Ethna_Subcommand_Help
@@ -14,7 +13,6 @@
  *
  *  @author     ICHII Takashi <ichii386@schweetheart.jp>
  *  @access     public
- *  @package    Ethna
  */
 class Ethna_Subcommand_Help extends Ethna_Subcommand_Base
 {

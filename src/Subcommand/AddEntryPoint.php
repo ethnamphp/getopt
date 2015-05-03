@@ -5,7 +5,6 @@
  *
  *  @author     ICHII Takashi <ichii386@schweetheart.jp>
  *  @license    http://www.opensource.org/licenses/bsd-license.php The BSD License
- *  @package    Ethna
  */
 
 // {{{ Ethna_Subcommand_AddEntryPoint
@@ -14,7 +13,6 @@
  *
  *  @author     ICHII Takashi <ichii386@schweetheart.jp>
  *  @access     public
- *  @package    Ethna
  */
 class Ethna_Subcommand_AddEntryPoint extends Ethna_Subcommand_AddAction
 {

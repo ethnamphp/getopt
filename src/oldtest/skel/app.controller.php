@@ -3,7 +3,6 @@
  *  {$project_id}_Controller.php
  *
  *  @author     {$author}
- *  @package    {$project_id}
  */
 
 /** Application base directory */
@@ -27,7 +26,6 @@ require_once '{$project_id}_ViewClass.php';
  *
  *  @author     {$author}
  *  @access     public
- *  @package    {$project_id}
  */
 class {$project_id}_Controller extends Ethna_Controller
 {

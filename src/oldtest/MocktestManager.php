@@ -3,7 +3,6 @@
  *  MocktestManager.php
  *
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com> 
- *  @package    Ethna 
  */
 
 /**

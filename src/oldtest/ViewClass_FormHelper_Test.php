@@ -2,7 +2,6 @@
 /**
  *  ViewClass_FormHelper_Test.php
  *
- *  @package Ethna
  *  @author Yoshinari Takaoka <takaoka@beatcraft.com>
  */
 
@@ -12,7 +11,6 @@ require_once ETHNA_INSTALL_BASE . '/test/MockProject.php';
  *  Ethna_ViewClass のうち、フォームヘルパ
  *  に関連するテストケースを集めたクラス
  *
- *  @package Ethna
  *  @author Yoshinari Takaoka <takaoka@beatcraft.com>
  *  @access public
  */

@@ -5,7 +5,6 @@
  *
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com> 
  *  @license    http://www.opensource.org/licenses/bsd-license.php The BSD License
- *  @package    Ethna
  */
 
 // {{{ Ethna_Subcommand_I18n
@@ -14,7 +13,6 @@
  *
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com>
  *  @access     public
- *  @package    Ethna
  */
 class Ethna_Subcommand_I18n extends Ethna_Subcommand_Base
 {

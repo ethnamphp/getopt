@@ -2,7 +2,6 @@
 /**
  *  UnitTestBase.php
  *
- *  @package    Ethna
  *  @author     ICHII Takashi <ichii386@schweetheart.jp>
  */
 

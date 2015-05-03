@@ -3,7 +3,6 @@
  *  {$action_path}
  *
  *  @author     {$author}
- *  @package    {$project_id}
  */
 
 /**
@@ -11,7 +10,6 @@
  *
  *  @author     {$author}
  *  @access     public
- *  @package    {$project_id}
  */
 class {$action_form} extends {$project_id}_ActionForm
 {
@@ -66,7 +64,6 @@ class {$action_form} extends {$project_id}_ActionForm
  *
  *  @author     {$author}
  *  @access     public
- *  @package    {$project_id}
  */
 class {$action_class} extends {$project_id}_ActionClass
 {
