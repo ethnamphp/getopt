@@ -200,7 +200,7 @@ class Ethna_Plugin_Generator_Project extends Ethna_Plugin_Generator_Base
      *  @param  string  $skeldir    スケルトンディレクトリ。これが指定されると、そこにある
      *                              ファイルが優先される。また、ETHNA_HOME/skel にないもの
      *                              も追加してコピーする 
-     *  @return bool     true:成功  Ethna_Error:失敗
+     *  @throws \Exception
      */
 
     private function _generate($maps, $macro, $skeldir)
@@ -210,10 +210,9 @@ class Ethna_Plugin_Generator_Project extends Ethna_Plugin_Generator_Base
                 $skel = "$skeldir/$skel";
             }
             if ($this->_generateFile($skel, $realfile, $macro) == false) {
-                return Ethna::raiseError("generating file failed:[$skel] => [$realfile]");
+                throw new \Exception("generating file failed:[$skel] => [$realfile]");
             }
         }
-        return true;
     }
 }
 // }}}
