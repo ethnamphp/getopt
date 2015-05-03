@@ -73,7 +73,7 @@ class Ethna_Plugin_Generator_Base
      *  @param  bool    $overwrite  上書きフラグ
      *  @return bool    true:正常終了 false:エラー
      */
-    function _generateFile($skel, $entity, $macro, $overwrite = false)
+    protected function _generateFile($skel, $entity, $macro, $overwrite = false)
     {
         if (file_exists($entity)) {
             if ($overwrite === false) {

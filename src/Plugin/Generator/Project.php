@@ -202,8 +202,8 @@ class Ethna_Plugin_Generator_Project extends Ethna_Plugin_Generator_Base
      *                              も追加してコピーする 
      *  @return bool     true:成功  Ethna_Error:失敗
      */
- 
-    function _generate($maps, $macro, $skeldir)
+
+    private function _generate($maps, $macro, $skeldir)
     {
         foreach ($maps as $skel => $realfile) {
             if (!empty($skeldir) && file_exists("$skeldir/$skel")) {
