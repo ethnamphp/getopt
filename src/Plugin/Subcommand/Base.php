@@ -202,11 +202,6 @@ abstract class Ethna_Plugin_Subcommand_Base
             return $ctl;
         }
 
-        $plugin_manager = $ctl->getPlugin();
-        if (Ethna::isError($plugin_manager)) {
-            return $plugin_manager;
-        }
-
         $className = 'Ethna_Plugin_Generator_' . $name;
         $generator = new $className($ctl);
 
