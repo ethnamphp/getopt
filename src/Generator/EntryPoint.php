@@ -20,12 +20,9 @@ class EntryPoint extends Base
      *  @access public
      *  @param  string  $skelton    スケルトンファイル名
      *  @param  int     $gateway    ゲートウェイ
-     *  @return true|Ethna_Error    true:成功 Ethna_Error:失敗
      */
     public function generate($action_name, $skelton = null, $gateway = GATEWAY_WWW)
     {
-        $true = true;
-
         // entity
         switch ($gateway) {
         case GATEWAY_WWW:
@@ -54,7 +51,7 @@ class EntryPoint extends Base
         }
         if (file_exists($entity)) {
             printf("file [%s] already exists -> skip\n", $entity);
-            return $true;
+            return;
         }
 
         // macro
@@ -73,7 +70,7 @@ class EntryPoint extends Base
             printf("action script(s) successfully created [%s]\n", $entity);
         } else {
             printf("[warning] file creation failed [%s]\n", $entity);
-            return $true; // XXX: error handling
+            return; $true; // TODO: error handling
         }
 
         // chmod
@@ -81,9 +78,6 @@ class EntryPoint extends Base
             // is needed?
             //$ret = Ethna_Util::chmod($entity, 0777);
         }
-
-
-        return $true;
     }
 }
 // }}}
