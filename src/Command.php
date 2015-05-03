@@ -117,8 +117,10 @@ EOD;
                     }, ucfirst($subCommand));
 
         $ctl = new Ethna_Controller(GATEWAY_CLI);
-        $pluginManager = $ctl->getPlugin();
-        return $pluginManager->getPlugin('Subcommand', $name);
+
+        $class = 'Ethna_Plugin_Subcommand_' . $name;
+        $plugin = new $class($ctl, null, $name);
+        return $plugin;
     }
     // }}}
 
