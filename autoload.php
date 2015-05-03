@@ -13,7 +13,7 @@ spl_autoload_register(function($className){
         $file = __DIR__ . '/src/' . join('/', $separated) . '.php';
         if (!file_exists($file)) {
             //just for debug
-            throw new Exception("file not found: " . $file);
+            throw new Exception("classs not found: " . $className);
         }
         require_once $file;
     }
