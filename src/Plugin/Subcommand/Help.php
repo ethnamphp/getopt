@@ -48,7 +48,7 @@ class Ethna_Plugin_Subcommand_Help extends Ethna_Plugin_Subcommand_Base
         }
 
         // getHandler
-        $handler = $this->eh->newSubcommand($handle_name);
+        $handler = \Ethnam\Generator\Command::newSubcommand($handle_name);
         echo $handler->getDescription();
 
         return true;

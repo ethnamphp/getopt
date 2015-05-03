@@ -65,8 +65,7 @@ EOD;
             $subCommand = array_shift($arg_list);
         }
 
-        $subCommandObj = $this->newSubcommand($subCommand);
-        $subCommandObj->eh = $this;
+        $subCommandObj = self::newSubcommand($subCommand);
 
         // don't know what will happen:)
         $subCommandObj->setArgList($arg_list);
@@ -87,7 +86,7 @@ EOD;
      *
      *  @access public
      */
-    public function newSubcommand($subCommand)
+    public static function newSubcommand($subCommand)
     {
         $name = preg_replace_callback('/\-(.)/', function($matches){
                 return strtoupper($matches[1]);
