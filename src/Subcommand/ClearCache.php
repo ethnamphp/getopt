@@ -8,6 +8,9 @@ namespace Ethnam\Generator\Subcommand;
 
 use Ethnam\Generator\Command as Ethna_Command;
 
+use Ethna_Util;
+use Ethna;
+
 /**
  *  clear-cache handler
  *
