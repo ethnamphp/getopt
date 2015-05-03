@@ -12,7 +12,7 @@ namespace Ethnam\Generator\Subcommand;
  *  @author     ICHII Takashi <ichii386@schweetheart.jp>
  *  @access     public
  */
-class Ethna_Subcommand_AddEntryPoint extends Ethna_Subcommand_AddAction
+class AddEntryPoint extends AddAction
 {
     /**
      *  add action entry point

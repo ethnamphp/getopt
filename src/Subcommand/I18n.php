@@ -12,7 +12,7 @@ namespace Ethnam\Generator\Subcommand;
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com>
  *  @access     public
  */
-class Ethna_Subcommand_I18n extends Ethna_Subcommand_Base
+class I18n extends Base
 {
     /**
      *  generate message catalog.
@@ -53,7 +53,7 @@ class Ethna_Subcommand_I18n extends Ethna_Subcommand_Base
         $use_gettext = (isset($opt_list['gettext'])) ? true : false;
 
         //  generate message catalog.
-        $ret = Ethna_Subcommand_Base::generate('I18n', $basedir, $locale, $use_gettext, $arg_list);
+        $ret = Base::generate('I18n', $basedir, $locale, $use_gettext, $arg_list);
         if (Ethna::isError($ret)) {
             printf("error occurred while generating skelton. please see also following error message(s)\n\n");
             return $ret;

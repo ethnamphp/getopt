@@ -12,7 +12,7 @@ namespace Ethnam\Generator\Subcommand;
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  *  @access     public
  */
-class Ethna_Subcommand_AddProject extends Ethna_Subcommand_Base
+class AddProject extends Base
 {
     /**
      *  add project:)
@@ -82,7 +82,7 @@ class Ethna_Subcommand_AddProject extends Ethna_Subcommand_Base
             $encoding = 'UTF-8';  //  default encoding. 
         }
 
-        $r = Ethna_Subcommand_Base::generate('Project', null, $app_id, $basedir, $skeldir, $locale, $encoding);
+        $r = Base::generate('Project', null, $app_id, $basedir, $skeldir, $locale, $encoding);
         if (Ethna::isError($r)) {
             printf("error occurred while generating skelton. please see also error messages given above\n\n");
             return $r;

@@ -12,7 +12,7 @@ namespace Ethnam\Generator\Subcommand;
  *  @author     ICHII Takashi <ichii386@schweetheart.jp>
  *  @access     public
  */
-class Ethna_Subcommand_Help extends Ethna_Subcommand_Base
+class Help extends Base
 {
 
     /**

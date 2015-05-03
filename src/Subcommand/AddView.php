@@ -14,7 +14,7 @@ use Ethnam\Generator\Command as Ethna_Command;
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  *  @access     public
  */
-class Ethna_Subcommand_AddView extends Ethna_Subcommand_AddAction
+class AddView extends AddAction
 {
     /**
      *  add view
@@ -109,7 +109,7 @@ class Ethna_Subcommand_AddView extends Ethna_Subcommand_AddAction
             }
         }
 
-        $r = Ethna_Subcommand_Base::generate('Template', $basedir,
+        $r = Base::generate('Template', $basedir,
                                         $target_name, $skelfile, $locale);
         if (Ethna::isError($r)) {
             printf("error occurred while generating skelton. please see also following error message(s)\n\n");

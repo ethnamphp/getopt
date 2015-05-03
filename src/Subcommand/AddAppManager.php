@@ -12,7 +12,7 @@ namespace Ethnam\Generator\Subcommand;
  *  @author     nozzzzz <nozzzzz@gmail.com>
  *  @access     public
  */
-class Ethna_Subcommand_AddAppManager extends Ethna_Subcommand_Base
+class AddAppManager extends Base
 {
     /**
      *  add app-manager

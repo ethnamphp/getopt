@@ -12,7 +12,7 @@ namespace Ethnam\Generator\Subcommand;
  *  @author     nnno <nnno@nnno.jp>
  *  @access     public
  */
-class Ethna_Subcommand_AddTemplate extends Ethna_Subcommand_AddView
+class AddTemplate extends AddView
 {
     /**
      *  add template 

@@ -16,7 +16,7 @@ use \Ethnam\Generator\Command as Ethna_Command;
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  *  @access     public
  */
-abstract class Ethna_Subcommand_Base
+abstract class Base
 {
     /** @protected    handler's id */
     protected $id;

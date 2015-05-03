@@ -12,7 +12,7 @@ namespace Ethnam\Generator\Subcommand;
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  *  @access     public
  */
-class Ethna_Subcommand_AddAction extends Ethna_Subcommand_Base
+class AddAction extends Base
 {
     /**
      *  add action
@@ -86,7 +86,7 @@ class Ethna_Subcommand_AddAction extends Ethna_Subcommand_Base
         }
         
         //  possible target is Action, View.
-        $r = Ethna_Subcommand_Base::generate($target, $basedir,
+        $r = Base::generate($target, $basedir,
                                         $target_name, $skelfile, $gateway);
         if (Ethna::isError($r)) {
             printf("error occurred while generating skelton. please see also following error message(s)\n\n");
@@ -101,7 +101,7 @@ class Ethna_Subcommand_AddAction extends Ethna_Subcommand_Base
             $testskel = (isset($opt_list['unittestskel']))
                       ? end($opt_list['unittestskel'])
                       : null;
-            $r = Ethna_Subcommand_Base::generate("{$target}Test", $basedir, $target_name, $testskel, $gateway);
+            $r = Base::generate("{$target}Test", $basedir, $target_name, $testskel, $gateway);
             if (Ethna::isError($r)) {
                 printf("error occurred while generating action test skelton. please see also following error message(s)\n\n");
                 return $r;

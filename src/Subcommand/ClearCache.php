@@ -14,7 +14,7 @@ use Ethnam\Generator\Command as Ethna_Command;
  *  @author     ICHII Takashi <ichii386@schweetheart.jp>
  *  @access     public
  */
-class Ethna_Subcommand_ClearCache extends Ethna_Subcommand_Base
+class ClearCache extends Base
 {
     /**
      *  clear cache files.
