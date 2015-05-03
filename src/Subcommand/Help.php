@@ -21,9 +21,6 @@ class Help extends Base
     public function perform()
     {
         $r = $this->_getopt();
-        if (Ethna::isError($r)) {
-            return $r;
-        }
         list($opt_list, $arg_list) = $r;
 
         // action_name
