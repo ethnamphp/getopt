@@ -194,8 +194,7 @@ abstract class Base
         $generator = new $className($ctl);
 
         // 引数はプラグイン依存とする
-        $ret = call_user_func_array(array($generator, 'generate'), $arg_list);
-        return $ret;
+        call_user_func_array(array($generator, 'generate'), $arg_list);
     }
 
     /**
