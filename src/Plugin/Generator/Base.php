@@ -52,7 +52,7 @@ class Ethna_Plugin_Generator_Base
         if (file_exists($file)) {
             return $file;
         }
-        printf("skelton file [%s] not found.\n");
+        printf("skelton file [%s] not found.\n", $file);
 
         // Ethna本体の skel ディレクトリ
         $base = dirname(dirname(dirname(__FILE__)));
@@ -61,7 +61,7 @@ class Ethna_Plugin_Generator_Base
             return $file;
         }
 
-        printf("skelton file [%s] not found.\n");
+        printf("skelton file [%s] not found.\n", $file);
 
         return false;
     }
