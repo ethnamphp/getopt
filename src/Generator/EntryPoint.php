@@ -70,7 +70,7 @@ class EntryPoint extends Base
             printf("action script(s) successfully created [%s]\n", $entity);
         } else {
             printf("[warning] file creation failed [%s]\n", $entity);
-            return; $true; // TODO: error handling
+            return; // TODO: error handling
         }
 
         // chmod
