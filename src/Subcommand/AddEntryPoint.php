@@ -19,7 +19,7 @@ class AddEntryPoint extends AddAction
      *
      *  @access public
      */
-    function perform()
+    public function perform()
     {
         $r = $this->_getopt(array('basedir=', 'skelfile=', 'gateway='));
         if (Ethna::isError($r)) {
@@ -37,18 +37,17 @@ class AddEntryPoint extends AddAction
 
         // add entry point
         $ret = $this->_perform('EntryPoint', $action_name, $opt_list);
-        if (Ethna::isError($ret) || $ret === false) { 
+        if (Ethna::isError($ret) || $ret === false) {
             return $ret;
         }
 
         // add action (no effects if already exists.)
         $ret = $this->_perform('Action', $action_name, $opt_list);
-        if (Ethna::isError($ret) || $ret === false) { 
+        if (Ethna::isError($ret) || $ret === false) {
             return $ret;
         }
 
         return true;
-
     }
 
     /**
@@ -56,7 +55,7 @@ class AddEntryPoint extends AddAction
      *
      *  @access public
      */
-    function getDescription()
+    public function getDescription()
     {
         return <<<EOS
 add new action and its entry point to project:
@@ -68,7 +67,7 @@ EOS;
     /**
      *  @access public
      */
-    function getUsage()
+    public function getUsage()
     {
         return <<<EOS
 ethna {$this->id} [-b|--basedir=dir] [-s|--skelfile=file] [-g|--gateway=www|cli] [action]

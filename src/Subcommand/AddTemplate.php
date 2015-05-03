@@ -2,7 +2,7 @@
 /**
  *  AddTemplate.php
  *
- *  @author     nnno <nnno@nnno.jp> 
+ *  @author     nnno <nnno@nnno.jp>
  */
 namespace Ethnam\Generator\Subcommand;
 
@@ -15,11 +15,11 @@ namespace Ethnam\Generator\Subcommand;
 class AddTemplate extends AddView
 {
     /**
-     *  add template 
+     *  add template
      *
      *  @access public
      */
-    function perform()
+    public function perform()
     {
         $r = $this->_getopt(
                   array('basedir=',
@@ -27,7 +27,7 @@ class AddTemplate extends AddView
                         'locale=',
                         'encoding=',
                   )
-              ); 
+              );
         if (Ethna::isError($r)) {
             return $r;
         }
@@ -53,7 +53,7 @@ class AddTemplate extends AddView
      *
      *  @access public
      */
-    function getDescription()
+    public function getDescription()
     {
         return <<<EOS
 add new template to project:
@@ -65,7 +65,7 @@ EOS;
     /**
      *  @access public
      */
-    function getUsage()
+    public function getUsage()
     {
         return <<<EOS
 ethna {$this->id} [-b|--basedir=dir] [-s|--skelfile=file] [-l|--locale=locale] [-e|--encoding] [template]

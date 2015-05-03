@@ -22,7 +22,7 @@ class View extends Base
      *  @param  string  $skelton        スケルトンファイル名
      *  @return true|Ethna_Error        true:成功 Ethna_Error:失敗
      */
-    function generate($forward_name, $skelton = null, $gateway = GATEWAY_WWW)
+    public function generate($forward_name, $skelton = null, $gateway = GATEWAY_WWW)
     {
         $view_dir = $this->ctl->getViewdir();
         $view_class = $this->ctl->getDefaultViewClass($forward_name, $gateway);
@@ -52,7 +52,7 @@ class View extends Base
         // generate
         if (file_exists($entity)) {
             printf("file [%s] already exists -> skip\n", $entity);
-        } else if ($this->_generateFile($skelton, $entity, $macro) == false) {
+        } elseif ($this->_generateFile($skelton, $entity, $macro) == false) {
             printf("[warning] file creation failed [%s]\n", $entity);
         } else {
             printf("view script(s) successfully created [%s]\n", $entity);

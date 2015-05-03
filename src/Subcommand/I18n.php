@@ -2,7 +2,7 @@
 /**
  *  I18n.php
  *
- *  @author     Yoshinari Takaoka <takaoka@beatcraft.com> 
+ *  @author     Yoshinari Takaoka <takaoka@beatcraft.com>
  */
 namespace Ethnam\Generator\Subcommand;
 
@@ -19,7 +19,7 @@ class I18n extends Base
      *
      *  @access public
      */
-    function perform()
+    public function perform()
     {
         $r = $this->_getopt(
                   array('basedir=',
@@ -46,7 +46,7 @@ class I18n extends Base
                 return Ethna::raiseError("You specified locale, but invalid : $locale", 'usage');
             }
         } else {
-            $locale = 'ja_JP';  //  default locale. 
+            $locale = 'ja_JP';  //  default locale.
         }
 
         //  use gettext ?
@@ -67,7 +67,7 @@ class I18n extends Base
      *
      *  @access public
      */
-    function getDescription()
+    public function getDescription()
     {
         return <<<EOS
 generate message catalog of project:
@@ -79,7 +79,7 @@ EOS;
     /**
      *  @access public
      */
-    function getUsage()
+    public function getUsage()
     {
         return <<<EOS
 ethna {$this->id} [-b|--basedir=dir] [-l|--locale=locale] [-g|--gettext] [extdir1] [extdir2] ...
@@ -88,4 +88,3 @@ EOS;
     }
 }
 // }}}
-

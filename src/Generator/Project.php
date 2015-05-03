@@ -35,7 +35,6 @@ class Project extends Base
                  : "Only Numeric(0-9) and Alphabetical(A-Z) is allowed for Application Id\n";
             throw new \InvalidArgumentException($msg);
         }
-
     }
 
 
@@ -47,7 +46,7 @@ class Project extends Base
      *  @param  string  $basedir    プロジェクトベースディレクトリ
      *  @param  string  $skeldir    スケルトンディレクトリ。これが指定されると、そこにある
      *                              ファイルが優先される。また、ETHNA_HOME/skel にないもの
-     *                              も追加してコピーする 
+     *                              も追加してコピーする
      *  @param  string  $locale     ロケール名
      *                              (ロケール名は、ll_cc の形式。ll = 言語コード cc = 国コード)
      */
@@ -197,18 +196,17 @@ class Project extends Base
         $this->_generate($realfile_maps, $macro, $skeldir);
 
         $this->_generate($skelfile_maps, $default_macro, $skeldir);
-
     }
 
     /**
      *  実際のプロジェクトスケルトンを生成処理を行う
      *
-     *  @access private 
-     *  @param  string  $maps       スケルトン名と生成されるファイルの配列 
-     *  @param  string  $macro      適用マクロ 
+     *  @access private
+     *  @param  string  $maps       スケルトン名と生成されるファイルの配列
+     *  @param  string  $macro      適用マクロ
      *  @param  string  $skeldir    スケルトンディレクトリ。これが指定されると、そこにある
      *                              ファイルが優先される。また、ETHNA_HOME/skel にないもの
-     *                              も追加してコピーする 
+     *                              も追加してコピーする
      *  @throws \Exception
      */
 
@@ -225,4 +223,3 @@ class Project extends Base
     }
 }
 // }}}
-

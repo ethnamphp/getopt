@@ -1,28 +1,28 @@
 <?php
 /**
  * Test.php
- * 
+ *
  * @author BoBpp <bobpp@users.sourceforge.jp>
  */
 namespace Ethnam\Generator\Generator;
- 
+
 /**
  * Normal Test Case Generator.
- * 
+ *
  * @author BoBpp <bobpp@users.sourceforge.jp>
  */
 class Test extends Base
 {
     /**
      * ファイル生成を行う
-     * 
+     *
      * @access public
      * @param string $skelfile スケルトンファイル名
      * @param string $name     テストケース名
      * @return mixed TRUE; OK
      *               Ethna_Error: エラー発生
      */
-    function generate($skelfile, $name)
+    public function generate($skelfile, $name)
     {
         // Controllerを取得
         $ctl = $this->ctl;
@@ -56,7 +56,7 @@ class Test extends Base
         Ethna_Util::mkdir(dirname($generatePath), 0755);
         if (file_exists($generatePath)) {
             printf("file [%s] already exists -> skip\n", $generatePath);
-        } else if ($this->_generateFile($skelton, $generatePath, $macro) == false) {
+        } elseif ($this->_generateFile($skelton, $generatePath, $macro) == false) {
             printf("[warning] file creation failed [%s]\n", $generatePath);
         } else {
             printf("test script(s) successfully created [%s]\n", $generatePath);

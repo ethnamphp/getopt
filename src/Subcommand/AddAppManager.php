@@ -19,7 +19,7 @@ class AddAppManager extends Base
      *
      *  @access public
      */
-    function perform()
+    public function perform()
     {
         throw new \Exception('not implimented yet');
     }
@@ -29,7 +29,7 @@ class AddAppManager extends Base
      *
      *  @access public
      */
-    function getDescription()
+    public function getDescription()
     {
         return <<<EOS
 add new app-manager to project:
@@ -43,7 +43,7 @@ EOS;
      *
      *  @access public
      */
-    function getUsage()
+    public function getUsage()
     {
         return <<<EOS
 ethna {$this->id} [-b|--basedir=dir] [app-manager name]

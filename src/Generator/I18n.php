@@ -44,7 +44,7 @@ class I18n extends Base
      *  @param  array   $ext_dirs       走査する追加のディレクトリの配列
      *  @return true|Ethna_Error        true:成功 Ethna_Error:失敗
      */
-    function generate($locale, $use_gettext, $ext_dirs = array())
+    public function generate($locale, $use_gettext, $ext_dirs = array())
     {
         $this->time = time();
         $this->locale = $locale;
@@ -68,7 +68,7 @@ class I18n extends Base
                    )
                  : ("[NOTICE]: Message catalog file already exists!\n"
                   . "This is overwritten and existing translation is merged automatically.\n");
-             print "\n-------------------------------\n"
+            print "\n-------------------------------\n"
                  . $msg
                  . "-------------------------------\n\n";
         }
@@ -110,12 +110,12 @@ class I18n extends Base
      *  @access private
      *  @return string  出力ファイル名
      */
-    function _get_output_file()
+    public function _get_output_file()
     {
         $locale_dir = $this->ctl->getDirectory('locale');
         $ext = ($this->use_gettext) ? 'po' : 'ini';
         $filename = $this->locale . ".${ext}";
-        $new_filename = NULL;
+        $new_filename = null;
 
         $outfile_path = "${locale_dir}/"
                       . $this->locale
@@ -139,7 +139,7 @@ class I18n extends Base
      *  @param  string  $dir     走査対象ディレクトリ
      *  @return true|Ethna_Error true:成功 Ethna_Error:失敗
      */
-    function _analyzeDirectory($dir)
+    public function _analyzeDirectory($dir)
     {
         $dh = opendir($dir);
         if ($dh == false) {
@@ -151,11 +151,11 @@ class I18n extends Base
         //  走査対象はテンプレートとPHPスクリプト
         $php_ext = $this->ctl->getExt('php');
         $tpl_ext = $this->ctl->getExt('tpl');
-        $r = NULL;
+        $r = null;
 
         //  ディレクトリなら再帰的に走査
         //  ファイルならトークンを解析する
-        while(($file = readdir($dh)) !== false) {
+        while (($file = readdir($dh)) !== false) {
             if (is_dir("$dir/$file")) {
                 if (strpos($file, '.') !== 0) {  // 隠しファイルは対象外
                    $r = $this->_analyzeDirectory("$dir/$file");
@@ -189,7 +189,7 @@ class I18n extends Base
      *  @param  string  $file     走査対象ファイル
      *  @return true|Ethna_Error true:成功 Ethna_Error:失敗
      */
-    function _analyzeFile($file)
+    public function _analyzeFile($file)
     {
         $file_path = realpath($file);
         printf("Analyzing file ... %s\n", $file);
@@ -216,10 +216,9 @@ class I18n extends Base
 
         //  トークンを走査し、関数呼び出しを解析する
         for ($i = 0; $i < $token_num; $i++) {
-
             $token = $file_tokens[$i];
             $token_idx = false;
-            $token_str = NULL;
+            $token_str = null;
             $token_linenum = false;
 
             //   面倒を見るのは、トークンの場合のみ
@@ -282,7 +281,7 @@ class I18n extends Base
      *  @param  string  $file_path  走査対象ファイル
      *  @return true|Ethna_Error true:成功 Ethna_Error:失敗
      */
-    function _analyzeActionForm($file_path)
+    public function _analyzeActionForm($file_path)
     {
         //   アクションスクリプトのトークンを取得
         $tokens = token_get_all(
@@ -311,7 +310,7 @@ class I18n extends Base
         }
 
         //  アクションフォームのクラス名を特定
-        $af_classname = NULL;
+        $af_classname = null;
         foreach ($class_names as $name) {
             $action_name = $this->ctl->actionFormToName($name);
             if (!empty($action_name)) {
@@ -353,7 +352,7 @@ class I18n extends Base
      *  @param  string  $file    走査対象ファイル
      *  @return true|Ethna_Error true:成功 Ethna_Error:失敗
      */
-    function _analyzeTemplate($file)
+    public function _analyzeTemplate($file)
     {
         //  デフォルトはSmartyのテンプレートと看做す
         $renderer = $this->ctl->getRenderer();
@@ -369,7 +368,7 @@ class I18n extends Base
 
         //  use smarty internal function :)
         $compile_path = $engine->_get_compile_path($file);
-        $compile_result = NULL;
+        $compile_result = null;
         if ($engine->_is_compiled($file, $compile_path)
          || $engine->_compile_resource($file, $compile_path)) {
             $compile_result = file_get_contents($compile_path);
@@ -415,7 +414,7 @@ class I18n extends Base
      *  @param $index  インデックス
      *  @access private
      */
-    function _find_template_i18n($tokens, $index)
+    public function _find_template_i18n($tokens, $index)
     {
         for ($j = $index; $j > 0; $j--) {
             $tmp_token = $tokens[$j];
@@ -432,7 +431,7 @@ class I18n extends Base
                 }
             }
         }
-        return NULL;
+        return null;
     }
 
     /**
@@ -441,7 +440,7 @@ class I18n extends Base
      *
      *  @access private
      */
-    function _mergeEthnaMessageCatalog()
+    public function _mergeEthnaMessageCatalog()
     {
         if (!($this->file_exists && !$this->use_gettext)) {
             return;
@@ -474,7 +473,7 @@ class I18n extends Base
      *                                  false ならEthna組み込みのカタログ生成
      *  @return true|Ethna_Error true:成功 Ethna_Error:失敗
      */
-    function _generateFile($skel = null, $entity = null, $macro = null, $overwrite = false)
+    public function _generateFile($skel = null, $entity = null, $macro = null, $overwrite = false)
     {
         $outfile_path = $this->_get_output_file();
 
@@ -541,4 +540,3 @@ class I18n extends Base
     }
 }
 // }}}
-

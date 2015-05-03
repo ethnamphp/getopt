@@ -19,7 +19,7 @@ class AddAction extends Base
      *
      *  @access public
      */
-    function perform()
+    public function perform()
     {
         //
         //  '-w[with-unittest]' and '-u[unittestskel]' option
@@ -52,7 +52,7 @@ class AddAction extends Base
     /**
      *  @access protected
      */
-    function &_perform($target, $target_name, $opt_list)
+    public function &_perform($target, $target_name, $opt_list)
     {
         // basedir
         if (isset($opt_list['basedir'])) {
@@ -101,7 +101,7 @@ class AddAction extends Base
                 printf("error occurred while generating action test skelton. please see also following error message(s)\n\n");
                 return $r;
             }
-        }  
+        }
 
         $true = true;
         return $true;
@@ -112,7 +112,7 @@ class AddAction extends Base
      *
      *  @access public
      */
-    function getDescription()
+    public function getDescription()
     {
         return <<<EOS
 add new action to project:
@@ -124,7 +124,7 @@ EOS;
     /**
      *  @access public
      */
-    function getUsage()
+    public function getUsage()
     {
         return <<<EOS
 ethna {$this->id} [-b|--basedir=dir] [-s|--skelfile=file] [-g|--gateway=www|cli] [-w|--with-unittest] [-u|--unittestskel=file] [action]

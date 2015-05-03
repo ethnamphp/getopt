@@ -24,7 +24,7 @@ class ActionTest extends Base
      *  @param  int     $gateway        ゲートウェイ
      *  @return true|Ethna_Error        true:成功 Ethna_Error:失敗
      */
-    function generate($action_name, $skelton = null, $gateway = GATEWAY_WWW)
+    public function generate($action_name, $skelton = null, $gateway = GATEWAY_WWW)
     {
         $action_dir = $this->ctl->getActiondir($gateway);
         $action_class = $this->ctl->getDefaultActionClass($action_name, $gateway);
@@ -60,12 +60,12 @@ class ActionTest extends Base
             printf("[!!!!warning!!!!] original action script was not found.\n");
             printf("[!!!!warning!!!!] You must generate it by the following command :\n");
             printf("[!!!!warning!!!!] ethna add-action %s\n\n", $action_name);
-        } 
+        }
 
         // generate
         if (file_exists($entity)) {
             printf("file [%s] already exists -> skip\n", $entity);
-        } else if ($this->_generateFile($skelton, $entity, $macro) == false) {
+        } elseif ($this->_generateFile($skelton, $entity, $macro) == false) {
             printf("[warning] file creation failed [%s]\n", $entity);
         } else {
             printf("action test(s) successfully created [%s]\n", $entity);

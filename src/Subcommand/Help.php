@@ -20,7 +20,7 @@ class Help extends Base
      *
      *  @access public
      */
-    function perform()
+    public function perform()
     {
         $r = $this->_getopt();
         if (Ethna::isError($r)) {
@@ -47,7 +47,6 @@ class Help extends Base
         echo $handler->getDescription();
 
         return true;
-
     }
 
     /**
@@ -55,7 +54,7 @@ class Help extends Base
      *
      *  @access public
      */
-    function getDescription()
+    public function getDescription()
     {
         return <<<EOS
 help:
@@ -67,7 +66,7 @@ EOS;
     /**
      *  @access public
      */
-    function getUsage()
+    public function getUsage()
     {
         return <<<EOS
 ethna {$this->id} [command_name]

@@ -24,14 +24,14 @@ class ClearCache extends Base
      *  @todo   implement Ethna_Plugin_Cachemanager::clear_cache();
      *  @todo   avoid echo, printf
      */
-    function perform()
+    public function perform()
     {
-        $r = $this->_getopt(array('basedir=', 
+        $r = $this->_getopt(array('basedir=',
                                    'any-tmp-files', 'smarty', 'pear', 'cachemanager'));
         if (Ethna::isError($r)) {
             return $r;
         }
-        list($args,) = $r;
+        list($args, ) = $r;
 
         $basedir = isset($args['basedir']) ? realpath(end($args['basedir'])) : getcwd();
         $controller = Ethna_Command::getAppController($basedir);
@@ -78,7 +78,7 @@ class ClearCache extends Base
     /**
      *  @access public
      */
-    function getDescription()
+    public function getDescription()
     {
         return <<<EOS
 clear project's cache files:
@@ -91,7 +91,7 @@ EOS;
     /**
      *  @access public
      */
-    function getUsage()
+    public function getUsage()
     {
         return <<<EOS
 ethna {$this->id} [-b|--basedir=dir] [-a|--any-tmp-files] [-s|--smarty] [-p|--pear] [-c|--cachemanager]

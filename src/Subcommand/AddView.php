@@ -21,7 +21,7 @@ class AddView extends AddAction
      *
      *  @access public
      */
-    function perform()
+    public function perform()
     {
         //
         //  '-w[with-unittest]' and '-u[unittestskel]' option
@@ -56,14 +56,14 @@ class AddView extends AddAction
 
         // add view(invoke parent class method)
         $ret = $this->_perform('View', $view_name, $opt_list);
-        if (Ethna::isError($ret) || $ret === false) { 
+        if (Ethna::isError($ret) || $ret === false) {
             return $ret;
         }
 
         // add template
         if (isset($opt_list['template'])) {
             $ret = $this->_performTemplate($view_name, $opt_list);
-            if (Ethna::isError($ret) || $ret === false) { 
+            if (Ethna::isError($ret) || $ret === false) {
                 return $ret;
             }
         }
@@ -78,7 +78,7 @@ class AddView extends AddAction
      *  @param  array  $opt_list    Option List.
      *  @access protected
      */
-    function _performTemplate($target_name, $opt_list)
+    public function _performTemplate($target_name, $opt_list)
     {
         // basedir
         if (isset($opt_list['basedir'])) {
@@ -125,7 +125,7 @@ class AddView extends AddAction
      *
      *  @access public
      */
-    function getDescription()
+    public function getDescription()
     {
         return <<<EOS
 add new view to project:
@@ -143,7 +143,7 @@ EOS;
     /**
      *  @access public
      */
-    function getUsage()
+    public function getUsage()
     {
         return <<<EOS
 ethna {$this->id} [options... ] [view name]

@@ -21,7 +21,7 @@ class Base
      *
      *  @access public
      */
-    function __construct($controller)
+    public function __construct($controller)
     {
         // Subcommand_Base::generateでpluginを取得するときに使ったコントローラ
         // ex, add-projectではEthna_Controller, app-actionではApp_Controller
@@ -34,7 +34,7 @@ class Base
      *  @access private
      *  @param  string  $skel   スケルトンファイル
      */
-    function _resolveSkelfile($skel)
+    public function _resolveSkelfile($skel)
     {
         $file = realpath($skel);
         if (file_exists($file)) {
@@ -126,7 +126,7 @@ class Base
      *
      *  @access private
      */
-    function _getUserMacro()
+    public function _getUserMacro()
     {
         if (isset($_SERVER['USERPROFILE']) && is_dir($_SERVER['USERPROFILE'])) {
             $home = $_SERVER['USERPROFILE'];

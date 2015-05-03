@@ -6,7 +6,6 @@
  */
 namespace Ethnam\Generator\Subcommand;
 
-
 use \Ethnam\Generator\Getopt;
 use \Ethnam\Generator\Command as Ethna_Command;
 
@@ -53,10 +52,10 @@ abstract class Base
         $this->config = $controller->getConfig();
 
         $id = $name;
-        $id = preg_replace_callback('/^([A-Z])/', function($matches){
+        $id = preg_replace_callback('/^([A-Z])/', function ($matches) {
                 return strtolower($matches[1]);
             }, $id);
-        $id = preg_replace_callback('/([A-Z])/', function($matches){
+        $id = preg_replace_callback('/([A-Z])/', function ($matches) {
                 return '-' . strtolower($matches[1]);
                     }, $id);
         $this->id = $id;
@@ -67,7 +66,7 @@ abstract class Base
      *
      *  @access public
      */
-    function getId()
+    public function getId()
     {
         return $this->id;
     }
@@ -77,7 +76,7 @@ abstract class Base
      *
      *  @access public
      */
-    function getDescription()
+    public function getDescription()
     {
         return "description of " . $this->id;
     }
@@ -87,7 +86,7 @@ abstract class Base
      *
      *  @access public
      */
-    function getUsage()
+    public function getUsage()
     {
         return "usage of " . $this->id;
     }
@@ -108,7 +107,7 @@ abstract class Base
      * @return  array   list($opts, $args)
      * @access  protected
      */
-    function _getopt($lopts = array())
+    public function _getopt($lopts = array())
     {
         // create opts
         // ex: $lopts = array('foo', 'bar=');
@@ -118,10 +117,12 @@ abstract class Base
         foreach ($lopts as $lopt) {
             if ($lopt{strlen($lopt) - 2} === '=') {
                 $opt_def[$lopt{0}] = substr($lopt, 0, strlen($lopt) - 2);
-                $sopts .= $lopt{0} . '::';
-            } else if ($lopt{strlen($lopt) - 1} === '=') {
+                $sopts .= $lopt{0}
+                . '::';
+            } elseif ($lopt{strlen($lopt) - 1} === '=') {
                 $opt_def[$lopt{0}] = substr($lopt, 0, strlen($lopt) - 1);
-                $sopts .= $lopt{0} . ':';
+                $sopts .= $lopt{0}
+                . ':';
             } else {
                 $opt_def[$lopt{0}] = $lopt;
                 $sopts .= $lopt{0};
@@ -139,7 +140,8 @@ abstract class Base
         //                    'bar' => array('baz'));
         $opts = array();
         foreach ($opts_args[0] as $opt) {
-            $opt[0] = $opt[0]{0} === '-' ? $opt_def[$opt[0]{2}] : $opt_def[$opt[0]{0}];
+            $opt[0] = $opt[0]{0}
+            === '-' ? $opt_def[$opt[0]{2}] : $opt_def[$opt[0]{0}];
             $opt[1] = $opt[1] === null ? true : $opt[1];
             if (isset($opts[$opt[0]]) === false) {
                 $opts[$opt[0]] = array($opt[1]);
@@ -259,7 +261,5 @@ abstract class Base
             throw new \Exception("invalid view name [$view_name]");
         }
     }
-
-
 }
 // }}}

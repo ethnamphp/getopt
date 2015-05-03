@@ -5,7 +5,9 @@
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  */
 namespace Ethnam\Generator\Subcommand;
-use  Ethnam\Generator\Generator\Project;
+
+use Ethnam\Generator\Generator\Project;
+
 /**
  *  add-project handler
  *
@@ -20,7 +22,7 @@ class AddProject extends Base
      *
      *  @access public
      */
-    function perform()
+    public function perform()
     {
         $r = $this->_getopt(array('basedir=', 'skeldir=', 'locale=', 'encoding='));
         list($opt_list, $arg_list) = $r;
@@ -77,7 +79,7 @@ class AddProject extends Base
      *
      *  @access public
      */
-    function getDescription()
+    public function getDescription()
     {
         return <<<EOS
 add new project:
@@ -91,7 +93,7 @@ EOS;
      *
      *  @access public
      */
-    function getUsage()
+    public function getUsage()
     {
         return <<<EOS
 ethna {$this->id} [-b|--basedir=dir] [-s|--skeldir] [-l|--locale] [-e|--encoding] [Application id]

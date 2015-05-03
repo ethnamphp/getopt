@@ -22,7 +22,7 @@ class EntryPoint extends Base
      *  @param  int     $gateway    ゲートウェイ
      *  @return true|Ethna_Error    true:成功 Ethna_Error:失敗
      */
-    function generate($action_name, $skelton = null, $gateway = GATEWAY_WWW)
+    public function generate($action_name, $skelton = null, $gateway = GATEWAY_WWW)
     {
         $true = true;
 
