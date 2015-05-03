@@ -4,6 +4,7 @@
  *
  *  @author     ICHII Takashi <ichii386@schweetheart.jp>
  */
+
 use Ethnam\Generator\Command as Ethna_Command;
 
 /**

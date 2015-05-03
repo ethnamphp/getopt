@@ -4,6 +4,7 @@
  *
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  */
+
 use Ethnam\Generator\Command as Ethna_Command;
 
 /**

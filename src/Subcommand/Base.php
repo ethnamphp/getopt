@@ -5,6 +5,7 @@
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  */
 
+
 use \Ethnam\Generator\Getopt;
 use \Ethnam\Generator\Command as Ethna_Command;
 
