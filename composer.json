@@ -1,13 +1,12 @@
 {
   "name":"dqneo/ethnam-generator",
-  "description": "web application framework.",
+  "description": "code generator for Ethnam",
   "type": "library",
   "license": "BSD-4-Clause",
   "keywords": [ "framework", "ethnam" ],
-  "homepage": "https://github.com/DQNEO/ethnam",
+  "homepage": "https://github.com/DQNEO/ethnam-generator",
   "authors": [
-        { "name": "DQNEO", "role" : "Administrator"},
-        { "name": "contributors", "homepage": "https://github.com/DQNEO/ethnam/blob/master/AUTHORS" }
+        { "name": "DQNEO", "role" : "Administrator"}
     ],
   "require": {
     "php" : ">=5.4.0"
