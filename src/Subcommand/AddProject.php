@@ -22,9 +22,6 @@ class AddProject extends Base
     function perform()
     {
         $r = $this->_getopt(array('basedir=', 'skeldir=', 'locale=', 'encoding='));
-        if (Ethna::isError($r)) {
-            return $r;
-        }
         list($opt_list, $arg_list) = $r;
 
         // app_id
