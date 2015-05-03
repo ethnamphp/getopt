@@ -32,7 +32,7 @@ class Ethna_Plugin_Generator_Project extends Ethna_Plugin_Generator_Base
      *                              (ロケール名は、ll_cc の形式。ll = 言語コード cc = 国コード)
      *  @return bool    true:成功   Ethna_Error:失敗
      */
-    function generate($id, $basedir, $skeldir, $locale)
+    public function generate($id, $basedir, $skeldir, $locale)
     {
         $dir_list = array(
             array("app", 0755),
