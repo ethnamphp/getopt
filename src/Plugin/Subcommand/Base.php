@@ -99,9 +99,8 @@ abstract class Ethna_Plugin_Subcommand_Base
     /**
      *  set arguments
      *
-     *  @access public
      */
-    function setArgList($arg_list)
+    public function setArgList($arg_list)
     {
         $this->arg_list = $arg_list;
     }
