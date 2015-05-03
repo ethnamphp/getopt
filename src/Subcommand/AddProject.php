@@ -102,12 +102,7 @@ class AddProject extends Base
             $encoding = 'UTF-8';  //  default encoding.
         }
 
-        $r = Base::generate('Project', null, $app_id, $basedir, $skeldir, $locale, $encoding);
-        if (Ethna::isError($r)) {
-            printf("error occurred while generating skelton. please see also error messages given above\n\n");
-            return $r;
-        }
-
+        Base::generate('Project', null, $app_id, $basedir, $skeldir, $locale, $encoding);
         printf("\nproject skelton for [%s] is successfully generated at [%s]\n\n", $app_id, $basedir);
         return true;
     }
