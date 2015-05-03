@@ -35,9 +35,7 @@ class AddAction extends Base
                         'unittestskel=',
                   )
              );
-        if (Ethna::isError($r)) {
-            return $r;
-        }
+
         list($opt_list, $arg_list) = $r;
 
         // action_name
