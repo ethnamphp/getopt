@@ -4,6 +4,7 @@
  *
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  */
+namespace Ethnam\Generator\Subcommand;
 
 /**
  *  add-project handler

@@ -4,6 +4,7 @@
  *
  *  @author     nozzzzz <nozzzzz@gmail.com>
  */
+namespace Ethnam\Generator\Subcommand;
 
 /**
  *  add-app-manager handler

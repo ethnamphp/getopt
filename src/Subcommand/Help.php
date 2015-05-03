@@ -4,6 +4,7 @@
  *
  *  @author     Tomoyuki MARUTA <maru_cc@users.sourceforge.jp>
  */
+namespace Ethnam\Generator\Subcommand;
 
 /**
  *  add-action handler

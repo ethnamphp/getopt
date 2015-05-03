@@ -4,6 +4,7 @@
  *
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com> 
  */
+namespace Ethnam\Generator\Subcommand;
 
 /**
  *  i18n handler

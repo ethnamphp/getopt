@@ -4,6 +4,7 @@
  *
  *  @author     nnno <nnno@nnno.jp> 
  */
+namespace Ethnam\Generator\Subcommand;
 
 /**
  *  add-template handler

@@ -4,6 +4,7 @@
  *
  *  @author     ICHII Takashi <ichii386@schweetheart.jp>
  */
+namespace Ethnam\Generator\Subcommand;
 
 /**
  *  add-action handler

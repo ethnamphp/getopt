@@ -4,6 +4,7 @@
  *
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  */
+namespace Ethnam\Generator\Subcommand;
 
 use Ethnam\Generator\Command as Ethna_Command;
 
