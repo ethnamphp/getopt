@@ -15,7 +15,6 @@ namespace Ethnam\Generator;
 use \Ethna_Controller;
 use \Ethna_Util;
 use \Ethna;
-use \Base;
 
 class Command
 {
