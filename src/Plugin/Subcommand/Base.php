@@ -208,7 +208,7 @@ abstract class Ethna_Plugin_Subcommand_Base
         }
 
         $className = 'Ethna_Generator_' . $name;
-        $generator = new $className($ctl, 'Generator', $name);
+        $generator = new $className($ctl);
 
         // 引数はプラグイン依存とする
         $ret = call_user_func_array(array($generator, 'generate'), $arg_list);
