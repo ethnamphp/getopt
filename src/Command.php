@@ -65,16 +65,16 @@ EOD;
             $subCommand = array_shift($arg_list);
         }
 
-        $subCommandPlugin = $this->getSubcommandPlugin($subCommand);
-        $subCommandPlugin->eh = $this;
+        $subCommandObj = $this->newSubcommand($subCommand);
+        $subCommandObj->eh = $this;
 
         // don't know what will happen:)
-        $subCommandPlugin->setArgList($arg_list);
-        $r = $subCommandPlugin->perform();
+        $subCommandObj->setArgList($arg_list);
+        $r = $subCommandObj->perform();
         if (Ethna::isError($r)) {
             printf("error occured w/ command [%s]\n  -> %s\n\n", $subCommand, $r->getMessage());
             if ($r->getCode() == 'usage') {
-                $subCommandPlugin->usage();
+                $subCommandObj->usage();
             }
             exit(1);
         }
@@ -87,7 +87,7 @@ EOD;
      *
      *  @access public
      */
-    public function getSubcommandPlugin($subCommand)
+    public function newSubcommand($subCommand)
     {
         $name = preg_replace_callback('/\-(.)/', function($matches){
                 return strtoupper($matches[1]);
