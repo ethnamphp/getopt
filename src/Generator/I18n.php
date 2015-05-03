@@ -108,10 +108,9 @@ class I18n extends Base
     /**
      *  出力ファイル名を取得します。
      *
-     *  @access private
      *  @return string  出力ファイル名
      */
-    public function _get_output_file()
+    private function _get_output_file()
     {
         $locale_dir = $this->ctl->getDirectory('locale');
         $ext = ($this->use_gettext) ? 'po' : 'ini';
@@ -136,11 +135,10 @@ class I18n extends Base
     /**
      *  指定されたディレクトリを再帰的に走査します。
      *
-     *  @access protected
      *  @param  string  $dir     走査対象ディレクトリ
      *  @return true|Ethna_Error true:成功 Ethna_Error:失敗
      */
-    public function _analyzeDirectory($dir)
+    private function _analyzeDirectory($dir)
     {
         $dh = opendir($dir);
         if ($dh == false) {
@@ -188,9 +186,8 @@ class I18n extends Base
      *
      *  @access protected
      *  @param  string  $file     走査対象ファイル
-     *  @return true|Ethna_Error true:成功 Ethna_Error:失敗
      */
-    public function _analyzeFile($file)
+    private function _analyzeFile($file)
     {
         $file_path = realpath($file);
         printf("Analyzing file ... %s\n", $file);
@@ -278,11 +275,10 @@ class I18n extends Base
      *  NOTICE: このメソッドは、指定ファイルがPHPスクリプトとして
      *          正しいものかどうかはチェックしません。
      *
-     *  @access protected
      *  @param  string  $file_path  走査対象ファイル
      *  @return true|Ethna_Error true:成功 Ethna_Error:失敗
      */
-    public function _analyzeActionForm($file_path)
+    private function _analyzeActionForm($file_path)
     {
         //   アクションスクリプトのトークンを取得
         $tokens = token_get_all(
@@ -353,7 +349,7 @@ class I18n extends Base
      *  @param  string  $file    走査対象ファイル
      *  @return true|Ethna_Error true:成功 Ethna_Error:失敗
      */
-    public function _analyzeTemplate($file)
+    private function _analyzeTemplate($file)
     {
         //  デフォルトはSmartyのテンプレートと看做す
         $renderer = $this->ctl->getRenderer();
@@ -413,9 +409,8 @@ class I18n extends Base
      *
      *  @param $tokens 解析対象トークン
      *  @param $index  インデックス
-     *  @access private
      */
-    public function _find_template_i18n($tokens, $index)
+    private function _find_template_i18n($tokens, $index)
     {
         for ($j = $index; $j > 0; $j--) {
             $tmp_token = $tokens[$j];
@@ -439,9 +434,8 @@ class I18n extends Base
      *  Ethna組み込みのメッセージカタログファイルを、上書き
      *  する場合にマージします。
      *
-     *  @access private
      */
-    public function _mergeEthnaMessageCatalog()
+    private function _mergeEthnaMessageCatalog()
     {
         if (!($this->file_exists && !$this->use_gettext)) {
             return;
