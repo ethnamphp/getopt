@@ -50,6 +50,7 @@ class Ethna_Plugin_Generator_Base
         $base = $this->ctl->getBasedir();
         $file = "$base/skel/$skel";
         if (file_exists($file)) {
+            printf("skelton file [%s] not found.\n");
             return $file;
         }
 
@@ -57,6 +58,7 @@ class Ethna_Plugin_Generator_Base
         $base = dirname(dirname(dirname(__FILE__)));
         $file = "$base/skel/$skel";
         if (file_exists($file)) {
+            printf("skelton file [%s] not found.\n");
             return $file;
         }
 
@@ -86,7 +88,6 @@ class Ethna_Plugin_Generator_Base
 
         $resolved = $this->_resolveSkelfile($skel);
         if ($resolved === false) {
-            printf("skelton file [%s] not found.\n", $skel);
             return false;
         } else {
             $skel = $resolved;
