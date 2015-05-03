@@ -31,12 +31,9 @@ class AddTemplate extends AddView
         // template
         $template = array_shift($arg_list);
         if ($template == null) {
-            return Ethna::raiseError('template name isn\'t set.', 'usage');
+            throw new \Exception('template name isn\'t set.');
         }
-        $r = Ethna_Controller::checkViewName($template); // XXX: use checkViewName().
-        if (Ethna::isError($r)) {
-            return $r;
-        }
+        Base::checkViewName($template); // XXX: use checkViewName().
 
         // add template
         $this->_performTemplate($template, $opt_list);

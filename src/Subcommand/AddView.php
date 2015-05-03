@@ -42,12 +42,9 @@ class AddView extends AddAction
         // view_name
         $view_name = array_shift($arg_list);
         if ($view_name == null) {
-            return Ethna::raiseError('view name isn\'t set.', 'usage');
+            throw new \Exception('view name isn\'t set.');
         }
-        $r = Ethna_Controller::checkViewName($view_name);
-        if (Ethna::isError($r)) {
-            return $r;
-        }
+        Base::checkViewName($view_name);
 
         // add view(invoke parent class method)
         $ret = $this->_perform('View', $view_name, $opt_list);
@@ -87,7 +84,7 @@ class AddView extends AddAction
         if (isset($opt_list['locale'])) {
             $locale = end($opt_list['locale']);
             if (!preg_match('/^[A-Za-z_]+$/', $locale)) {
-                return Ethna::raiseError("You specified locale, but invalid : $locale", 'usage');
+                throw new \Exceptionxo("You specified locale, but invalid : $locale");
             }
         } else {
             if (Ethna::isError($ctl)) {
