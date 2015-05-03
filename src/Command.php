@@ -71,7 +71,6 @@ EOD;
             echo $r->getMessage();
             exit(1);
         }
-
     }
 
     /**
@@ -81,7 +80,7 @@ EOD;
      */
     public static function newSubcommand($subCommand)
     {
-        $name = preg_replace_callback('/\-(.)/', function($matches){
+        $name = preg_replace_callback('/\-(.)/', function ($matches) {
                 return strtoupper($matches[1]);
                     }, ucfirst($subCommand));
 
@@ -129,7 +128,7 @@ EOD;
 
         if (isset($app_controller[$app_dir])) {
             return $app_controller[$app_dir];
-        } else if ($app_dir === null) {
+        } elseif ($app_dir === null) {
             throw new \Exception('$app_dir not specified.');
         }
 
@@ -196,7 +195,7 @@ EOD;
 
         if ($section === null) {
             return $setting;
-        } else if (array_key_exists($section, $setting)) {
+        } elseif (array_key_exists($section, $setting)) {
             return $setting[$section];
         } else {
             $array = array();
@@ -223,7 +222,6 @@ EOD;
         $arg_list = array_slice($arg_list, $i);
 
         return array($my_arg_list, $arg_list);
-
     }
 
     public static function getSkelDir()
