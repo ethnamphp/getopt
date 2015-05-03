@@ -94,11 +94,11 @@ class Project extends Base
             $r = trim(fgets($fp, 128));
             fclose($fp);
             if (strtolower($r) != 'y') {
-                return Ethna::raiseError('aborted by user');
+                throw new \Exception('aborted by user');
             }
 
             if (mkdir($basedir, 0775) == false) {
-                return Ethna::raiseError('directory creation failed');
+                throw new \Exception('directory creation failed');
             }
         }
         foreach ($dir_list as $dir) {
@@ -110,12 +110,12 @@ class Project extends Base
                 continue;
             }
             if (mkdir($target, $mode) == false) {
-                return Ethna::raiseError('directory creation failed');
+                throw new \Exception('directory creation failed');
             } else {
                 printf("project sub directory created [%s]\n", $target);
             }
             if (chmod($target, $mode) == false) {
-                return Ethna::raiseError('chmod failed');
+                throw new \Exception('chmod failed');
             }
         }
 
