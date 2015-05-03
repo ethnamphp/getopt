@@ -15,7 +15,7 @@ use \Ethnam\Generator\Command as Ethna_Command;
 // {{{ Ethna_Plugin_Subcommand_Base
 /**
  *  コマンドラインハンドラプラグインの基底クラス
- *  
+ *
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  *  @access     public
  *  @package    Ethna
@@ -206,6 +206,8 @@ abstract class Ethna_Plugin_Subcommand_Base
         if (Ethna::isError($plugin_manager)) {
             return $plugin_manager;
         }
+
+        var_dump($plugin_manager->obj_registry);
 
         $generator = $plugin_manager->getPlugin('Generator', $type);
         if (Ethna::isError($generator)) {
