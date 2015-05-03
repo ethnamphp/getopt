@@ -70,7 +70,6 @@ class Action extends Base
         } else {
             printf("action script(s) successfully created [%s]\n", $entity);
         }
-
     }
 }
 // }}}

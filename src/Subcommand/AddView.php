@@ -53,7 +53,6 @@ class AddView extends AddAction
         if (isset($opt_list['template'])) {
             $ret = $this->_performTemplate($view_name, $opt_list);
         }
-
     }
 
     /**
