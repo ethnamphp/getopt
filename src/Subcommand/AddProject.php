@@ -4,6 +4,9 @@
  *
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  */
+namespace Ethnam\Generator\Subcommand;
+
+use Ethnam\Generator\Generator\Project;
 
 /**
  *  add-project handler
@@ -11,30 +14,24 @@
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  *  @access     public
  */
-class Ethna_Subcommand_AddProject extends Ethna_Subcommand_Base
+class AddProject extends Base
 {
+
     /**
-     *  add project:)
      *
-     *  @access public
      */
-    function perform()
+    public function perform()
     {
         $r = $this->_getopt(array('basedir=', 'skeldir=', 'locale=', 'encoding='));
-        if (Ethna::isError($r)) {
-            return $r;
-        }
         list($opt_list, $arg_list) = $r;
 
         // app_id
         $app_id = array_shift($arg_list);
         if ($app_id == null) {
-            return Ethna::raiseError('Application id isn\'t set.', 'usage');
+            throw new \InvalidArgumentException('Application id isn\'t set.');
         }
-        $r = Ethna_Controller::checkAppId($app_id);
-        if (Ethna::isError($r)) {
-            return $r;
-        }
+
+        Project::checkAppId($app_id);
 
         // basedir
         if (isset($opt_list['basedir'])) {
@@ -52,7 +49,7 @@ class Ethna_Subcommand_AddProject extends Ethna_Subcommand_Base
             $selected_dir = end($opt_list['skeldir']);
             $skeldir = realpath($selected_dir);
             if ($skeldir == false || is_dir($skeldir) == false || file_exists($skeldir) == false) {
-                return Ethna::raiseError("You specified skeldir, but invalid : $selected_dir", 'usage');
+                throw new \InvalidArgumentException("You specified skeldir, but invalid : $selected_dir");
             }
         } else {
             $skeldir = null;
@@ -62,33 +59,16 @@ class Ethna_Subcommand_AddProject extends Ethna_Subcommand_Base
         if (isset($opt_list['locale'])) {
             $locale = end($opt_list['locale']);
             if (!preg_match('/^[A-Za-z_]+$/', $locale)) {
-                return Ethna::raiseError("You specified locale, but invalid : $locale", 'usage');
+                throw new \InvalidArgumentException("You specified locale, but invalid : $locale");
             }
         } else {
-            $locale = 'ja_JP';  //  default locale. 
+            $locale = 'ja_JP';  //  default locale.
         }
 
-        // encoding
-        if (isset($opt_list['encoding'])) {
-            $encoding = end($opt_list['encoding']);
-            if (function_exists('mb_list_encodings')) {
-                $supported_enc = mb_list_encodings();
-                if (!in_array($encoding, $supported_enc)) {
-                    return Ethna::raiseError("Unknown Encoding : $encoding", 'usage');
-                }
-            }
-        } else {
-            $encoding = 'UTF-8';  //  default encoding. 
-        }
+        $encoding = 'UTF-8';
 
-        $r = Ethna_Subcommand_Base::generate('Project', null, $app_id, $basedir, $skeldir, $locale, $encoding);
-        if (Ethna::isError($r)) {
-            printf("error occurred while generating skelton. please see also error messages given above\n\n");
-            return $r;
-        }
-
+        Base::generate('Project', null, $app_id, $basedir, $skeldir, $locale, $encoding);
         printf("\nproject skelton for [%s] is successfully generated at [%s]\n\n", $app_id, $basedir);
-        return true;
     }
 
     /**
@@ -96,7 +76,7 @@ class Ethna_Subcommand_AddProject extends Ethna_Subcommand_Base
      *
      *  @access public
      */
-    function getDescription()
+    public function getDescription()
     {
         return <<<EOS
 add new project:
@@ -110,11 +90,10 @@ EOS;
      *
      *  @access public
      */
-    function getUsage()
+    public function getUsage()
     {
         return <<<EOS
 ethna {$this->id} [-b|--basedir=dir] [-s|--skeldir] [-l|--locale] [-e|--encoding] [Application id]
 EOS;
     }
 }
-// }}}

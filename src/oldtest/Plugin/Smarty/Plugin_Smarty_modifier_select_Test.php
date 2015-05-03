@@ -22,7 +22,5 @@ class Ethna_Plugin_Smarty_modifier_select_Test extends Ethna_UnitTestBase
         $r = smarty_modifier_select('a', 'a');
         $this->assertEqual($r, 'selected="selected"');
     }
-    // }}}
 }
-// }}}
 

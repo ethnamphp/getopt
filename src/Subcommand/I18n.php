@@ -2,23 +2,23 @@
 /**
  *  I18n.php
  *
- *  @author     Yoshinari Takaoka <takaoka@beatcraft.com> 
+ *  @author     Yoshinari Takaoka <takaoka@beatcraft.com>
  */
+namespace Ethnam\Generator\Subcommand;
 
 /**
- *  i18n handler
+ *  i18n
+ *  generate message catalog.
  *
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com>
  *  @access     public
  */
-class Ethna_Subcommand_I18n extends Ethna_Subcommand_Base
+class I18n extends Base
 {
     /**
-     *  generate message catalog.
      *
-     *  @access public
      */
-    function perform()
+    public function perform()
     {
         $r = $this->_getopt(
                   array('basedir=',
@@ -26,9 +26,6 @@ class Ethna_Subcommand_I18n extends Ethna_Subcommand_Base
                         'gettext',
                   )
              );
-        if (Ethna::isError($r)) {
-            return $r;
-        }
         list($opt_list, $arg_list) = $r;
 
         // basedir
@@ -42,23 +39,17 @@ class Ethna_Subcommand_I18n extends Ethna_Subcommand_Base
         if (isset($opt_list['locale'])) {
             $locale = end($opt_list['locale']);
             if (!preg_match('/^[A-Za-z_]+$/', $locale)) {
-                return Ethna::raiseError("You specified locale, but invalid : $locale", 'usage');
+                throw new \Exception("You specified locale, but invalid : $locale");
             }
         } else {
-            $locale = 'ja_JP';  //  default locale. 
+            $locale = 'ja_JP';  //  default locale.
         }
 
         //  use gettext ?
         $use_gettext = (isset($opt_list['gettext'])) ? true : false;
 
         //  generate message catalog.
-        $ret = Ethna_Subcommand_Base::generate('I18n', $basedir, $locale, $use_gettext, $arg_list);
-        if (Ethna::isError($ret)) {
-            printf("error occurred while generating skelton. please see also following error message(s)\n\n");
-            return $ret;
-        }
-
-        return $ret;
+        Base::generate('I18n', $basedir, $locale, $use_gettext, $arg_list);
     }
 
     /**
@@ -66,7 +57,7 @@ class Ethna_Subcommand_I18n extends Ethna_Subcommand_Base
      *
      *  @access public
      */
-    function getDescription()
+    public function getDescription()
     {
         return <<<EOS
 generate message catalog of project:
@@ -78,7 +69,7 @@ EOS;
     /**
      *  @access public
      */
-    function getUsage()
+    public function getUsage()
     {
         return <<<EOS
 ethna {$this->id} [-b|--basedir=dir] [-l|--locale=locale] [-g|--gettext] [extdir1] [extdir2] ...
@@ -86,5 +77,3 @@ ethna {$this->id} [-b|--basedir=dir] [-l|--locale=locale] [-g|--gettext] [extdir
 EOS;
     }
 }
-// }}}
-

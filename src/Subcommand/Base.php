@@ -4,7 +4,7 @@
  *
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  */
-
+namespace Ethnam\Generator\Subcommand;
 
 use \Ethnam\Generator\Getopt;
 use \Ethnam\Generator\Command as Ethna_Command;
@@ -15,7 +15,7 @@ use \Ethnam\Generator\Command as Ethna_Command;
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  *  @access     public
  */
-abstract class Ethna_Subcommand_Base
+abstract class Base
 {
     /** @protected    handler's id */
     protected $id;
@@ -52,10 +52,10 @@ abstract class Ethna_Subcommand_Base
         $this->config = $controller->getConfig();
 
         $id = $name;
-        $id = preg_replace_callback('/^([A-Z])/', function($matches){
+        $id = preg_replace_callback('/^([A-Z])/', function ($matches) {
                 return strtolower($matches[1]);
             }, $id);
-        $id = preg_replace_callback('/([A-Z])/', function($matches){
+        $id = preg_replace_callback('/([A-Z])/', function ($matches) {
                 return '-' . strtolower($matches[1]);
                     }, $id);
         $this->id = $id;
@@ -66,7 +66,7 @@ abstract class Ethna_Subcommand_Base
      *
      *  @access public
      */
-    function getId()
+    public function getId()
     {
         return $this->id;
     }
@@ -76,7 +76,7 @@ abstract class Ethna_Subcommand_Base
      *
      *  @access public
      */
-    function getDescription()
+    public function getDescription()
     {
         return "description of " . $this->id;
     }
@@ -86,7 +86,7 @@ abstract class Ethna_Subcommand_Base
      *
      *  @access public
      */
-    function getUsage()
+    public function getUsage()
     {
         return "usage of " . $this->id;
     }
@@ -105,9 +105,8 @@ abstract class Ethna_Subcommand_Base
      *
      * @param   array   $lopts  long options
      * @return  array   list($opts, $args)
-     * @access  protected
      */
-    function _getopt($lopts = array())
+    protected function _getopt($lopts = array())
     {
         // create opts
         // ex: $lopts = array('foo', 'bar=');
@@ -117,10 +116,12 @@ abstract class Ethna_Subcommand_Base
         foreach ($lopts as $lopt) {
             if ($lopt{strlen($lopt) - 2} === '=') {
                 $opt_def[$lopt{0}] = substr($lopt, 0, strlen($lopt) - 2);
-                $sopts .= $lopt{0} . '::';
-            } else if ($lopt{strlen($lopt) - 1} === '=') {
+                $sopts .= $lopt{0}
+                . '::';
+            } elseif ($lopt{strlen($lopt) - 1} === '=') {
                 $opt_def[$lopt{0}] = substr($lopt, 0, strlen($lopt) - 1);
-                $sopts .= $lopt{0} . ':';
+                $sopts .= $lopt{0}
+                . ':';
             } else {
                 $opt_def[$lopt{0}] = $lopt;
                 $sopts .= $lopt{0};
@@ -138,7 +139,8 @@ abstract class Ethna_Subcommand_Base
         //                    'bar' => array('baz'));
         $opts = array();
         foreach ($opts_args[0] as $opt) {
-            $opt[0] = $opt[0]{0} === '-' ? $opt_def[$opt[0]{2}] : $opt_def[$opt[0]{0}];
+            $opt[0] = $opt[0]{0}
+            === '-' ? $opt_def[$opt[0]{2}] : $opt_def[$opt[0]{0}];
             $opt[1] = $opt[1] === null ? true : $opt[1];
             if (isset($opts[$opt[0]]) === false) {
                 $opts[$opt[0]] = array($opt[1]);
@@ -188,16 +190,12 @@ abstract class Ethna_Subcommand_Base
         } else {
             $ctl = Ethna_Command::getAppController($app_dir);
         }
-        if (Ethna::isError($ctl)) {
-            return $ctl;
-        }
 
-        $className = 'Ethna_Generator_' . $name;
+        $className = '\\Ethnam\\Generator\\Generator\\' . $name;
         $generator = new $className($ctl);
 
         // 引数はプラグイン依存とする
-        $ret = call_user_func_array(array($generator, 'generate'), $arg_list);
-        return $ret;
+        call_user_func_array(array($generator, 'generate'), $arg_list);
     }
 
     /**
@@ -225,7 +223,7 @@ abstract class Ethna_Subcommand_Base
             return $ctl;
         }
 
-        $className = 'Ethna_Generator_' . $name;
+        $className = '\\Ethnam\\Generator\\Generator\\' . $name;
         $generator = new $className($ctl);
 
         // 引数はプラグイン依存とする
@@ -233,5 +231,33 @@ abstract class Ethna_Subcommand_Base
         return $ret;
     }
 
+    /**
+     *  アクション名をチェックする
+     *
+     *  @access public
+     *  @param  string  $action_name    アクション名
+     *  @static
+     */
+    public static function checkActionName($action_name)
+    {
+        if (preg_match('/^[a-zA-Z\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/',
+                       $action_name) === 0) {
+            throw new \Exception("invalid action name [$action_name]");
+        }
+    }
+
+    /**
+     *  ビュー名をチェックする
+     *
+     *  @access public
+     *  @param  string  $view_name    ビュー名
+     *  @static
+     */
+    public static function checkViewName($view_name)
+    {
+        if (preg_match('/^[a-zA-Z\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/',
+                       $view_name) === 0) {
+            throw new \Exception("invalid view name [$view_name]");
+        }
+    }
 }
-// }}}

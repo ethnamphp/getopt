@@ -4,8 +4,11 @@
  *
  *  @author     ICHII Takashi <ichii386@schweetheart.jp>
  */
+namespace Ethnam\Generator\Subcommand;
 
 use Ethnam\Generator\Command as Ethna_Command;
+use Ethna_Util;
+use Ethna;
 
 /**
  *  clear-cache handler
@@ -13,24 +16,19 @@ use Ethnam\Generator\Command as Ethna_Command;
  *  @author     ICHII Takashi <ichii386@schweetheart.jp>
  *  @access     public
  */
-class Ethna_Subcommand_ClearCache extends Ethna_Subcommand_Base
+class ClearCache extends Base
 {
     /**
-     *  clear cache files.
      *
-     *  @access public
      *  @todo   implement Ethna_Renderer::clear_cache();
      *  @todo   implement Ethna_Plugin_Cachemanager::clear_cache();
      *  @todo   avoid echo, printf
      */
-    function perform()
+    public function perform()
     {
-        $r = $this->_getopt(array('basedir=', 
+        $r = $this->_getopt(array('basedir=',
                                    'any-tmp-files', 'smarty', 'pear', 'cachemanager'));
-        if (Ethna::isError($r)) {
-            return $r;
-        }
-        list($args,) = $r;
+        list($args, ) = $r;
 
         $basedir = isset($args['basedir']) ? realpath(end($args['basedir'])) : getcwd();
         $controller = Ethna_Command::getAppController($basedir);
@@ -77,7 +75,7 @@ class Ethna_Subcommand_ClearCache extends Ethna_Subcommand_Base
     /**
      *  @access public
      */
-    function getDescription()
+    public function getDescription()
     {
         return <<<EOS
 clear project's cache files:
@@ -85,17 +83,14 @@ clear project's cache files:
 
 EOS;
     }
-    // }}}
 
     /**
      *  @access public
      */
-    function getUsage()
+    public function getUsage()
     {
         return <<<EOS
 ethna {$this->id} [-b|--basedir=dir] [-a|--any-tmp-files] [-s|--smarty] [-p|--pear] [-c|--cachemanager]
 EOS;
     }
-    // }}}
 }
-// }}}

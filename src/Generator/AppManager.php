@@ -4,6 +4,9 @@
  *
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  */
+namespace Ethnam\Generator\Generator;
+
+use Ethna_Util;
 
 /**
  *  スケルトン生成クラス
@@ -11,7 +14,7 @@
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  *  @access     public
  */
-class Ethna_Generator_AppManager extends Ethna_Generator_Base
+class AppManager extends Base
 {
     /**
      *  アプリケーションマネージャのスケルトンを生成する
@@ -20,7 +23,7 @@ class Ethna_Generator_AppManager extends Ethna_Generator_Base
      *  @param  string  $manager_name    アプリケーションマネージ名
      *  @return bool    true:成功 false:失敗
      */
-    function generate($manager_name)
+    public function generate($manager_name)
     {
         $class_name = $this->ctl->getManagerClassName($manager_name);
         $app_dir = $this->ctl->getDirectory('app');
@@ -38,11 +41,10 @@ class Ethna_Generator_AppManager extends Ethna_Generator_Base
         Ethna_Util::mkdir(dirname($path), 0755);
         if (file_exists($path)) {
             printf("file [%s] already exists -> skip\n", $path);
-        } else if ($this->_generateFile("skel.app_manager.php", $path, $macro) == false) {
+        } elseif ($this->_generateFile("skel.app_manager.php", $path, $macro) == false) {
             printf("[warning] file creation failed [%s]\n", $path);
         } else {
             printf("app-manager script(s) successfully created [%s]\n", $path);
         }
     }
 }
-// }}}

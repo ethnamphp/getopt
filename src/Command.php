@@ -15,15 +15,20 @@ namespace Ethnam\Generator;
 use \Ethna_Controller;
 use \Ethna_Util;
 use \Ethna;
-use \Ethna_Subcommand_Base;
 
 class Command
 {
-    private $version = <<<EOD
-Ethnam %s (using PHP %s)
-Copyright (c) 2004-%s, @DQNEO and Ethna commiters
+    const VERSION = "v0.0.9";
+
+    private function showVersion()
+    {
+        $msg = <<<EOD
+ethnam-generator %s (using PHP %s)
+Copyright (c) 2004-%s, @DQNEO and Ethna/Ethnam commiters
 
 EOD;
+        printf($msg, self::VERSION, PHP_VERSION, date('Y'));
+    }
 
     /**
      * コマンドを実行する
@@ -33,26 +38,17 @@ EOD;
 
         // fetch arguments
         $opt = new Getopt();
-        $arg_list = $opt->readPHPArgv();
-        if (Ethna::isError($arg_list)) {
-            echo $arg_list->getMessage()."\n";
-            exit(2);
-        }
+        $arg_list = $opt->readGlobalArgv();
         array_shift($arg_list);  // remove "command.php"
 
         //  はじめの引数に - が含まれていればそれを分離する
         //  含まれていた場合、それは -v|--version でなければならない
         list($my_arg_list, $arg_list) = $this->separateArgList($arg_list);
         $r = $opt->getopt($my_arg_list, "v", array("version"));
-        if (Ethna::isError($r)) {
-            $subCommand = 'help';
-        } else {
-            // ad-hoc:(
-            foreach ($r[0] as $opt) {
-                if ($opt[0] == "v" || $opt[0] == "--version") {
-                    printf($this->version, ETHNA_VERSION, PHP_VERSION, date('Y'));
-                    exit(2);
-                }
+        foreach ($r[0] as $opt) {
+            if ($opt[0] == "v" || $opt[0] == "--version") {
+                $this->showVersion();
+                exit(2);
             }
         }
 
@@ -66,15 +62,7 @@ EOD;
 
         // don't know what will happen:)
         $subCommandObj->setArgList($arg_list);
-        $r = $subCommandObj->perform();
-        if (Ethna::isError($r)) {
-            printf("error occured w/ command [%s]\n  -> %s\n\n", $subCommand, $r->getMessage());
-            if ($r->getCode() == 'usage') {
-                $subCommandObj->usage();
-            }
-            exit(1);
-        }
-
+        $subCommandObj->perform();
     }
 
     /**
@@ -84,27 +72,26 @@ EOD;
      */
     public static function newSubcommand($subCommand)
     {
-        $name = preg_replace_callback('/\-(.)/', function($matches){
+        $name = preg_replace_callback('/\-(.)/', function ($matches) {
                 return strtoupper($matches[1]);
                     }, ucfirst($subCommand));
 
         $ctl = new Ethna_Controller(GATEWAY_CLI);
         Ethna::clearErrorCallback();
 
-        $class = 'Ethna_Subcommand_' . $name;
+        $class = '\\Ethnam\\Generator\\Subcommand\\' . $name;
         $obj = new $class($ctl, null, $name);
         return $obj;
     }
-    // }}}
+
 
     /**
      *  sort callback method
      */
-    public static function _handler_sort_callback(Ethna_Subcommand_Base $a, Ethna_Subcommand_Base $b)
+    public static function _handler_sort_callback(Base $a, Base $b)
     {
         return strcmp($a->getId(), $b->getId());
     }
-    // }}}
 
     /**
      *  Ethna_Controllerのインスタンスを取得する
@@ -117,7 +104,6 @@ EOD;
     {
         return Ethna_Controller::getInstance();
     }
-    // }}}
 
     /**
      *  アプリケーションのコントローラファイル/クラスを検索する
@@ -131,8 +117,8 @@ EOD;
 
         if (isset($app_controller[$app_dir])) {
             return $app_controller[$app_dir];
-        } else if ($app_dir === null) {
-            return Ethna::raiseError('$app_dir not specified.');
+        } elseif ($app_dir === null) {
+            throw new \Exception('$app_dir not specified.');
         }
 
         $ini_file = null;
@@ -148,25 +134,25 @@ EOD;
         }
 
         if ($ini_file === null) {
-            return Ethna::raiseError('no .ethna file found');
+            throw new \Exception('no .ethna file found');
         }
 
         $macro = parse_ini_file($ini_file);
         if (isset($macro['controller_file']) == false
             || isset($macro['controller_class']) == false) {
-            return Ethna::raiseError('invalid .ethna file');
+            throw new \Exception('invalid .ethna file');
         }
         $file = $macro['controller_file'];
         $class = $macro['controller_class'];
 
         $controller_file = "$app_dir/$file";
         if (is_file($controller_file) == false) {
-            return Ethna::raiseError("no such file $controller_file");
+            throw new \Exception("no such file $controller_file");
         }
 
         include_once $controller_file;
         if (class_exists($class) == false) {
-            return Ethna::raiseError("no such class $class");
+            throw new \Exception("no such class $class");
         }
 
         $global_controller = $GLOBALS['_Ethna_controller'];
@@ -176,7 +162,6 @@ EOD;
 
         return $app_controller[$app_dir];
     }
-    // }}}
 
     /**
      *  Ethna 本体の設定を取得する (ethnaコマンド用)
@@ -198,14 +183,13 @@ EOD;
 
         if ($section === null) {
             return $setting;
-        } else if (array_key_exists($section, $setting)) {
+        } elseif (array_key_exists($section, $setting)) {
             return $setting[$section];
         } else {
             $array = array();
             return $array;
         }
     }
-    // }}}
 
     public function separateArgList($arg_list)
     {
@@ -225,7 +209,6 @@ EOD;
         $arg_list = array_slice($arg_list, $i);
 
         return array($my_arg_list, $arg_list);
-
     }
 
     public static function getSkelDir()
@@ -233,4 +216,3 @@ EOD;
         return dirname(__DIR__) . '/skel';
     }
 }
-// }}}

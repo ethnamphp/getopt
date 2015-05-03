@@ -67,7 +67,6 @@ class Ethna_Class_Test extends Ethna_UnitTestBase
         }
         fclose($fp);
     }
-    // }}}
 
     function test_raiseError()
     {
@@ -79,7 +78,6 @@ class Ethna_Class_Test extends Ethna_UnitTestBase
         $error = Ethna::raiseError('Error', E_CACHE_GENERAL);
         $this->assertEqual(E_CACHE_GENERAL, $error->getCode());     
     }
-    // }}}
 
     function test_raiseWarning()
     {
@@ -91,7 +89,6 @@ class Ethna_Class_Test extends Ethna_UnitTestBase
         $error = Ethna::raiseWarning('Error!!!!!', E_CACHE_GENERAL);
         $this->assertEqual(E_CACHE_GENERAL, $error->getCode());     
     }
-    // }}}
 
     function test_raiseNotice()
     {
@@ -103,7 +100,6 @@ class Ethna_Class_Test extends Ethna_UnitTestBase
         $error = Ethna::raiseNotice('Error!!!!!', E_CACHE_GENERAL);
         $this->assertEqual(E_CACHE_GENERAL, $error->getCode());     
     }
-    // }}}
 
     function test_error_callback_obj()
     {
@@ -137,7 +133,5 @@ class Ethna_Class_Test extends Ethna_UnitTestBase
         $this->assertEqual('dummy_error_global!!!', $GLOBALS['_dummy_error_callback_global']);
         $this->assertEqual('dummy_error_global!!!', $this->dummy_error_value_class);
     }
-    // }}}
 }
-// }}}
 

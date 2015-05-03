@@ -4,6 +4,7 @@
  *
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  */
+namespace Ethnam\Generator\Generator;
 
 /**
  *  スケルトン生成クラス
@@ -11,8 +12,32 @@
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  *  @access     public
  */
-class Ethna_Generator_Project extends Ethna_Generator_Base
+class Project extends Base
 {
+    /**
+     *  アプリケーションIDをチェックする
+     *
+     *  @param  string  $id     アプリケーションID
+     */
+    public static function checkAppId($id)
+    {
+        if (strcasecmp($id, 'ethna') === 0
+            || strcasecmp($id, 'app') === 0) {
+            throw new \InvalidArgumentException("Application Id [$id] is reserved\n");
+        }
+
+        //    アプリケーションIDはクラス名のprefixともなるため、
+        //    数字で始まっていてはいけない
+        //    @see http://www.php.net/manual/en/language.variables.php
+        if (preg_match('/^[a-zA-Z][a-zA-Z0-9]*$/', $id) === 0) {
+            $msg = (preg_match('/^[0-9]$/', $id[0]))
+                 ? "Application ID must NOT start with Number.\n"
+                 : "Only Numeric(0-9) and Alphabetical(A-Z) is allowed for Application Id\n";
+            throw new \InvalidArgumentException($msg);
+        }
+    }
+
+
     /**
      *  プロジェクトスケルトンを生成する
      *
@@ -21,10 +46,9 @@ class Ethna_Generator_Project extends Ethna_Generator_Base
      *  @param  string  $basedir    プロジェクトベースディレクトリ
      *  @param  string  $skeldir    スケルトンディレクトリ。これが指定されると、そこにある
      *                              ファイルが優先される。また、ETHNA_HOME/skel にないもの
-     *                              も追加してコピーする 
+     *                              も追加してコピーする
      *  @param  string  $locale     ロケール名
      *                              (ロケール名は、ll_cc の形式。ll = 言語コード cc = 国コード)
-     *  @return bool    true:成功   Ethna_Error:失敗
      */
     public function generate($id, $basedir, $skeldir, $locale)
     {
@@ -58,10 +82,7 @@ class Ethna_Generator_Project extends Ethna_Generator_Base
 
         // double check.
         $id = strtolower($id);
-        $r = Ethna_Controller::checkAppId($id);
-        if (Ethna::isError($r)) {
-            return $r;
-        }
+        $r = self::checkAppId($id);
 
         // ディレクトリ作成
         if (is_dir($basedir) == false) {
@@ -72,11 +93,11 @@ class Ethna_Generator_Project extends Ethna_Generator_Base
             $r = trim(fgets($fp, 128));
             fclose($fp);
             if (strtolower($r) != 'y') {
-                return Ethna::raiseError('aborted by user');
+                throw new \Exception('aborted by user');
             }
 
             if (mkdir($basedir, 0775) == false) {
-                return Ethna::raiseError('directory creation failed');
+                throw new \Exception('directory creation failed');
             }
         }
         foreach ($dir_list as $dir) {
@@ -88,12 +109,12 @@ class Ethna_Generator_Project extends Ethna_Generator_Base
                 continue;
             }
             if (mkdir($target, $mode) == false) {
-                return Ethna::raiseError('directory creation failed');
+                throw new \Exception('directory creation failed');
             } else {
                 printf("project sub directory created [%s]\n", $target);
             }
             if (chmod($target, $mode) == false) {
-                return Ethna::raiseError('chmod failed');
+                throw new \Exception('chmod failed');
             }
         }
 
@@ -172,28 +193,20 @@ class Ethna_Generator_Project extends Ethna_Generator_Base
             }
         }
 
-        $real_r = $this->_generate($realfile_maps, $macro, $skeldir);
-        if (Ethna::isError($real_r)) {
-            return $real_r;
-        }
+        $this->_generate($realfile_maps, $macro, $skeldir);
 
-        $skel_r = $this->_generate($skelfile_maps, $default_macro, $skeldir);
-        if (Ethna::isError($skel_r)) {
-            return $skel_r;
-        }
-
-        return true;
+        $this->_generate($skelfile_maps, $default_macro, $skeldir);
     }
 
     /**
      *  実際のプロジェクトスケルトンを生成処理を行う
      *
-     *  @access private 
-     *  @param  string  $maps       スケルトン名と生成されるファイルの配列 
-     *  @param  string  $macro      適用マクロ 
+     *  @access private
+     *  @param  string  $maps       スケルトン名と生成されるファイルの配列
+     *  @param  string  $macro      適用マクロ
      *  @param  string  $skeldir    スケルトンディレクトリ。これが指定されると、そこにある
      *                              ファイルが優先される。また、ETHNA_HOME/skel にないもの
-     *                              も追加してコピーする 
+     *                              も追加してコピーする
      *  @throws \Exception
      */
 
@@ -209,5 +222,3 @@ class Ethna_Generator_Project extends Ethna_Generator_Base
         }
     }
 }
-// }}}
-

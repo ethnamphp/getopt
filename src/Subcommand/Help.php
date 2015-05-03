@@ -4,6 +4,7 @@
  *
  *  @author     Tomoyuki MARUTA <maru_cc@users.sourceforge.jp>
  */
+namespace Ethnam\Generator\Subcommand;
 
 /**
  *  add-action handler
@@ -11,20 +12,15 @@
  *  @author     ICHII Takashi <ichii386@schweetheart.jp>
  *  @access     public
  */
-class Ethna_Subcommand_Help extends Ethna_Subcommand_Base
+class Help extends Base
 {
 
     /**
-     *  show help
      *
-     *  @access public
      */
-    function perform()
+    public function perform()
     {
         $r = $this->_getopt();
-        if (Ethna::isError($r)) {
-            return $r;
-        }
         list($opt_list, $arg_list) = $r;
 
         // action_name
@@ -46,7 +42,6 @@ class Ethna_Subcommand_Help extends Ethna_Subcommand_Base
         echo $handler->getDescription();
 
         return true;
-
     }
 
     /**
@@ -54,7 +49,7 @@ class Ethna_Subcommand_Help extends Ethna_Subcommand_Base
      *
      *  @access public
      */
-    function getDescription()
+    public function getDescription()
     {
         return <<<EOS
 help:
@@ -66,11 +61,10 @@ EOS;
     /**
      *  @access public
      */
-    function getUsage()
+    public function getUsage()
     {
         return <<<EOS
 ethna {$this->id} [command_name]
 EOS;
     }
 }
-// }}}

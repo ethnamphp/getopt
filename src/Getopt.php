@@ -34,7 +34,7 @@ class Getopt
      *
      *  @return array - オプションとパラメータを含む配列、
      */
-    public function readPHPArgv()
+    public function readGlobalArgv()
     {
         global $argv;
 
@@ -56,7 +56,7 @@ class Getopt
      *  @return array - パースされたオプションと非オプションのコマンドライン引数
      *                  の 2つの要素からなる配列
      */
-    public function getopt($args, $shortoptions, $longoptions = NULL)
+    public function getopt($args, $shortoptions, $longoptions = null)
     {
         $shortopts = $this->_parseShortOption($shortoptions);
 
@@ -66,13 +66,12 @@ class Getopt
         $nonparsed_arguments = array();
 
         for ($pos = 0; $pos < count($args); $pos++) {
+            $arg = $args[$pos];
+            $next_arg = isset($args[$pos + 1]) ? $args[$pos + 1] : null;
+            $is_nextarg_is_value = false;
+            $required = false;
 
-             $arg = $args[$pos];
-             $next_arg = isset($args[$pos + 1]) ? $args[$pos + 1] : NULL;
-             $is_nextarg_is_value = false;
-             $required = false;
-
-             if (strpos($arg, '--') === 0) { //  long option
+            if (strpos($arg, '--') === 0) { //  long option
 
                  //
                  // GNU getopt(3) の場合は、長いオプションは他と重なら
@@ -87,38 +86,38 @@ class Getopt
 
                  //    オプションの値を処理する
                  $lopt = str_replace('--', '', $arg);
-                 $opt_and_value = explode('=', $lopt);
-                 $opt = $opt_and_value[0];
-                 if (!array_key_exists($opt, $longopts)) {
-                     throw new \Exception("unrecognized option --$opt");
-                 }
+                $opt_and_value = explode('=', $lopt);
+                $opt = $opt_and_value[0];
+                if (!array_key_exists($opt, $longopts)) {
+                    throw new \Exception("unrecognized option --$opt");
+                }
 
                  //  オプションの値を取り出す
                  $required = $longopts[$opt];
-                 $value = NULL;
-                 if (count($opt_and_value) == 2) {
-                     $value = $opt_and_value[1];   // --foo=bar
-                 } elseif (strpos('-', $next_arg) !== 0
+                $value = null;
+                if (count($opt_and_value) == 2) {
+                    $value = $opt_and_value[1];   // --foo=bar
+                } elseif (strpos('-', $next_arg) !== 0
                         && $required == ETHNA_OPTVALUE_IS_REQUIRED) {
-                     if (!empty($next_arg)) {      // --foo bar
+                    if (!empty($next_arg)) {      // --foo bar
                          // 次の $argv を値として解釈
                          // == が設定されていた場合は値として解釈「しない」
                          $value = $next_arg;
-                         $pos++;
-                     }
-                 }
+                        $pos++;
+                    }
+                }
 
                  //  オプション設定チェック
                  switch ($required) {
                      case ETHNA_OPTVALUE_IS_REQUIRED:
-                         if ($value === NULL) {
+                         if ($value === null) {
                              throw new \Exception(
                                         "option --$opt requires an argument"
                                     );
                          }
                          break;
                      case ETHNA_OPTVALUE_IS_DISABLED:
-                         if ($value !== NULL) {
+                         if ($value !== null) {
                              throw new \Exception(
                                         "option --$opt doesn't allow an argument"
                                     );
@@ -129,8 +128,7 @@ class Getopt
                  //  長いオプションの場合は、-- 付きでオプション名を記録する
                  //  Console_Getopt 互換にするため。
                  $parsed_arguments[] = array("--$opt", $value);
-
-             } elseif (strpos($arg, '-') === 0) {  // short option
+            } elseif (strpos($arg, '-') === 0) {  // short option
 
                  //
                  // -abcd のように、オプションと値が続けて
@@ -157,17 +155,17 @@ class Getopt
                  //
 
                  $sopt = str_replace('-', '', $arg);
-                 $sopt_len = strlen($sopt);
+                $sopt_len = strlen($sopt);
 
-                 for ($sopt_pos = 0; $sopt_pos < $sopt_len; $sopt_pos++) {
+                for ($sopt_pos = 0; $sopt_pos < $sopt_len; $sopt_pos++) {
 
                      //  オプションを取り出す
                      $opt = $sopt[$sopt_pos];
 
-                     $value = NULL;
-                     $do_next_arg = false;
-                     $required = isset($shortopts[$opt]) ? $shortopts[$opt] : NULL;
-                     switch ($required) {
+                    $value = null;
+                    $do_next_arg = false;
+                    $required = isset($shortopts[$opt]) ? $shortopts[$opt] : null;
+                    switch ($required) {
                          case ETHNA_OPTVALUE_IS_REQUIRED:
                          case ETHNA_OPTVALUE_IS_OPTIONAL:
                             if ($sopt_len == 1
@@ -181,14 +179,14 @@ class Getopt
                             } else {
                                 //  残りの文字を値として解釈
                                 $value = substr($sopt, $sopt_pos + 1);
-                                $value = (empty($value)) ? NULL : $value;
+                                $value = (empty($value)) ? null : $value;
                             }
                             if ($required == ETHNA_OPTVALUE_IS_REQUIRED
                               && empty($value)) {
-                                 throw new \Exception(
+                                throw new \Exception(
                                             "option -$opt requires an argument"
                                         );
-                             }
+                            }
                              // ':' または '::' が設定された場合は、次の文字
                              // 以降を全て値として解釈するため、次のargv要素に
                              // 解釈を移す
@@ -207,12 +205,11 @@ class Getopt
                      //  Console_Getopt 互換にするため。
                      $parsed_arguments[] = array($opt, $value);
 
-                     if ($do_next_arg === true) {
-                         break;
-                     }
-                 }
-
-             } else {  // オプションとして解釈されない
+                    if ($do_next_arg === true) {
+                        break;
+                    }
+                }
+            } else {  // オプションとして解釈されない
 
                  //   non-parsed なオプションに辿り着いた
                  //   ら、それ以降の解釈を停止する
@@ -223,8 +220,8 @@ class Getopt
                  //   Console_Getopt で行われている以上、
                  //   それに従った実装
                  $nonparsed_arguments = array_slice($args, $pos);
-                 break;
-             }
+                break;
+            }
         }
 
         return array($parsed_arguments, $nonparsed_arguments);
@@ -253,10 +250,10 @@ class Getopt
             $char = $sopts[$pos];
             $next_char = (isset($sopts[$pos + 1]))
                        ? $sopts[$pos + 1]
-                       : NULL;
+                       : null;
             $next2_char = (isset($sopts[$pos + 2]))
                         ? $sopts[$pos + 2]
-                        : NULL;
+                        : null;
 
             if ($char == ':') {
                 continue;
@@ -310,4 +307,3 @@ class Getopt
     }
 }
 
-// }}}

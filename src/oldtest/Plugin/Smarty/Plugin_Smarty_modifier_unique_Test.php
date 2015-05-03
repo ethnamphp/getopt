@@ -49,7 +49,5 @@ class Ethna_Plugin_Smarty_modifier_unique_Test extends Ethna_UnitTestBase
         $this->assertFalse(is_numeric(array_search(2, $result)));
         $this->assertFalse(is_numeric(array_search(3, $result)));
     }
-    // }}}
 }
-// }}}
 

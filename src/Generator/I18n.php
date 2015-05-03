@@ -4,6 +4,10 @@
  *
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com>
  */
+namespace Ethnam\Generator\Generator;
+
+use Ethna_Util;
+use Ethna;
 
 /**
  *  i18n 向け、メッセージカタログ生成クラスのスーパークラス
@@ -11,7 +15,7 @@
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com>
  *  @access     public
  */
-class Ethna_Generator_I18n extends Ethna_Generator_Base
+class I18n extends Base
 {
     /**#@+
      *  @access protected
@@ -43,7 +47,7 @@ class Ethna_Generator_I18n extends Ethna_Generator_Base
      *  @param  array   $ext_dirs       走査する追加のディレクトリの配列
      *  @return true|Ethna_Error        true:成功 Ethna_Error:失敗
      */
-    function generate($locale, $use_gettext, $ext_dirs = array())
+    public function generate($locale, $use_gettext, $ext_dirs = array())
     {
         $this->time = time();
         $this->locale = $locale;
@@ -67,7 +71,7 @@ class Ethna_Generator_I18n extends Ethna_Generator_Base
                    )
                  : ("[NOTICE]: Message catalog file already exists!\n"
                   . "This is overwritten and existing translation is merged automatically.\n");
-             print "\n-------------------------------\n"
+            print "\n-------------------------------\n"
                  . $msg
                  . "-------------------------------\n\n";
         }
@@ -99,22 +103,19 @@ class Ethna_Generator_I18n extends Ethna_Generator_Base
             return $r;
         }
 
-        $true = true;
-        return $true;
     }
 
     /**
      *  出力ファイル名を取得します。
      *
-     *  @access private
      *  @return string  出力ファイル名
      */
-    function _get_output_file()
+    private function _get_output_file()
     {
         $locale_dir = $this->ctl->getDirectory('locale');
         $ext = ($this->use_gettext) ? 'po' : 'ini';
         $filename = $this->locale . ".${ext}";
-        $new_filename = NULL;
+        $new_filename = null;
 
         $outfile_path = "${locale_dir}/"
                       . $this->locale
@@ -134,11 +135,10 @@ class Ethna_Generator_I18n extends Ethna_Generator_Base
     /**
      *  指定されたディレクトリを再帰的に走査します。
      *
-     *  @access protected
      *  @param  string  $dir     走査対象ディレクトリ
      *  @return true|Ethna_Error true:成功 Ethna_Error:失敗
      */
-    function _analyzeDirectory($dir)
+    private function _analyzeDirectory($dir)
     {
         $dh = opendir($dir);
         if ($dh == false) {
@@ -150,11 +150,11 @@ class Ethna_Generator_I18n extends Ethna_Generator_Base
         //  走査対象はテンプレートとPHPスクリプト
         $php_ext = $this->ctl->getExt('php');
         $tpl_ext = $this->ctl->getExt('tpl');
-        $r = NULL;
+        $r = null;
 
         //  ディレクトリなら再帰的に走査
         //  ファイルならトークンを解析する
-        while(($file = readdir($dh)) !== false) {
+        while (($file = readdir($dh)) !== false) {
             if (is_dir("$dir/$file")) {
                 if (strpos($file, '.') !== 0) {  // 隠しファイルは対象外
                    $r = $this->_analyzeDirectory("$dir/$file");
@@ -186,9 +186,8 @@ class Ethna_Generator_I18n extends Ethna_Generator_Base
      *
      *  @access protected
      *  @param  string  $file     走査対象ファイル
-     *  @return true|Ethna_Error true:成功 Ethna_Error:失敗
      */
-    function _analyzeFile($file)
+    private function _analyzeFile($file)
     {
         $file_path = realpath($file);
         printf("Analyzing file ... %s\n", $file);
@@ -215,10 +214,9 @@ class Ethna_Generator_I18n extends Ethna_Generator_Base
 
         //  トークンを走査し、関数呼び出しを解析する
         for ($i = 0; $i < $token_num; $i++) {
-
             $token = $file_tokens[$i];
             $token_idx = false;
-            $token_str = NULL;
+            $token_str = null;
             $token_linenum = false;
 
             //   面倒を見るのは、トークンの場合のみ
@@ -277,11 +275,10 @@ class Ethna_Generator_I18n extends Ethna_Generator_Base
      *  NOTICE: このメソッドは、指定ファイルがPHPスクリプトとして
      *          正しいものかどうかはチェックしません。
      *
-     *  @access protected
      *  @param  string  $file_path  走査対象ファイル
      *  @return true|Ethna_Error true:成功 Ethna_Error:失敗
      */
-    function _analyzeActionForm($file_path)
+    private function _analyzeActionForm($file_path)
     {
         //   アクションスクリプトのトークンを取得
         $tokens = token_get_all(
@@ -310,7 +307,7 @@ class Ethna_Generator_I18n extends Ethna_Generator_Base
         }
 
         //  アクションフォームのクラス名を特定
-        $af_classname = NULL;
+        $af_classname = null;
         foreach ($class_names as $name) {
             $action_name = $this->ctl->actionFormToName($name);
             if (!empty($action_name)) {
@@ -352,7 +349,7 @@ class Ethna_Generator_I18n extends Ethna_Generator_Base
      *  @param  string  $file    走査対象ファイル
      *  @return true|Ethna_Error true:成功 Ethna_Error:失敗
      */
-    function _analyzeTemplate($file)
+    private function _analyzeTemplate($file)
     {
         //  デフォルトはSmartyのテンプレートと看做す
         $renderer = $this->ctl->getRenderer();
@@ -368,7 +365,7 @@ class Ethna_Generator_I18n extends Ethna_Generator_Base
 
         //  use smarty internal function :)
         $compile_path = $engine->_get_compile_path($file);
-        $compile_result = NULL;
+        $compile_result = null;
         if ($engine->_is_compiled($file, $compile_path)
          || $engine->_compile_resource($file, $compile_path)) {
             $compile_result = file_get_contents($compile_path);
@@ -412,9 +409,8 @@ class Ethna_Generator_I18n extends Ethna_Generator_Base
      *
      *  @param $tokens 解析対象トークン
      *  @param $index  インデックス
-     *  @access private
      */
-    function _find_template_i18n($tokens, $index)
+    private function _find_template_i18n($tokens, $index)
     {
         for ($j = $index; $j > 0; $j--) {
             $tmp_token = $tokens[$j];
@@ -431,16 +427,15 @@ class Ethna_Generator_I18n extends Ethna_Generator_Base
                 }
             }
         }
-        return NULL;
+        return null;
     }
 
     /**
      *  Ethna組み込みのメッセージカタログファイルを、上書き
      *  する場合にマージします。
      *
-     *  @access private
      */
-    function _mergeEthnaMessageCatalog()
+    private function _mergeEthnaMessageCatalog()
     {
         if (!($this->file_exists && !$this->use_gettext)) {
             return;
@@ -473,7 +468,7 @@ class Ethna_Generator_I18n extends Ethna_Generator_Base
      *                                  false ならEthna組み込みのカタログ生成
      *  @return true|Ethna_Error true:成功 Ethna_Error:失敗
      */
-    function _generateFile($skel = null, $entity = null, $macro = null, $overwrite = false)
+    public function _generateFile($skel = null, $entity = null, $macro = null, $overwrite = false)
     {
         $outfile_path = $this->_get_output_file();
 
@@ -535,9 +530,5 @@ class Ethna_Generator_I18n extends Ethna_Generator_Base
         }
         fclose($wfp);
         printf("Message catalog template successfully created [%s]\n", $outfile_path);
-
-        return true;
     }
 }
-// }}}
-

@@ -74,21 +74,17 @@ class Ethna_Controller_Test extends Ethna_UnitTestBase
         $r = $this->test_ctl->checkAppId('abcd');
         $this->assertFalse(Ethna::isError($r));
     }
-    // }}}
 
     function test_getClientEncoding()
     {
         $this->assertEqual('UTF-8', $this->test_ctl->getClientEncoding());
     }
-    // }}} 
 
     function test_setClientEncoding()
     {
         $this->test_ctl->setClientEncoding('Shift_JIS');
         $this->assertEqual('Shift_JIS', $this->test_ctl->getClientEncoding());
     }
-    // }}}
 
 }
-// }}}
 

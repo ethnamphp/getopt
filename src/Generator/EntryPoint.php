@@ -4,6 +4,7 @@
  *
  *  @author     ICHII Takashi <ichii386@schweetheart.jp>
  */
+namespace Ethnam\Generator\Generator;
 
 /**
  *  スケルトン生成クラス
@@ -11,7 +12,7 @@
  *  @author     ICHII Takashi <ichii386@schweetheart.jp>
  *  @access     public
  */
-class Ethna_Generator_EntryPoint extends Ethna_Generator_Base
+class EntryPoint extends Base
 {
     /**
      *  エントリポイントのスケルトンを生成する
@@ -19,12 +20,9 @@ class Ethna_Generator_EntryPoint extends Ethna_Generator_Base
      *  @access public
      *  @param  string  $skelton    スケルトンファイル名
      *  @param  int     $gateway    ゲートウェイ
-     *  @return true|Ethna_Error    true:成功 Ethna_Error:失敗
      */
-    function generate($action_name, $skelton = null, $gateway = GATEWAY_WWW)
+    public function generate($action_name, $skelton = null, $gateway = GATEWAY_WWW)
     {
-        $true = true;
-
         // entity
         switch ($gateway) {
         case GATEWAY_WWW:
@@ -36,9 +34,8 @@ class Ethna_Generator_EntryPoint extends Ethna_Generator_Base
                               $action_name, $this->ctl->getExt('php'));
             break;
         default:
-            $ret = Ethna::raiseError(
+            throw new \Exception(
                 'add-entry-point accepts only GATEWAY_WWW or GATEWAY_CLI.');
-            return $ret;
         }
 
         // skelton
@@ -54,7 +51,7 @@ class Ethna_Generator_EntryPoint extends Ethna_Generator_Base
         }
         if (file_exists($entity)) {
             printf("file [%s] already exists -> skip\n", $entity);
-            return $true;
+            return;
         }
 
         // macro
@@ -73,7 +70,7 @@ class Ethna_Generator_EntryPoint extends Ethna_Generator_Base
             printf("action script(s) successfully created [%s]\n", $entity);
         } else {
             printf("[warning] file creation failed [%s]\n", $entity);
-            return $true; // XXX: error handling
+            return; // TODO: error handling
         }
 
         // chmod
@@ -81,9 +78,5 @@ class Ethna_Generator_EntryPoint extends Ethna_Generator_Base
             // is needed?
             //$ret = Ethna_Util::chmod($entity, 0777);
         }
-            
-
-        return $true;
     }
 }
-// }}}

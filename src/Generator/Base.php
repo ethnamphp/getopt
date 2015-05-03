@@ -4,6 +4,9 @@
  *
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  */
+namespace Ethnam\Generator\Generator;
+
+use Ethna_Util;
 
 /**
  *  スケルトン生成プラグイン
@@ -11,7 +14,7 @@
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  *  @access     public
  */
-class Ethna_Generator_Base
+class Base
 {
     public $ctl;
 
@@ -20,7 +23,7 @@ class Ethna_Generator_Base
      *
      *  @access public
      */
-    function __construct($controller)
+    public function __construct($controller)
     {
         // Subcommand_Base::generateでpluginを取得するときに使ったコントローラ
         // ex, add-projectではEthna_Controller, app-actionではApp_Controller
@@ -30,10 +33,9 @@ class Ethna_Generator_Base
     /**
      *  スケルトンファイルの絶対パスを解決する
      *
-     *  @access private
      *  @param  string  $skel   スケルトンファイル
      */
-    function _resolveSkelfile($skel)
+    protected function _resolveSkelfile($skel)
     {
         $file = realpath($skel);
         if (file_exists($file)) {
@@ -123,9 +125,8 @@ class Ethna_Generator_Base
     /**
      *  ユーザ定義のマクロを設定する(~/.ethna)
      *
-     *  @access private
      */
-    function _getUserMacro()
+    protected function _getUserMacro()
     {
         if (isset($_SERVER['USERPROFILE']) && is_dir($_SERVER['USERPROFILE'])) {
             $home = $_SERVER['USERPROFILE'];
@@ -141,4 +142,3 @@ class Ethna_Generator_Base
         return $user_macro;
     }
 }
-// }}}

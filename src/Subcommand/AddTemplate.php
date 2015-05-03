@@ -2,8 +2,9 @@
 /**
  *  AddTemplate.php
  *
- *  @author     nnno <nnno@nnno.jp> 
+ *  @author     nnno <nnno@nnno.jp>
  */
+namespace Ethnam\Generator\Subcommand;
 
 /**
  *  add-template handler
@@ -11,14 +12,12 @@
  *  @author     nnno <nnno@nnno.jp>
  *  @access     public
  */
-class Ethna_Subcommand_AddTemplate extends Ethna_Subcommand_AddView
+class AddTemplate extends AddView
 {
     /**
-     *  add template 
      *
-     *  @access public
      */
-    function perform()
+    public function perform()
     {
         $r = $this->_getopt(
                   array('basedir=',
@@ -26,25 +25,18 @@ class Ethna_Subcommand_AddTemplate extends Ethna_Subcommand_AddView
                         'locale=',
                         'encoding=',
                   )
-              ); 
-        if (Ethna::isError($r)) {
-            return $r;
-        }
+              );
         list($opt_list, $arg_list) = $r;
 
         // template
         $template = array_shift($arg_list);
         if ($template == null) {
-            return Ethna::raiseError('template name isn\'t set.', 'usage');
+            throw new \Exception('template name isn\'t set.');
         }
-        $r = Ethna_Controller::checkViewName($template); // XXX: use checkViewName().
-        if (Ethna::isError($r)) {
-            return $r;
-        }
+        Base::checkViewName($template); // XXX: use checkViewName().
 
         // add template
-        $ret = $this->_performTemplate($template, $opt_list);
-        return $ret;
+        $this->_performTemplate($template, $opt_list);
     }
 
     /**
@@ -52,7 +44,7 @@ class Ethna_Subcommand_AddTemplate extends Ethna_Subcommand_AddView
      *
      *  @access public
      */
-    function getDescription()
+    public function getDescription()
     {
         return <<<EOS
 add new template to project:
@@ -64,11 +56,10 @@ EOS;
     /**
      *  @access public
      */
-    function getUsage()
+    public function getUsage()
     {
         return <<<EOS
 ethna {$this->id} [-b|--basedir=dir] [-s|--skelfile=file] [-l|--locale=locale] [-e|--encoding] [template]
 EOS;
     }
 }
-// }}}

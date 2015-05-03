@@ -4,6 +4,7 @@
  *
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  */
+namespace Ethnam\Generator\Subcommand;
 
 /**
  *  add-action handler
@@ -11,14 +12,11 @@
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  *  @access     public
  */
-class Ethna_Subcommand_AddAction extends Ethna_Subcommand_Base
+class AddAction extends Base
 {
     /**
-     *  add action
-     *
-     *  @access public
      */
-    function perform()
+    public function perform()
     {
         //
         //  '-w[with-unittest]' and '-u[unittestskel]' option
@@ -34,29 +32,22 @@ class Ethna_Subcommand_AddAction extends Ethna_Subcommand_Base
                         'unittestskel=',
                   )
              );
-        if (Ethna::isError($r)) {
-            return $r;
-        }
+
         list($opt_list, $arg_list) = $r;
 
         // action_name
         $action_name = array_shift($arg_list);
         if ($action_name == null) {
-            return Ethna::raiseError('action name isn\'t set.', 'usage');
+            throw new \Exception('action name isn\'t set.');
         }
-        $r = Ethna_Controller::checkActionName($action_name);
-        if (Ethna::isError($r)) {
-            return $r;
-        }
+        Base::checkActionName($action_name);
 
-        $ret = $this->_perform('Action', $action_name, $opt_list);
-        return $ret;
+        $this->_perform('Action', $action_name, $opt_list);
     }
 
     /**
-     *  @access protected
      */
-    function &_perform($target, $target_name, $opt_list)
+    protected function _perform($target, $target_name, $opt_list)
     {
         // basedir
         if (isset($opt_list['basedir'])) {
@@ -71,26 +62,22 @@ class Ethna_Subcommand_AddAction extends Ethna_Subcommand_Base
         } else {
             $skelfile = null;
         }
-        
+
         // gateway
         if (isset($opt_list['gateway'])) {
             $gateway = 'GATEWAY_' . strtoupper(end($opt_list['gateway']));
             if (defined($gateway)) {
                 $gateway = constant($gateway);
             } else {
-                return Ethna::raiseError('unknown gateway', 'usage');
+                throw new \Exception('unknown gateway');
             }
         } else {
             $gateway = GATEWAY_WWW;
         }
-        
+
         //  possible target is Action, View.
-        $r = Ethna_Subcommand_Base::generate($target, $basedir,
+        $r = Base::generate($target, $basedir,
                                         $target_name, $skelfile, $gateway);
-        if (Ethna::isError($r)) {
-            printf("error occurred while generating skelton. please see also following error message(s)\n\n");
-            return $r;
-        }
 
         //
         //  if specified, generate corresponding testcase,
@@ -100,15 +87,8 @@ class Ethna_Subcommand_AddAction extends Ethna_Subcommand_Base
             $testskel = (isset($opt_list['unittestskel']))
                       ? end($opt_list['unittestskel'])
                       : null;
-            $r = Ethna_Subcommand_Base::generate("{$target}Test", $basedir, $target_name, $testskel, $gateway);
-            if (Ethna::isError($r)) {
-                printf("error occurred while generating action test skelton. please see also following error message(s)\n\n");
-                return $r;
-            }
-        }  
-
-        $true = true;
-        return $true;
+            Base::generate("{$target}Test", $basedir, $target_name, $testskel, $gateway);
+        }
     }
 
     /**
@@ -116,7 +96,7 @@ class Ethna_Subcommand_AddAction extends Ethna_Subcommand_Base
      *
      *  @access public
      */
-    function getDescription()
+    public function getDescription()
     {
         return <<<EOS
 add new action to project:
@@ -128,7 +108,7 @@ EOS;
     /**
      *  @access public
      */
-    function getUsage()
+    public function getUsage()
     {
         return <<<EOS
 ethna {$this->id} [-b|--basedir=dir] [-s|--skelfile=file] [-g|--gateway=www|cli] [-w|--with-unittest] [-u|--unittestskel=file] [action]
@@ -136,4 +116,3 @@ ethna {$this->id} [-b|--basedir=dir] [-s|--skelfile=file] [-g|--gateway=www|cli]
 EOS;
     }
 }
-// }}}

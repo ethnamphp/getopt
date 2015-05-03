@@ -4,6 +4,7 @@
  *
  *  @author     nozzzzz <nozzzzz@gmail.com>
  */
+namespace Ethnam\Generator\Subcommand;
 
 /**
  *  add-app-manager handler
@@ -11,14 +12,11 @@
  *  @author     nozzzzz <nozzzzz@gmail.com>
  *  @access     public
  */
-class Ethna_Subcommand_AddAppManager extends Ethna_Subcommand_Base
+class AddAppManager extends Base
 {
     /**
-     *  add app-manager
-     *
-     *  @access public
      */
-    function perform()
+    public function perform()
     {
         throw new \Exception('not implimented yet');
     }
@@ -28,7 +26,7 @@ class Ethna_Subcommand_AddAppManager extends Ethna_Subcommand_Base
      *
      *  @access public
      */
-    function getDescription()
+    public function getDescription()
     {
         return <<<EOS
 add new app-manager to project:
@@ -42,11 +40,10 @@ EOS;
      *
      *  @access public
      */
-    function getUsage()
+    public function getUsage()
     {
         return <<<EOS
 ethna {$this->id} [-b|--basedir=dir] [app-manager name]
 EOS;
     }
 }
-// }}}

@@ -4,8 +4,9 @@
  *
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  */
+namespace Ethnam\Generator\Subcommand;
 
-use Ethnam\Generator\Command as Ethna_Command;
+use Ethnam\Generator\Command;
 
 /**
  *  add-view handler
@@ -13,14 +14,12 @@ use Ethnam\Generator\Command as Ethna_Command;
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  *  @access     public
  */
-class Ethna_Subcommand_AddView extends Ethna_Subcommand_AddAction
+class AddView extends AddAction
 {
     /**
-     *  add view
      *
-     *  @access public
      */
-    function perform()
+    public function perform()
     {
         //
         //  '-w[with-unittest]' and '-u[unittestskel]' option
@@ -38,36 +37,22 @@ class Ethna_Subcommand_AddView extends Ethna_Subcommand_AddAction
                         'encoding=',
                   )
               );
-        if (Ethna::isError($r)) {
-            return $r;
-        }
         list($opt_list, $arg_list) = $r;
 
         // view_name
         $view_name = array_shift($arg_list);
         if ($view_name == null) {
-            return Ethna::raiseError('view name isn\'t set.', 'usage');
+            throw new \Exception('view name isn\'t set.');
         }
-        $r = Ethna_Controller::checkViewName($view_name);
-        if (Ethna::isError($r)) {
-            return $r;
-        }
+        Base::checkViewName($view_name);
 
         // add view(invoke parent class method)
         $ret = $this->_perform('View', $view_name, $opt_list);
-        if (Ethna::isError($ret) || $ret === false) { 
-            return $ret;
-        }
 
         // add template
         if (isset($opt_list['template'])) {
             $ret = $this->_performTemplate($view_name, $opt_list);
-            if (Ethna::isError($ret) || $ret === false) { 
-                return $ret;
-            }
         }
-
-        return true;
     }
 
     /**
@@ -77,7 +62,7 @@ class Ethna_Subcommand_AddView extends Ethna_Subcommand_AddAction
      *  @param  array  $opt_list    Option List.
      *  @access protected
      */
-    function _performTemplate($target_name, $opt_list)
+    public function _performTemplate($target_name, $opt_list)
     {
         // basedir
         if (isset($opt_list['basedir'])) {
@@ -94,29 +79,22 @@ class Ethna_Subcommand_AddView extends Ethna_Subcommand_AddAction
         }
 
         // locale
-        $ctl = Ethna_Command::getAppController(getcwd());
+        $ctl = Command::getAppController(getcwd());
         if (isset($opt_list['locale'])) {
             $locale = end($opt_list['locale']);
             if (!preg_match('/^[A-Za-z_]+$/', $locale)) {
-                return Ethna::raiseError("You specified locale, but invalid : $locale", 'usage');
+                throw new \Exceptionxo("You specified locale, but invalid : $locale");
             }
         } else {
-            if (Ethna::isError($ctl)) {
+            if (\Ethna::isError($ctl)) {
                 $locale = 'ja_JP';
             } else {
                 $locale = $ctl->getLocale();
             }
         }
 
-        $r = Ethna_Subcommand_Base::generate('Template', $basedir,
+        Base::generate('Template', $basedir,
                                         $target_name, $skelfile, $locale);
-        if (Ethna::isError($r)) {
-            printf("error occurred while generating skelton. please see also following error message(s)\n\n");
-            return $r;
-        }
-
-        $true = true;
-        return $true;
     }
 
     /**
@@ -124,7 +102,7 @@ class Ethna_Subcommand_AddView extends Ethna_Subcommand_AddAction
      *
      *  @access public
      */
-    function getDescription()
+    public function getDescription()
     {
         return <<<EOS
 add new view to project:
@@ -142,7 +120,7 @@ EOS;
     /**
      *  @access public
      */
-    function getUsage()
+    public function getUsage()
     {
         return <<<EOS
 ethna {$this->id} [options... ] [view name]
@@ -155,4 +133,3 @@ ethna {$this->id} [options... ] [view name]
 EOS;
     }
 }
-// }}}

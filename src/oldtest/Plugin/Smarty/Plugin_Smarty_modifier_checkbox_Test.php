@@ -60,7 +60,5 @@ class Ethna_Plugin_Smarty_modifier_checkbox_Test extends Ethna_UnitTestBase
         $actual = smarty_modifier_checkbox(new stdClass());
         $this->assertNULL($actual);
     }
-    // }}}
 }
-// }}}
 
