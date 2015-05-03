@@ -20,32 +20,21 @@ class AddEntryPoint extends AddAction
     public function perform()
     {
         $r = $this->_getopt(array('basedir=', 'skelfile=', 'gateway='));
-        if (Ethna::isError($r)) {
-            return $r;
-        }
         list($opt_list, $arg_list) = $r;
 
         // action_name
         $action_name = array_shift($arg_list);
         if ($action_name == null) {
-            return Ethna::raiseError('action name isn\'t set.', 'usage');
+            throw new \Exception('action name isn\'t set.');
         }
 
         Base::checkActionName($action_name);
 
         // add entry point
-        $ret = $this->_perform('EntryPoint', $action_name, $opt_list);
-        if (Ethna::isError($ret) || $ret === false) {
-            return $ret;
-        }
+        $this->_perform('EntryPoint', $action_name, $opt_list);
 
         // add action (no effects if already exists.)
-        $ret = $this->_perform('Action', $action_name, $opt_list);
-        if (Ethna::isError($ret) || $ret === false) {
-            return $ret;
-        }
-
-        return true;
+        $this->_perform('Action', $action_name, $opt_list);
     }
 
     /**

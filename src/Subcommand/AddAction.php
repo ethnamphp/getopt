@@ -42,8 +42,7 @@ class AddAction extends Base
         }
         Base::checkActionName($action_name);
 
-        $ret = $this->_perform('Action', $action_name, $opt_list);
-        return $ret;
+        $this->_perform('Action', $action_name, $opt_list);
     }
 
     /**
@@ -70,7 +69,7 @@ class AddAction extends Base
             if (defined($gateway)) {
                 $gateway = constant($gateway);
             } else {
-                return Ethna::raiseError('unknown gateway', 'usage');
+                throw new \Exception('unknown gateway');
             }
         } else {
             $gateway = GATEWAY_WWW;
@@ -79,10 +78,6 @@ class AddAction extends Base
         //  possible target is Action, View.
         $r = Base::generate($target, $basedir,
                                         $target_name, $skelfile, $gateway);
-        if (Ethna::isError($r)) {
-            printf("error occurred while generating skelton. please see also following error message(s)\n\n");
-            return $r;
-        }
 
         //
         //  if specified, generate corresponding testcase,
@@ -92,15 +87,8 @@ class AddAction extends Base
             $testskel = (isset($opt_list['unittestskel']))
                       ? end($opt_list['unittestskel'])
                       : null;
-            $r = Base::generate("{$target}Test", $basedir, $target_name, $testskel, $gateway);
-            if (Ethna::isError($r)) {
-                printf("error occurred while generating action test skelton. please see also following error message(s)\n\n");
-                return $r;
-            }
+            Base::generate("{$target}Test", $basedir, $target_name, $testskel, $gateway);
         }
-
-        $true = true;
-        return $true;
     }
 
     /**

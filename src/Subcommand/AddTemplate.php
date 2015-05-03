@@ -26,9 +26,6 @@ class AddTemplate extends AddView
                         'encoding=',
                   )
               );
-        if (Ethna::isError($r)) {
-            return $r;
-        }
         list($opt_list, $arg_list) = $r;
 
         // template
@@ -42,8 +39,7 @@ class AddTemplate extends AddView
         }
 
         // add template
-        $ret = $this->_performTemplate($template, $opt_list);
-        return $ret;
+        $this->_performTemplate($template, $opt_list);
     }
 
     /**

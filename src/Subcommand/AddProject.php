@@ -69,7 +69,6 @@ class AddProject extends Base
 
         Base::generate('Project', null, $app_id, $basedir, $skeldir, $locale, $encoding);
         printf("\nproject skelton for [%s] is successfully generated at [%s]\n\n", $app_id, $basedir);
-        return true;
     }
 
     /**

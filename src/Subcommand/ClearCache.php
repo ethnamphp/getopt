@@ -26,9 +26,6 @@ class ClearCache extends Base
     {
         $r = $this->_getopt(array('basedir=',
                                    'any-tmp-files', 'smarty', 'pear', 'cachemanager'));
-        if (Ethna::isError($r)) {
-            return $r;
-        }
         list($args, ) = $r;
 
         $basedir = isset($args['basedir']) ? realpath(end($args['basedir'])) : getcwd();

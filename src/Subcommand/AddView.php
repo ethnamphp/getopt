@@ -37,9 +37,6 @@ class AddView extends AddAction
                         'encoding=',
                   )
               );
-        if (Ethna::isError($r)) {
-            return $r;
-        }
         list($opt_list, $arg_list) = $r;
 
         // view_name
@@ -54,19 +51,12 @@ class AddView extends AddAction
 
         // add view(invoke parent class method)
         $ret = $this->_perform('View', $view_name, $opt_list);
-        if (Ethna::isError($ret) || $ret === false) {
-            return $ret;
-        }
 
         // add template
         if (isset($opt_list['template'])) {
             $ret = $this->_performTemplate($view_name, $opt_list);
-            if (Ethna::isError($ret) || $ret === false) {
-                return $ret;
-            }
         }
 
-        return true;
     }
 
     /**
@@ -107,15 +97,8 @@ class AddView extends AddAction
             }
         }
 
-        $r = Base::generate('Template', $basedir,
+        Base::generate('Template', $basedir,
                                         $target_name, $skelfile, $locale);
-        if (Ethna::isError($r)) {
-            printf("error occurred while generating skelton. please see also following error message(s)\n\n");
-            return $r;
-        }
-
-        $true = true;
-        return $true;
     }
 
     /**
