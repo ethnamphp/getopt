@@ -210,7 +210,7 @@ class Ethna_Plugin_Generator_Project extends Ethna_Plugin_Generator_Base
                 $skel = "$skeldir/$skel";
             }
             if ($this->_generateFile($skel, $realfile, $macro) == false) {
-                return Ethna::raiseError("generating files failed");
+                return Ethna::raiseError("generating file failed:[$skel] => [$realfile]");
             }
         }
         return true;
