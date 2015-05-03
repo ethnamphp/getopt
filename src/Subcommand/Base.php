@@ -189,7 +189,7 @@ abstract class Base
         } else {
             $ctl = Ethna_Command::getAppController($app_dir);
         }
-        if (Ethna::isError($ctl)) {
+        if (\Ethna::isError($ctl)) {
             throw new \Exception($ctl->getMessage());
         }
 
