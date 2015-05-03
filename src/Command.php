@@ -33,10 +33,6 @@ EOD;
         // fetch arguments
         $opt = new Getopt();
         $arg_list = $opt->readPHPArgv();
-        if (Ethna::isError($arg_list)) {
-            echo $arg_list->getMessage()."\n";
-            exit(2);
-        }
         array_shift($arg_list);  // remove "command.php"
 
         //  はじめの引数に - が含まれていればそれを分離する
