@@ -15,6 +15,31 @@ namespace Ethnam\Generator\Subcommand;
 class AddProject extends Base
 {
     /**
+     *  アプリケーションIDをチェックする
+     *
+     *  @param  string  $id     アプリケーションID
+     */
+    public static function checkAppId($id)
+    {
+        if (strcasecmp($id, 'ethna') === 0
+            || strcasecmp($id, 'app') === 0) {
+            throw new \InvalidArgumentException("Application Id [$id] is reserved\n");
+        }
+
+        //    アプリケーションIDはクラス名のprefixともなるため、
+        //    数字で始まっていてはいけない
+        //    @see http://www.php.net/manual/en/language.variables.php
+        if (preg_match('/^[a-zA-Z][a-zA-Z0-9]*$/', $id) === 0) {
+            $msg = (preg_match('/^[0-9]$/', $id[0]))
+                 ? "Application ID must NOT start with Number.\n"
+                 : "Only Numeric(0-9) and Alphabetical(A-Z) is allowed for Application Id\n";
+            throw new \InvalidArgumentException($msg);
+        }
+
+    }
+
+
+    /**
      *  add project:)
      *
      *  @access public
@@ -29,10 +54,8 @@ class AddProject extends Base
         if ($app_id == null) {
             throw new \InvalidArgumentException('Application id isn\'t set.');
         }
-        $r = Ethna_Controller::checkAppId($app_id);
-        if (Ethna::isError($r)) {
-            return $r;
-        }
+
+        self::checkAppId($app_id);
 
         // basedir
         if (isset($opt_list['basedir'])) {
