@@ -41,7 +41,7 @@ class AddAction extends Base
         // action_name
         $action_name = array_shift($arg_list);
         if ($action_name == null) {
-            return Ethna::raiseError('action name isn\'t set.', 'usage');
+            throw new \Exception('action name isn\'t set.');
         }
         $r = Ethna_Controller::checkActionName($action_name);
         if (Ethna::isError($r)) {
