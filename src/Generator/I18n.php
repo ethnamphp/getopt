@@ -103,8 +103,6 @@ class I18n extends Base
             return $r;
         }
 
-        $true = true;
-        return $true;
     }
 
     /**
@@ -538,7 +536,5 @@ class I18n extends Base
         }
         fclose($wfp);
         printf("Message catalog template successfully created [%s]\n", $outfile_path);
-
-        return true;
     }
 }
