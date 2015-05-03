@@ -46,7 +46,7 @@ abstract class Ethna_Plugin_Subcommand_Base
      *
      *  @access public
      */
-    public function __construct($controller, $type, $name)
+    public function __construct($controller, $void, $name)
     {
         $this->controller = $controller;
         $this->ctl = $this->controller;
