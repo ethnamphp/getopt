@@ -6,6 +6,8 @@
  */
 namespace Ethnam\Generator\Generator;
 
+use Ethna_Util;
+
 /**
  *  スケルトン生成クラス
  *
@@ -21,7 +23,6 @@ class Action extends Base
      *  @param  string  $action_name    アクション名
      *  @param  string  $skelton        スケルトンファイル名
      *  @param  int     $gateway        ゲートウェイ
-     *  @return true|Ethna_Error        true:成功 Ethna_Error:失敗
      */
     public function generate($action_name, $skelton = null, $gateway = GATEWAY_WWW)
     {
@@ -44,8 +45,7 @@ class Action extends Base
                 $skelton = "skel.action_cli.php";
                 break;
             default:
-                $err = Ethna::raiseError('unknown gateway.');
-                return $err;
+                throw new \Exception('unknown gateway.');
             }
         }
 
@@ -71,8 +71,6 @@ class Action extends Base
             printf("action script(s) successfully created [%s]\n", $entity);
         }
 
-        $true = true;
-        return $true;
     }
 }
 // }}}
