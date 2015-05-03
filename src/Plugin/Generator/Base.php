@@ -54,9 +54,9 @@ class Ethna_Plugin_Generator_Base
         }
         printf("skelton file [%s] not found.\n", $file);
 
-        // Ethna本体の skel ディレクトリ
-        $base = dirname(dirname(dirname(__FILE__)));
-        $file = "$base/skel/$skel";
+        // ethnam-generator本体の skel ディレクトリ
+        $skelDir = \Ethnam\Generator\Command::getSkelDir();
+        $file = "$skelDir/$skel";
         if (file_exists($file)) {
             return $file;
         }

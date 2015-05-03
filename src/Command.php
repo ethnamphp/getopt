@@ -234,5 +234,10 @@ EOD;
         return array($my_arg_list, $arg_list);
 
     }
+
+    public static function getSkelDir()
+    {
+        return dirname(__DIR__) . '/skel';
+    }
 }
 // }}}
