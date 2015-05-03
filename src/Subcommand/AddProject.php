@@ -89,18 +89,7 @@ class AddProject extends Base
             $locale = 'ja_JP';  //  default locale.
         }
 
-        // encoding
-        if (isset($opt_list['encoding'])) {
-            $encoding = end($opt_list['encoding']);
-            if (function_exists('mb_list_encodings')) {
-                $supported_enc = mb_list_encodings();
-                if (!in_array($encoding, $supported_enc)) {
-                    throw new \InvalidArgumentException("Unknown Encoding : $encoding");
-                }
-            }
-        } else {
-            $encoding = 'UTF-8';  //  default encoding.
-        }
+        $encoding = 'UTF-8';
 
         Base::generate('Project', null, $app_id, $basedir, $skeldir, $locale, $encoding);
         printf("\nproject skelton for [%s] is successfully generated at [%s]\n\n", $app_id, $basedir);
