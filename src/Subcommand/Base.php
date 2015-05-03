@@ -190,7 +190,7 @@ abstract class Base
             $ctl = Ethna_Command::getAppController($app_dir);
         }
         if (Ethna::isError($ctl)) {
-            return $ctl;
+            throw new \Exception($ctl->getMessage());
         }
 
         $className = '' . $name;
