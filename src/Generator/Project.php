@@ -50,7 +50,6 @@ class Project extends Base
      *                              も追加してコピーする 
      *  @param  string  $locale     ロケール名
      *                              (ロケール名は、ll_cc の形式。ll = 言語コード cc = 国コード)
-     *  @return bool    true:成功   Ethna_Error:失敗
      */
     public function generate($id, $basedir, $skeldir, $locale)
     {
