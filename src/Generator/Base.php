@@ -142,4 +142,3 @@ class Base
         return $user_macro;
     }
 }
-// }}}

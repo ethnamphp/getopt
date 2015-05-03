@@ -46,7 +46,5 @@ class Ethna_Plugin_Smarty_function_select_Test extends Ethna_UnitTestBase
         $actual = ob_get_clean();
         $this->assertEqual($expected, $actual); 
     }
-    // }}}
 }
-// }}}
 

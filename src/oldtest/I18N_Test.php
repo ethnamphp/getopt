@@ -33,7 +33,6 @@ class Ethna_I18N_Test extends Ethna_UnitTestBase
         $this->assertEqual($this->i18n->get('foo'), 'foo');
         $this->assertEqual($this->i18n->get('www.example.com'), 'www.example.com');
     }
-    // }}}
 
     function test_get_fallback_locale()
     {
@@ -70,7 +69,6 @@ class Ethna_I18N_Test extends Ethna_UnitTestBase
         //  他のテストもあるので元に戻しておく
         $this->i18n->setLanguage('ja_JP', 'UTF-8', 'UTF-8');
     }
-    // }}} 
 
     function test_parseEthnaMsgCatalog()
     {
@@ -143,5 +141,4 @@ class Ethna_I18N_Test extends Ethna_UnitTestBase
         }
     }
 }
-// }}}
 

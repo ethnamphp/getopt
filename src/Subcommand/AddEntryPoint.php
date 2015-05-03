@@ -61,4 +61,3 @@ ethna {$this->id} [-b|--basedir=dir] [-s|--skelfile=file] [-g|--gateway=www|cli]
 EOS;
     }
 }
-// }}}

@@ -83,7 +83,6 @@ clear project's cache files:
 
 EOS;
     }
-    // }}}
 
     /**
      *  @access public
@@ -94,6 +93,4 @@ EOS;
 ethna {$this->id} [-b|--basedir=dir] [-a|--any-tmp-files] [-s|--smarty] [-p|--pear] [-c|--cachemanager]
 EOS;
     }
-    // }}}
 }
-// }}}

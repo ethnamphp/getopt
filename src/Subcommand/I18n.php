@@ -77,4 +77,3 @@ ethna {$this->id} [-b|--basedir=dir] [-l|--locale=locale] [-g|--gettext] [extdir
 EOS;
     }
 }
-// }}}

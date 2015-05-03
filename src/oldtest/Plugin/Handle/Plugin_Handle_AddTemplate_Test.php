@@ -85,5 +85,4 @@ class Ethna_Subcommand_AddTemplate_Test extends Ethna_UnitTestBase
         $this->assertFalse(Ethna::isError($r));
     }
 }
-// }}}
 

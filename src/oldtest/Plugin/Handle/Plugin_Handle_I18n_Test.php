@@ -171,5 +171,4 @@ class Ethna_Subcommand_I18n_Test extends Ethna_UnitTestBase
 
 
 }
-// }}}
 

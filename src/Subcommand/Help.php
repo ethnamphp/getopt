@@ -68,4 +68,3 @@ ethna {$this->id} [command_name]
 EOS;
     }
 }
-// }}}

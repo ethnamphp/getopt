@@ -77,4 +77,3 @@ class ActionTest extends Base
         return $true;
     }
 }
-// }}}

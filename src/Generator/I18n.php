@@ -542,4 +542,3 @@ class I18n extends Base
         return true;
     }
 }
-// }}}

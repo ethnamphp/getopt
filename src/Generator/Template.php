@@ -64,4 +64,3 @@ class Template extends Base
         return $true;
     }
 }
-// }}}

@@ -74,4 +74,3 @@ class ViewTest extends Base
         return $true;
     }
 }
-// }}}

@@ -133,4 +133,3 @@ ethna {$this->id} [options... ] [view name]
 EOS;
     }
 }
-// }}}

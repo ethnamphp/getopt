@@ -83,7 +83,6 @@ EOD;
         $obj = new $class($ctl, null, $name);
         return $obj;
     }
-    // }}}
 
 
     /**
@@ -93,7 +92,6 @@ EOD;
     {
         return strcmp($a->getId(), $b->getId());
     }
-    // }}}
 
     /**
      *  Ethna_Controllerのインスタンスを取得する
@@ -106,7 +104,6 @@ EOD;
     {
         return Ethna_Controller::getInstance();
     }
-    // }}}
 
     /**
      *  アプリケーションのコントローラファイル/クラスを検索する
@@ -165,7 +162,6 @@ EOD;
 
         return $app_controller[$app_dir];
     }
-    // }}}
 
     /**
      *  Ethna 本体の設定を取得する (ethnaコマンド用)
@@ -194,7 +190,6 @@ EOD;
             return $array;
         }
     }
-    // }}}
 
     public function separateArgList($arg_list)
     {
@@ -221,4 +216,3 @@ EOD;
         return dirname(__DIR__) . '/skel';
     }
 }
-// }}}

@@ -28,19 +28,16 @@ class Ethna_Error_Test extends Ethna_UnitTestBase
     {
         $this->assertEqual(E_GENERAL, $this->error->getCode());
     }
-    //}}}
 
     function test_getlevel()
     {
         $this->assertEqual(E_USER_ERROR, $this->error->getLevel());
     }
-    //}}}
 
     function test_getmessage()
     {
         $this->assertEqual('general error', $this->error->getMessage());
     }
-    //}}}
 
     function test_userinfo()
     {
@@ -53,7 +50,5 @@ class Ethna_Error_Test extends Ethna_UnitTestBase
         $this->assertEqual('foobarbaz', $info[0]);
         $this->assertEqual('hoge', $info[1]);
     }
-    //}}}
 }
-// }}}
 

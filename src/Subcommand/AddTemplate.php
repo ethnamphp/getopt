@@ -63,4 +63,3 @@ ethna {$this->id} [-b|--basedir=dir] [-s|--skelfile=file] [-l|--locale=locale] [
 EOS;
     }
 }
-// }}}

@@ -47,4 +47,3 @@ ethna {$this->id} [-b|--basedir=dir] [app-manager name]
 EOS;
     }
 }
-// }}}

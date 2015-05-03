@@ -48,4 +48,3 @@ class AppManager extends Base
         }
     }
 }
-// }}}

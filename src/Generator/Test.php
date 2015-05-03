@@ -68,4 +68,3 @@ class Test extends Base
         return $true;
     }
 }
-// }}}

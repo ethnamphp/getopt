@@ -97,4 +97,3 @@ ethna {$this->id} [-b|--basedir=dir] [-s|--skeldir] [-l|--locale] [-e|--encoding
 EOS;
     }
 }
-// }}}

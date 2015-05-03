@@ -64,4 +64,3 @@ class View extends Base
         return $true;
     }
 }
-// }}}

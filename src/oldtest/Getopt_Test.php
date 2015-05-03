@@ -33,7 +33,6 @@ class Ethna_Getopt_Test extends Ethna_UnitTestBase
         $this->assertEqual('--c=d', $argv[3]);
         $this->assertEqual('e', $argv[4]);
     }
-    // }}}
 
     function test_shortopt_required()
     {
@@ -226,7 +225,6 @@ class Ethna_Getopt_Test extends Ethna_UnitTestBase
         $this->assertTrue(Ethna::isError($r));
         $this->assertEqual("unrecognized option -d", $r->getMessage());
     }
-    // }}}
 
     function test_longopt_required()
     {
@@ -388,7 +386,6 @@ class Ethna_Getopt_Test extends Ethna_UnitTestBase
         $this->assertEqual('hoge', $nonparsed_arg[0]);
         $this->assertEqual('bar', $nonparsed_arg[1]);
     }
-    // }}}
 
     function test_mixed_option()
     {
@@ -417,6 +414,5 @@ class Ethna_Getopt_Test extends Ethna_UnitTestBase
         $this->assertEqual('hoge', $nonparsed_arg[0]);
         $this->assertEqual('--hoge', $nonparsed_arg[1]);
     }
-    // }}}
 }
 
