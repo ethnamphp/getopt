@@ -25,7 +25,7 @@ class Ethna_Subcommand_AddAppManager extends Ethna_Subcommand_Base
      */
     function perform()
     {
-        return $this->_perform('AppManager');
+        throw new \Exception('not implimented yet');
     }
 
     /**
