@@ -28,12 +28,6 @@ Copyright (c) 2004-%s, @DQNEO and Ethna commiters
 
 EOD;
 
-    /** @protected    object  Ethna_Controller    controllerオブジェクト */
-    protected $controller;
-
-    /** @protected    object  Ethna_Pluguin       pluginオブジェクト */
-    protected $plugin;
-
     /**#@-*/
 
     // {{{ constructor
@@ -44,10 +38,7 @@ EOD;
      */
     public function __construct()
     {
-        $this->controller = new Ethna_Controller(GATEWAY_CLI);
         Ethna::clearErrorCallback();
-
-        $this->plugin = $this->controller->getPlugin();
     }
     // }}}
 
@@ -125,7 +116,9 @@ EOD;
                 return strtoupper($matches[1]);
                     }, ucfirst($subCommand));
 
-        return $this->plugin->getPlugin('Subcommand', $name);
+        $ctl = new Ethna_Controller(GATEWAY_CLI);
+        $pluginManager = $ctl->getPlugin();
+        return $pluginManager->getPlugin('Subcommand', $name);
     }
     // }}}
 
