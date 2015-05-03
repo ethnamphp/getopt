@@ -50,9 +50,8 @@ class AddAction extends Base
     }
 
     /**
-     *  @access protected
      */
-    public function &_perform($target, $target_name, $opt_list)
+    private function _perform($target, $target_name, $opt_list)
     {
         // basedir
         if (isset($opt_list['basedir'])) {
@@ -67,7 +66,7 @@ class AddAction extends Base
         } else {
             $skelfile = null;
         }
-        
+
         // gateway
         if (isset($opt_list['gateway'])) {
             $gateway = 'GATEWAY_' . strtoupper(end($opt_list['gateway']));
@@ -79,7 +78,7 @@ class AddAction extends Base
         } else {
             $gateway = GATEWAY_WWW;
         }
-        
+
         //  possible target is Action, View.
         $r = Base::generate($target, $basedir,
                                         $target_name, $skelfile, $gateway);
