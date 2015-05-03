@@ -18,11 +18,15 @@ use \Ethna;
 
 class Command
 {
-    private $version = <<<EOD
-Ethnam %s (using PHP %s)
-Copyright (c) 2004-%s, @DQNEO and Ethna commiters
+    private function showVersion()
+    {
+        $msg = <<<EOD
+Ethnam v0.0.1 (using PHP %s)
+Copyright (c) 2004-%s, @DQNEO and Ethna/Ethnam commiters
 
 EOD;
+        printf($msg, PHP_VERSION, date('Y'));
+    }
 
     /**
      * コマンドを実行する
@@ -41,7 +45,7 @@ EOD;
         $r = $opt->getopt($my_arg_list, "v", array("version"));
         foreach ($r[0] as $opt) {
             if ($opt[0] == "v" || $opt[0] == "--version") {
-                printf($this->version, ETHNA_VERSION, PHP_VERSION, date('Y'));
+                $this->showVersion();
                 exit(2);
             }
         }
