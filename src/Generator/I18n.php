@@ -9,7 +9,7 @@
  *  @version    $Id$
  */
 
-// {{{ Ethna_Plugin_Generator_I18n
+// {{{ Ethna_Generator_I18n
 /**
  *  i18n 向け、メッセージカタログ生成クラスのスーパークラス
  *
@@ -17,7 +17,7 @@
  *  @access     public
  *  @package    Ethna
  */
-class Ethna_Plugin_Generator_I18n extends Ethna_Plugin_Generator_Base
+class Ethna_Generator_I18n extends Ethna_Generator_Base
 {
     /**#@+
      *  @access protected

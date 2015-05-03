@@ -8,7 +8,7 @@
  *  @package    Ethna
  */
 
-// {{{ Ethna_Plugin_Subcommand_AddTemplate
+// {{{ Ethna_Subcommand_AddTemplate
 /**
  *  add-template handler
  *
@@ -16,7 +16,7 @@
  *  @access     public
  *  @package    Ethna
  */
-class Ethna_Plugin_Subcommand_AddTemplate extends Ethna_Plugin_Subcommand_AddView
+class Ethna_Subcommand_AddTemplate extends Ethna_Subcommand_AddView
 {
     /**
      *  add template 

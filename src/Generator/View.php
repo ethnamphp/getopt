@@ -1,7 +1,7 @@
 <?php
 // vim: foldmethod=marker
 /**
- *  ViewTest.php
+ *  View.php
  *
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  *  @license    http://www.opensource.org/licenses/bsd-license.php The BSD License
@@ -9,7 +9,7 @@
  *  @version    $Id$
  */
 
-// {{{ Ethna_Plugin_Generator_ViewTest
+// {{{ Ethna_Generator_View
 /**
  *  スケルトン生成クラス
  *
@@ -17,10 +17,10 @@
  *  @access     public
  *  @package    Ethna
  */
-class Ethna_Plugin_Generator_ViewTest extends Ethna_Plugin_Generator_Base
+class Ethna_Generator_View extends Ethna_Generator_Base
 {
     /**
-     *  ビュー用テストのスケルトンを生成する
+     *  ビューのスケルトンを生成する
      *
      *  @access public
      *  @param  string  $forward_name   ビュー名
@@ -31,7 +31,7 @@ class Ethna_Plugin_Generator_ViewTest extends Ethna_Plugin_Generator_Base
     {
         $view_dir = $this->ctl->getViewdir();
         $view_class = $this->ctl->getDefaultViewClass($forward_name, $gateway);
-        $view_path = $this->ctl->getDefaultViewPath($forward_name . 'Test');
+        $view_path = $this->ctl->getDefaultViewPath($forward_name);
 
         // entity
         $entity = $view_dir . $view_path;
@@ -39,7 +39,7 @@ class Ethna_Plugin_Generator_ViewTest extends Ethna_Plugin_Generator_Base
 
         // skelton
         if ($skelton === null) {
-            $skelton = 'skel.view_test.php';
+            $skelton = 'skel.view.php';
         }
 
         // macro
@@ -48,16 +48,6 @@ class Ethna_Plugin_Generator_ViewTest extends Ethna_Plugin_Generator_Base
         $macro['forward_name'] = $forward_name;
         $macro['view_class'] = $view_class;
         $macro['view_path'] = $view_path;
-
-        // original view script existence check.
-        $original_view_path = $this->ctl->getDefaultViewPath($forward_name);
-        $original_view_entity = $view_dir . $original_view_path;
-        if (!file_exists($original_view_entity)) {
-            printf("\n");
-            printf("[!!!!warning!!!!] original view script was not found.\n");
-            printf("[!!!!warning!!!!] You must generate it by the following command :\n");
-            printf("[!!!!warning!!!!] ethna add-view %s\n\n", $forward_name);
-        } 
 
         // user macro
         $user_macro = $this->_getUserMacro();
@@ -70,7 +60,7 @@ class Ethna_Plugin_Generator_ViewTest extends Ethna_Plugin_Generator_Base
         } else if ($this->_generateFile($skelton, $entity, $macro) == false) {
             printf("[warning] file creation failed [%s]\n", $entity);
         } else {
-            printf("view test(s) successfully created [%s]\n", $entity);
+            printf("view script(s) successfully created [%s]\n", $entity);
         }
 
         $true = true;

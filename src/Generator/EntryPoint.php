@@ -9,7 +9,7 @@
  *  @version    $Id$
  */
 
-// {{{ Ethna_Plugin_Generator_EntryPoint
+// {{{ Ethna_Generator_EntryPoint
 /**
  *  スケルトン生成クラス
  *
@@ -17,7 +17,7 @@
  *  @access     public
  *  @package    Ethna
  */
-class Ethna_Plugin_Generator_EntryPoint extends Ethna_Plugin_Generator_Base
+class Ethna_Generator_EntryPoint extends Ethna_Generator_Base
 {
     /**
      *  エントリポイントのスケルトンを生成する

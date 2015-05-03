@@ -1,7 +1,7 @@
 <?php
 // vim: foldmethod=marker
 /**
- *  Action.php
+ *  ActionTest.php
  *
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  *  @license    http://www.opensource.org/licenses/bsd-license.php The BSD License
@@ -9,7 +9,7 @@
  *  @version    $Id$
  */
 
-// {{{ Ethna_Plugin_Generator_Action
+// {{{ Ethna_Generator_ActionTest
 /**
  *  スケルトン生成クラス
  *
@@ -17,10 +17,11 @@
  *  @access     public
  *  @package    Ethna
  */
-class Ethna_Plugin_Generator_Action extends Ethna_Plugin_Generator_Base
+class Ethna_Generator_ActionTest extends Ethna_Generator_Base
 {
     /**
-     *  アクションのスケルトンを生成する
+     *  アクション用テストのスケルトンを生成する
+     *  (現在のところ GATEWAY_WWW のみ対応)
      *
      *  @access public
      *  @param  string  $action_name    アクション名
@@ -33,7 +34,7 @@ class Ethna_Plugin_Generator_Action extends Ethna_Plugin_Generator_Base
         $action_dir = $this->ctl->getActiondir($gateway);
         $action_class = $this->ctl->getDefaultActionClass($action_name, $gateway);
         $action_form = $this->ctl->getDefaultFormClass($action_name, $gateway);
-        $action_path = $this->ctl->getDefaultActionPath($action_name);
+        $action_path = $this->ctl->getDefaultActionPath($action_name . 'Test');
 
         // entity
         $entity = $action_dir . $action_path;
@@ -41,17 +42,7 @@ class Ethna_Plugin_Generator_Action extends Ethna_Plugin_Generator_Base
 
         // skelton
         if ($skelton === null) {
-            switch ($gateway) {
-            case GATEWAY_WWW:
-                $skelton = "skel.action.php";
-                break;
-            case GATEWAY_CLI:
-                $skelton = "skel.action_cli.php";
-                break;
-            default:
-                $err = Ethna::raiseError('unknown gateway.');
-                return $err;
-            }
+            $skelton = 'skel.action_test.php';
         }
 
         // macro
@@ -66,6 +57,15 @@ class Ethna_Plugin_Generator_Action extends Ethna_Plugin_Generator_Base
         $user_macro = $this->_getUserMacro();
         $macro = array_merge($macro, $user_macro);
 
+        // original action script existence check.
+        $original_action_path = $this->ctl->getDefaultActionPath($action_name);
+        $original_action_entity = $action_dir . $original_action_path;
+        if (!file_exists($original_action_entity)) {
+            printf("\n");
+            printf("[!!!!warning!!!!] original action script was not found.\n");
+            printf("[!!!!warning!!!!] You must generate it by the following command :\n");
+            printf("[!!!!warning!!!!] ethna add-action %s\n\n", $action_name);
+        } 
 
         // generate
         if (file_exists($entity)) {
@@ -73,7 +73,7 @@ class Ethna_Plugin_Generator_Action extends Ethna_Plugin_Generator_Base
         } else if ($this->_generateFile($skelton, $entity, $macro) == false) {
             printf("[warning] file creation failed [%s]\n", $entity);
         } else {
-            printf("action script(s) successfully created [%s]\n", $entity);
+            printf("action test(s) successfully created [%s]\n", $entity);
         }
 
         $true = true;

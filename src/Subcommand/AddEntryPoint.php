@@ -9,7 +9,7 @@
  *  @version    $Id$
  */
 
-// {{{ Ethna_Plugin_Subcommand_AddEntryPoint
+// {{{ Ethna_Subcommand_AddEntryPoint
 /**
  *  add-action handler
  *
@@ -17,7 +17,7 @@
  *  @access     public
  *  @package    Ethna
  */
-class Ethna_Plugin_Subcommand_AddEntryPoint extends Ethna_Plugin_Subcommand_AddAction
+class Ethna_Subcommand_AddEntryPoint extends Ethna_Subcommand_AddAction
 {
     /**
      *  add action entry point

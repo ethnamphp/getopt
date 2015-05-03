@@ -10,7 +10,7 @@
  */
 use Ethnam\Generator\Command as Ethna_Command;
 
-// {{{ Ethna_Plugin_Subcommand_AddView
+// {{{ Ethna_Subcommand_AddView
 /**
  *  add-view handler
  *
@@ -18,7 +18,7 @@ use Ethnam\Generator\Command as Ethna_Command;
  *  @access     public
  *  @package    Ethna
  */
-class Ethna_Plugin_Subcommand_AddView extends Ethna_Plugin_Subcommand_AddAction
+class Ethna_Subcommand_AddView extends Ethna_Subcommand_AddAction
 {
     /**
      *  add view
@@ -113,7 +113,7 @@ class Ethna_Plugin_Subcommand_AddView extends Ethna_Plugin_Subcommand_AddAction
             }
         }
 
-        $r = Ethna_Plugin_Subcommand_Base::generate('Template', $basedir,
+        $r = Ethna_Subcommand_Base::generate('Template', $basedir,
                                         $target_name, $skelfile, $locale);
         if (Ethna::isError($r)) {
             printf("error occurred while generating skelton. please see also following error message(s)\n\n");

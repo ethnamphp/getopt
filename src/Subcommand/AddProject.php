@@ -9,7 +9,7 @@
  *  @version    $Id$
  */
 
-// {{{ Ethna_Plugin_Subcommand_AddProject
+// {{{ Ethna_Subcommand_AddProject
 /**
  *  add-project handler
  *
@@ -17,7 +17,7 @@
  *  @access     public
  *  @package    Ethna
  */
-class Ethna_Plugin_Subcommand_AddProject extends Ethna_Plugin_Subcommand_Base
+class Ethna_Subcommand_AddProject extends Ethna_Subcommand_Base
 {
     /**
      *  add project:)
@@ -87,7 +87,7 @@ class Ethna_Plugin_Subcommand_AddProject extends Ethna_Plugin_Subcommand_Base
             $encoding = 'UTF-8';  //  default encoding. 
         }
 
-        $r = Ethna_Plugin_Subcommand_Base::generate('Project', null, $app_id, $basedir, $skeldir, $locale, $encoding);
+        $r = Ethna_Subcommand_Base::generate('Project', null, $app_id, $basedir, $skeldir, $locale, $encoding);
         if (Ethna::isError($r)) {
             printf("error occurred while generating skelton. please see also error messages given above\n\n");
             return $r;
