@@ -207,7 +207,7 @@ abstract class Ethna_Plugin_Subcommand_Base
             return $plugin_manager;
         }
 
-        var_dump($plugin_manager->obj_registry);
+        print_r(array_keys($plugin_manager->obj_registry));
 
         $generator = $plugin_manager->getPlugin('Generator', $type);
         if (Ethna::isError($generator)) {
