@@ -68,10 +68,7 @@ EOD;
         $subCommandObj->setArgList($arg_list);
         $r = $subCommandObj->perform();
         if (Ethna::isError($r)) {
-            printf("error occured w/ command [%s]\n  -> %s\n\n", $subCommand, $r->getMessage());
-            if ($r->getCode() == 'usage') {
-                $subCommandObj->usage();
-            }
+            echo $r->getMessage();
             exit(1);
         }
 
