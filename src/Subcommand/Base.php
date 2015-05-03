@@ -224,7 +224,7 @@ abstract class Base
             return $ctl;
         }
 
-        $className = '' . $name;
+        $className = '\\Ethnam\\Generator\\Generator\\' . $name;
         $generator = new $className($ctl);
 
         // 引数はプラグイン依存とする
