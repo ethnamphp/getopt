@@ -27,7 +27,7 @@ class AddProject extends Base
         // app_id
         $app_id = array_shift($arg_list);
         if ($app_id == null) {
-            return Ethna::raiseError('Application id isn\'t set.', 'usage');
+            throw new \InvalidArgumentException('Application id isn\'t set.');
         }
         $r = Ethna_Controller::checkAppId($app_id);
         if (Ethna::isError($r)) {
