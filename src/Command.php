@@ -7,6 +7,8 @@
  *  @version    $Id$
  */
 
+namespace Ethnam\Generator;
+
 /**
  *  Ethna Command
  *
@@ -14,7 +16,6 @@
  *  @access     public
  *  @package    Ethna
  */
-namespace Ethnam\Generator;
 use \Ethna_Controller;
 use \Ethna_Util;
 use \Ethna;

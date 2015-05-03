@@ -1,6 +1,4 @@
 <?php
-namespace Ethnam\Generator;
-
 // vim: foldmethod=marker
 /**
  *  Getopt.php
@@ -10,6 +8,8 @@ namespace Ethnam\Generator;
  *  @package    Ethna
  *  @version    $Id$
  */
+
+namespace Ethnam\Generator;
 
 define('ETHNA_OPTVALUE_IS_DISABLED', 1);
 define('ETHNA_OPTVALUE_IS_REQUIRED', 2);
