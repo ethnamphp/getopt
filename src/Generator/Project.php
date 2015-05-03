@@ -194,17 +194,10 @@ class Project extends Base
             }
         }
 
-        $real_r = $this->_generate($realfile_maps, $macro, $skeldir);
-        if (Ethna::isError($real_r)) {
-            return $real_r;
-        }
+        $this->_generate($realfile_maps, $macro, $skeldir);
 
-        $skel_r = $this->_generate($skelfile_maps, $default_macro, $skeldir);
-        if (Ethna::isError($skel_r)) {
-            return $skel_r;
-        }
+        $this->_generate($skelfile_maps, $default_macro, $skeldir);
 
-        return true;
     }
 
     /**
