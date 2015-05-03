@@ -6,6 +6,9 @@
  */
 namespace Ethnam\Generator\Generator;
 
+use Ethna_Util;
+use Ethna;
+
 /**
  *  i18n 向け、メッセージカタログ生成クラスのスーパークラス
  *

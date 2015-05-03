@@ -81,7 +81,7 @@ class EntryPoint extends Base
             // is needed?
             //$ret = Ethna_Util::chmod($entity, 0777);
         }
-            
+
 
         return $true;
     }

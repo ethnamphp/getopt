@@ -6,6 +6,8 @@
  */
 namespace Ethnam\Generator\Generator;
 
+use Ethna_Util;
+
 /**
  *  スケルトン生成クラス
  *
