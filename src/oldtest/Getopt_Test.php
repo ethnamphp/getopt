@@ -1,5 +1,4 @@
 <?php
-// vim: foldmethod=marker
 /**
  *  Getopt_Test.php
  *

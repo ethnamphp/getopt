@@ -1,5 +1,4 @@
 <?php
-// vim: foldmethod=marker
 /**
  *  Plugin_Smarty_function_select_Test.php
  *

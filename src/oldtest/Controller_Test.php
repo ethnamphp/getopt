@@ -1,5 +1,4 @@
 <?php
-// vim: foldmethod=marker
 /**
  *  Controller_Test.php
  *
