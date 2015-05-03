@@ -181,7 +181,7 @@ abstract class Ethna_Plugin_Subcommand_Base
      *  スケルトンを生成する
      *
      *  @access public
-     *  @param  string  $type       生成する対象
+     *  @param  string  $name       Generatorプラグインの名前
      *  @param  string  $app_dir    アプリケーションのディレクトリ
      *                              (nullのときはアプリケーションを特定しない)
      *  @param  mixed   residue     プラグインのgenerate()にそのまま渡す
@@ -190,7 +190,7 @@ abstract class Ethna_Plugin_Subcommand_Base
     public static function generate()
     {
         $arg_list   = func_get_args();
-        $type       = array_shift($arg_list);
+        $name       = array_shift($arg_list);
         $app_dir    = array_shift($arg_list);
 
         if ($app_dir === null) {
@@ -209,7 +209,7 @@ abstract class Ethna_Plugin_Subcommand_Base
 
         print_r(array_keys($plugin_manager->obj_registry));
 
-        $generator = $plugin_manager->getPlugin('Generator', $type);
+        $generator = $plugin_manager->getPlugin('Generator', $name);
         if (Ethna::isError($generator)) {
             return $generator;
         }
