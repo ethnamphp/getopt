@@ -18,14 +18,16 @@ use \Ethna;
 
 class Command
 {
+    const VERSION = "v0.0.9";
+
     private function showVersion()
     {
         $msg = <<<EOD
-Ethnam v0.0.1 (using PHP %s)
+ethnam-generator %s (using PHP %s)
 Copyright (c) 2004-%s, @DQNEO and Ethna/Ethnam commiters
 
 EOD;
-        printf($msg, PHP_VERSION, date('Y'));
+        printf($msg, self::VERSION , PHP_VERSION, date('Y'));
     }
 
     /**
