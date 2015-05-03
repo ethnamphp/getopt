@@ -12,7 +12,7 @@ namespace Ethnam\Generator\Generator;
  *  @author     ICHII Takashi <ichii386@schweetheart.jp>
  *  @access     public
  */
-class Ethna_Generator_EntryPoint extends Ethna_Generator_Base
+class EntryPoint extends Base
 {
     /**
      *  エントリポイントのスケルトンを生成する

@@ -12,7 +12,7 @@ namespace Ethnam\Generator\Generator;
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  *  @access     public
  */
-class Ethna_Generator_Project extends Ethna_Generator_Base
+class Project extends Base
 {
     /**
      *  プロジェクトスケルトンを生成する

@@ -12,7 +12,7 @@ namespace Ethnam\Generator\Generator;
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  *  @access     public
  */
-class Ethna_Generator_ActionTest extends Ethna_Generator_Base
+class ActionTest extends Base
 {
     /**
      *  アクション用テストのスケルトンを生成する

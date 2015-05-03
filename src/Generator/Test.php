@@ -1,6 +1,6 @@
 <?php
 /**
- * Ethna_Generator_Test.php
+ * Test.php
  * 
  * @author BoBpp <bobpp@users.sourceforge.jp>
  */
@@ -11,7 +11,7 @@ namespace Ethnam\Generator\Generator;
  * 
  * @author BoBpp <bobpp@users.sourceforge.jp>
  */
-class Ethna_Generator_Test extends Ethna_Generator_Base
+class Test extends Base
 {
     /**
      * ファイル生成を行う

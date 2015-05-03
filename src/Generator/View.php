@@ -12,7 +12,7 @@ namespace Ethnam\Generator\Generator;
  *  @author     Masaki Fujimoto <fujimoto@php.net>
  *  @access     public
  */
-class Ethna_Generator_View extends Ethna_Generator_Base
+class View extends Base
 {
     /**
      *  ビューのスケルトンを生成する

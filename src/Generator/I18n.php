@@ -12,7 +12,7 @@ namespace Ethnam\Generator\Generator;
  *  @author     Yoshinari Takaoka <takaoka@beatcraft.com>
  *  @access     public
  */
-class Ethna_Generator_I18n extends Ethna_Generator_Base
+class I18n extends Base
 {
     /**#@+
      *  @access protected
