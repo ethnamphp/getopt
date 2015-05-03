@@ -66,11 +66,7 @@ EOD;
 
         // don't know what will happen:)
         $subCommandObj->setArgList($arg_list);
-        $r = $subCommandObj->perform();
-        if (Ethna::isError($r)) {
-            echo $r->getMessage();
-            exit(1);
-        }
+        $subCommandObj->perform();
     }
 
     /**
