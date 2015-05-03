@@ -125,9 +125,8 @@ class Base
     /**
      *  ユーザ定義のマクロを設定する(~/.ethna)
      *
-     *  @access private
      */
-    public function _getUserMacro()
+    protected function _getUserMacro()
     {
         if (isset($_SERVER['USERPROFILE']) && is_dir($_SERVER['USERPROFILE'])) {
             $home = $_SERVER['USERPROFILE'];
