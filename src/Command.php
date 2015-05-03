@@ -28,19 +28,6 @@ Copyright (c) 2004-%s, @DQNEO and Ethna commiters
 
 EOD;
 
-    /**#@-*/
-
-    // {{{ constructor
-    /**
-     *  Ethna_Command constructor
-     *
-     *  @access public
-     */
-    public function __construct()
-    {
-    }
-    // }}}
-
     /**
      * コマンドを実行する
      */
