@@ -2,10 +2,9 @@
 /**
  *  Getopt.php
  *
- *  @author     Yoshinari Takaoka <takaoka@beatcraft.com>
  */
 
-namespace Ethnam\Generator;
+namespace Ethnam\Getopt;
 
 define('ETHNA_OPTVALUE_IS_DISABLED', 1);
 define('ETHNA_OPTVALUE_IS_REQUIRED', 2);
@@ -15,8 +14,6 @@ define('ETHNA_OPTVALUE_IS_OPTIONAL', 3);
  *  コマンドラインオプション解釈クラス
  *  PEAR への依存を排除するため、 Console_Getopt クラスを最実装したもの
  *
- *  @author     Yoshinari Takaoka <takaoka@beatcraft.com>
- *  @access     public
  *  @see        http://pear.php.net/manual/en/package.console.console-getopt.php
  */
 

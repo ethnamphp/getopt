@@ -1,10 +1,10 @@
 {
-  "name":"ethnam/generator",
-  "description": "code generator for Ethnam",
+  "name":"ethnam/getopt",
+  "description": "Getopt for Ethnam",
   "type": "library",
   "license": "BSD-4-Clause",
   "keywords": [ "framework", "ethnam" ],
-  "homepage": "https://github.com/DQNEO/ethnam-generator",
+  "homepage": "https://github.com/DQNEO/ethnam-getopt",
   "authors": [
         { "name": "DQNEO", "role" : "Administrator"}
     ],
@@ -15,9 +15,6 @@
     "phpunit/phpunit": "3.7.*"
   },
   "autoload": {
-    "files": [ "autoload.php" ]
-  },
-  "bin" : [
-    "bin/ethnam-generator"
-  ]
+    "psr4": { "Ethnam\\Getopt\\": "src/" ]
+  }
 }
