@@ -1,5 +1,5 @@
 {
-  "name":"dqneo/ethnam-generator",
+  "name":"ethnam/generator",
   "description": "code generator for Ethnam",
   "type": "library",
   "license": "BSD-4-Clause",
