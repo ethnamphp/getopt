@@ -4,7 +4,7 @@
  *
  */
 
-namespace Ethnam\Generator;
+namespace Ethnam\Getopt;
 
 define('ETHNA_OPTVALUE_IS_DISABLED', 1);
 define('ETHNA_OPTVALUE_IS_REQUIRED', 2);
