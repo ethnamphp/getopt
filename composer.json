@@ -15,6 +15,6 @@
     "phpunit/phpunit": "3.7.*"
   },
   "autoload": {
-    "psr4": { "Ethnam\\Getopt\\": "src/" ]
+    "psr4": { "Ethnam\\Getopt\\": "src/" }
   }
 }
