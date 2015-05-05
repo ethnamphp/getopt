@@ -6,10 +6,6 @@
 
 namespace Ethnam\Getopt;
 
-define('ETHNA_OPTVALUE_IS_DISABLED', 1);
-define('ETHNA_OPTVALUE_IS_REQUIRED', 2);
-define('ETHNA_OPTVALUE_IS_OPTIONAL', 3);
-
 /**
  *  コマンドラインオプション解釈クラス
  *  PEAR への依存を排除するため、 Console_Getopt クラスを最実装したもの
@@ -19,6 +15,10 @@ define('ETHNA_OPTVALUE_IS_OPTIONAL', 3);
 
 class Getopt
 {
+    const OPTVALUE_IS_DISABLED = 1;
+    const OPTVALUE_IS_REQUIRED = 2;
+    const OPTVALUE_IS_OPTIONAL = 3;
+
     /**
      *  PHP 設定を考慮して、$argv 配列を読みます。
      *  ini ディレクティブ中の register_argc_argv を考慮します。
@@ -95,7 +95,7 @@ class Getopt
                 if (count($opt_and_value) == 2) {
                     $value = $opt_and_value[1];   // --foo=bar
                 } elseif (strpos('-', $next_arg) !== 0
-                        && $required == ETHNA_OPTVALUE_IS_REQUIRED) {
+                        && $required == self::OPTVALUE_IS_REQUIRED) {
                     if (!empty($next_arg)) {      // --foo bar
                          // 次の $argv を値として解釈
                          // == が設定されていた場合は値として解釈「しない」
@@ -106,14 +106,14 @@ class Getopt
 
                  //  オプション設定チェック
                  switch ($required) {
-                     case ETHNA_OPTVALUE_IS_REQUIRED:
+                     case self::OPTVALUE_IS_REQUIRED:
                          if ($value === null) {
                              throw new \Exception(
                                         "option --$opt requires an argument"
                                     );
                          }
                          break;
-                     case ETHNA_OPTVALUE_IS_DISABLED:
+                     case self::OPTVALUE_IS_DISABLED:
                          if ($value !== null) {
                              throw new \Exception(
                                         "option --$opt doesn't allow an argument"
@@ -163,10 +163,10 @@ class Getopt
                     $do_next_arg = false;
                     $required = isset($shortopts[$opt]) ? $shortopts[$opt] : null;
                     switch ($required) {
-                         case ETHNA_OPTVALUE_IS_REQUIRED:
-                         case ETHNA_OPTVALUE_IS_OPTIONAL:
+                         case self::OPTVALUE_IS_REQUIRED:
+                         case self::OPTVALUE_IS_OPTIONAL:
                             if ($sopt_len == 1
-                             && $required == ETHNA_OPTVALUE_IS_REQUIRED) {
+                             && $required == self::OPTVALUE_IS_REQUIRED) {
                                 if ($next_arg[0] != '-') { // -a hoge
                                     // 次の $argv を値として解釈
                                     // 但し、:: の場合は解釈しない
@@ -178,7 +178,7 @@ class Getopt
                                 $value = substr($sopt, $sopt_pos + 1);
                                 $value = (empty($value)) ? null : $value;
                             }
-                            if ($required == ETHNA_OPTVALUE_IS_REQUIRED
+                            if ($required == self::OPTVALUE_IS_REQUIRED
                               && empty($value)) {
                                 throw new \Exception(
                                             "option -$opt requires an argument"
@@ -189,7 +189,7 @@ class Getopt
                              // 解釈を移す
                              $do_next_arg = true;
                              break;
-                         case ETHNA_OPTVALUE_IS_DISABLED:
+                         case self::OPTVALUE_IS_DISABLED:
                              //   値を設定禁止にした場合は、値が解釈されなく
                              //   なるので、値設定のチェックは不要
                              break;
@@ -258,11 +258,11 @@ class Getopt
 
             //   $sopts[$pos] is character.
             if ($next_char == ':' && $next2_char == ':') {
-                $analyze_result[$char] = ETHNA_OPTVALUE_IS_OPTIONAL; // 値は任意
+                $analyze_result[$char] = self::OPTVALUE_IS_OPTIONAL; // 値は任意
             } elseif ($next_char == ':' && $next2_char != ':') {
-                $analyze_result[$char] = ETHNA_OPTVALUE_IS_REQUIRED; // 値は必須
+                $analyze_result[$char] = self::OPTVALUE_IS_REQUIRED; // 値は必須
             } else {
-                $analyze_result[$char] = ETHNA_OPTVALUE_IS_DISABLED; // 値は不要
+                $analyze_result[$char] = self::OPTVALUE_IS_DISABLED; // 値は不要
             }
         }
 
@@ -291,12 +291,12 @@ class Getopt
         foreach ($lopts as $opt) {
             if (preg_match('/==$/', $opt) > 0) {
                 $opt = substr($opt, 0, -2);
-                $analyze_result[$opt] = ETHNA_OPTVALUE_IS_OPTIONAL; // 値は任意
+                $analyze_result[$opt] = self::OPTVALUE_IS_OPTIONAL; // 値は任意
             } elseif (preg_match('/=$/', $opt) > 0) {
                 $opt = substr($opt, 0, -1);
-                $analyze_result[$opt] = ETHNA_OPTVALUE_IS_REQUIRED; // 値は必須
+                $analyze_result[$opt] = self::OPTVALUE_IS_REQUIRED; // 値は必須
             } else {
-                $analyze_result[$opt] = ETHNA_OPTVALUE_IS_DISABLED; // 値は不要
+                $analyze_result[$opt] = self::OPTVALUE_IS_DISABLED; // 値は不要
             }
         }
 
