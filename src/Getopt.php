@@ -303,4 +303,3 @@ class Getopt
         return $analyze_result;
     }
 }
-

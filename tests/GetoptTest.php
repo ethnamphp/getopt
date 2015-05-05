@@ -6,16 +6,16 @@ namespace Ethnam\Getopt;
  *  Test Case For Getopt
  *
  */
-class Getopt_Test extends \PHPUnit_Framework_TestCase
+class GetoptTest extends \PHPUnit_Framework_TestCase
 {
-    var $opt;
+    public $opt;
 
-    function setUp()
+    public function setUp()
     {
         $this->opt = new Getopt();
     }
 
-    function test_readPHPArgv()
+    public function test_readPHPArgv()
     {
         global $argv;
         $argv = array('test.php', 'a', '-b=c', '--c=d', 'e');
@@ -28,14 +28,14 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
         $this->assertEquals('e', $argv[4]);
     }
 
-    function test_shortopt_required()
+    public function test_shortopt_required()
     {
         // no args
         $args = array();
         $shortopt = 'a:';
         $r = $this->opt->getopt($args, $shortopt);
 
-        $this->assertEquals([[],[]], $r);
+        $this->assertEquals([[], []], $r);
 
         // option -a is defined, but no args.
         $args = array('-a');
@@ -90,19 +90,19 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
         $this->assertEquals('e', $nonparsed_arg[0]);
     }
 
-    function test_shortopt_optional()
+    public function test_shortopt_optional()
     {
         // no args
         $args = array();
         $shortopt = 'a::';
         $r = $this->opt->getopt($args, $shortopt);
-        $this->assertEquals([[],[]], $r);
+        $this->assertEquals([[], []], $r);
 
         // option -a is defined, but no args.
         $args = array('-a');
         $shortopt = 'a::';
         $r = $this->opt->getopt($args, $shortopt);
-        $this->assertEquals([[["a",null]],[]], $r);
+        $this->assertEquals([[["a", null]], []], $r);
 
         // -a value is bcd, e is nonparsed arg.
         $args = array('-abcd', 'e');
@@ -129,13 +129,13 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
         $this->assertEquals('c', $nonparsed_arg[1]);
     }
 
-    function test_shortopt_disabled()
+    public function test_shortopt_disabled()
     {
         // no args
         $args = array();
         $shortopt = 'a';
         $r = $this->opt->getopt($args, $shortopt);
-        $this->assertEquals([[],[]], $r);
+        $this->assertEquals([[], []], $r);
 
         // option -a is defined, but no args.
         $args = array('-a');
@@ -186,7 +186,7 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
         $this->assertEquals('f', $nonparsed_arg[4]);
     }
 
-    function test_shortopt_complex()
+    public function test_shortopt_complex()
     {
         //  complex option part 1.
         $args = array();
@@ -229,17 +229,17 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
         }
     }
 
-    function test_longopt_required()
+    public function test_longopt_required()
     {
         // no args
         $args = array();
-        $shortopt = NULL;
+        $shortopt = null;
         $longopt = array("foo=");
         $r = $this->opt->getopt($args, $shortopt, $longopt);
 
         // option -a is defined, but no args.
         $args = array('--foo');
-        $shortopt = NULL;
+        $shortopt = null;
         $longopt = array("foo=");
         try {
             $r = $this->opt->getopt($args, $shortopt, $longopt);
@@ -249,7 +249,7 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
         }
         // unknown option.
         $args = array('--bar'); // -bar is unknown.
-        $shortopt = NULL;
+        $shortopt = null;
         $longopt = array("foo=");
         try {
             $r = $this->opt->getopt($args, $shortopt);
@@ -260,7 +260,7 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
 
         // unknown option part 1.
         $args = array('--bar'); // -bar is unknown.
-        $shortopt = NULL;
+        $shortopt = null;
         $longopt = array("foo=");
         try {
             $r = $this->opt->getopt($args, $shortopt);
@@ -271,7 +271,7 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
 
         // unknown option part 2.
         $args = array('-a'); // -a is unknown.
-        $shortopt = NULL;
+        $shortopt = null;
         $longopt = array("foo=");
         try {
             $r = $this->opt->getopt($args, $shortopt);
@@ -282,7 +282,7 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
 
         // --foo option value is bar. hoge is nonparsed.
         $args = array('--foo=bar', 'hoge');
-        $shortopt = NULL;
+        $shortopt = null;
         $longopt = array("foo=");
         $r = $this->opt->getopt($args, $shortopt, $longopt);
 
@@ -296,7 +296,7 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
 
         // --foo option value is bar. hoge, -fuga is nonparsed.
         $args = array('--foo', 'bar', 'hoge', '-fuga');
-        $shortopt = NULL;
+        $shortopt = null;
         $longopt = array("foo=");
         $r = $this->opt->getopt($args, $shortopt, $longopt);
 
@@ -310,25 +310,25 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
         $this->assertEquals('-fuga', $nonparsed_arg[1]);
     }
 
-    function test_longopt_optional()
+    public function test_longopt_optional()
     {
         // no args
         $args = array();
-        $shortopt = NULL;
+        $shortopt = null;
         $longopt = array("foo==");
         $r = $this->opt->getopt($args, $shortopt, $longopt);
 
 
         // option --foo is defined, but no args.
         $args = array('--foo');
-        $shortopt = NULL;
+        $shortopt = null;
         $longopt = array("foo==");
         $r = $this->opt->getopt($args, $shortopt, $longopt);
 
 
         // -foo value is bar, hoge is nonparsed arg.
         $args = array('--foo', 'bar', 'hoge');
-        $shortopt = NULL;
+        $shortopt = null;
         $longopt = array("foo==");
         $r = $this->opt->getopt($args, $shortopt, $longopt);
 
@@ -343,7 +343,7 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
 
         // -foo value is bar, hoge, moge is nonparsed arg.
         $args = array('--foo=bar', 'hoge', 'moge');
-        $shortopt = NULL;
+        $shortopt = null;
         $longopt = array("foo==");
         $r = $this->opt->getopt($args, $shortopt, $longopt);
 
@@ -357,11 +357,11 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
         $this->assertEquals('moge', $nonparsed_arg[1]);
     }
 
-    function test_longopt_disabled()
+    public function test_longopt_disabled()
     {
         // no args
         $args = array();
-        $shortopt = NULL;
+        $shortopt = null;
         $longopt = array("foo");
         $r = $this->opt->getopt($args, $shortopt, $longopt);
 
@@ -403,7 +403,7 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
         $this->assertEquals('bar', $nonparsed_arg[1]);
     }
 
-    function test_mixed_option()
+    public function test_mixed_option()
     {
         // no args
         $shortopt = 'ab:c::';
