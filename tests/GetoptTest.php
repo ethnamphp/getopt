@@ -232,29 +232,32 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
 
     function test_longopt_required()
     {
-        return;
         // no args
         $args = array();
         $shortopt = NULL;
         $longopt = array("foo=");
         $r = $this->opt->getopt($args, $shortopt, $longopt);
-        $this->assertFalse(Ethna::isError($r));
 
         // option -a is defined, but no args.
         $args = array('--foo');
         $shortopt = NULL;
         $longopt = array("foo=");
-        $r = $this->opt->getopt($args, $shortopt, $longopt);
-        $this->assertTrue(Ethna::isError($r));
-        $this->assertEquals('option --foo requires an argument', $r->getMessage());
-
+        try {
+            $r = $this->opt->getopt($args, $shortopt, $longopt);
+        } catch (\Exception $e) {
+            $this->assertEquals(get_class($e), 'Exception');
+            $this->assertEquals('option --foo requires an argument', $e->getMessage());
+        }
         // unknown option.
         $args = array('--bar'); // -bar is unknown.
         $shortopt = NULL;
         $longopt = array("foo=");
+        try {
         $r = $this->opt->getopt($args, $shortopt);
-        $this->assertTrue(Ethna::isError($r));
-        $this->assertEquals('unrecognized option --bar', $r->getMessage());
+        } catch (\Exception $e) {
+            $this->assertEquals(get_class($e), 'Exception');
+            $this->assertEquals('unrecognized option --bar', $e->getMessage());
+        }
 
         // unknown option part 1.
         $args = array('--bar'); // -bar is unknown.
