@@ -8,11 +8,9 @@ namespace Ethnam\Getopt;
 
 /**
  *  コマンドラインオプション解釈クラス
- *  PEAR への依存を排除するため、 Console_Getopt クラスを最実装したもの
+ *  PEAR への依存を排除するため、  クラスを最実装したもの
  *
- *  @see        http://pear.php.net/manual/en/package.console.console-getopt.php
  */
-
 class Getopt
 {
     const OPTVALUE_IS_DISABLED = 1;
