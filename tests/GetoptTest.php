@@ -263,24 +263,30 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
         $args = array('--bar'); // -bar is unknown.
         $shortopt = NULL;
         $longopt = array("foo=");
+        try {
         $r = $this->opt->getopt($args, $shortopt);
+        } catch (\Exception $e) {
         $this->assertEquals(get_class($e), 'Exception');
         $this->assertEquals('unrecognized option --bar', $e->getMessage());
+        }
 
         // unknown option part 2.
         $args = array('-a'); // -a is unknown.
         $shortopt = NULL;
         $longopt = array("foo=");
+        try {
         $r = $this->opt->getopt($args, $shortopt);
+        } catch (\Exception $e) {
         $this->assertEquals(get_class($e), 'Exception');
         $this->assertEquals('unrecognized option -a', $e->getMessage());
+        }
 
         // --foo option value is bar. hoge is nonparsed.
         $args = array('--foo=bar', 'hoge');
         $shortopt = NULL;
         $longopt = array("foo=");
         $r = $this->opt->getopt($args, $shortopt, $longopt);
-        $this->assertFalse(Ethna::isError($r));
+
 
         $parsed_arg = array_shift($r);
         $this->assertEquals('--foo', $parsed_arg[0][0]);
@@ -294,7 +300,7 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
         $shortopt = NULL;
         $longopt = array("foo=");
         $r = $this->opt->getopt($args, $shortopt, $longopt);
-        $this->assertFalse(Ethna::isError($r));
+
 
         $parsed_arg = array_shift($r);
         $this->assertEquals('--foo', $parsed_arg[0][0]);
@@ -307,13 +313,12 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
 
     function test_longopt_optional()
     {
-        return;
         // no args
         $args = array();
         $shortopt = NULL;
         $longopt = array("foo==");
         $r = $this->opt->getopt($args, $shortopt, $longopt);
-        $this->assertFalse(Ethna::isError($r));
+
 
         // option --foo is defined, but no args.
         $args = array('--foo');
@@ -355,7 +360,6 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
 
     function test_longopt_disabled()
     {
-        return;
         // no args
         $args = array();
         $shortopt = NULL;
@@ -378,9 +382,12 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
         $args = array('--foo=bar');
         $shortopt = null;
         $longopt = array("foo");
+        try {
         $r = $this->opt->getopt($args, $shortopt, $longopt);
+        } catch (\Exception $e) {
         $this->assertEquals(get_class($e), 'Exception');
         $this->assertEquals("option --foo doesn't allow an argument", $e->getMessage());
+        }
 
         $args = array('--foo', 'hoge', 'bar');
         $shortopt = null;
