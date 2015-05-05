@@ -253,7 +253,7 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
         $shortopt = NULL;
         $longopt = array("foo=");
         try {
-        $r = $this->opt->getopt($args, $shortopt);
+            $r = $this->opt->getopt($args, $shortopt);
         } catch (\Exception $e) {
             $this->assertEquals(get_class($e), 'Exception');
             $this->assertEquals('unrecognized option --bar', $e->getMessage());
@@ -264,10 +264,10 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
         $shortopt = NULL;
         $longopt = array("foo=");
         try {
-        $r = $this->opt->getopt($args, $shortopt);
+            $r = $this->opt->getopt($args, $shortopt);
         } catch (\Exception $e) {
-        $this->assertEquals(get_class($e), 'Exception');
-        $this->assertEquals('unrecognized option --bar', $e->getMessage());
+            $this->assertEquals(get_class($e), 'Exception');
+            $this->assertEquals('unrecognized option --bar', $e->getMessage());
         }
 
         // unknown option part 2.
@@ -275,10 +275,10 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
         $shortopt = NULL;
         $longopt = array("foo=");
         try {
-        $r = $this->opt->getopt($args, $shortopt);
+            $r = $this->opt->getopt($args, $shortopt);
         } catch (\Exception $e) {
-        $this->assertEquals(get_class($e), 'Exception');
-        $this->assertEquals('unrecognized option -a', $e->getMessage());
+            $this->assertEquals(get_class($e), 'Exception');
+            $this->assertEquals('unrecognized option -a', $e->getMessage());
         }
 
         // --foo option value is bar. hoge is nonparsed.
@@ -383,10 +383,10 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
         $shortopt = null;
         $longopt = array("foo");
         try {
-        $r = $this->opt->getopt($args, $shortopt, $longopt);
+            $r = $this->opt->getopt($args, $shortopt, $longopt);
         } catch (\Exception $e) {
-        $this->assertEquals(get_class($e), 'Exception');
-        $this->assertEquals("option --foo doesn't allow an argument", $e->getMessage());
+            $this->assertEquals(get_class($e), 'Exception');
+            $this->assertEquals("option --foo doesn't allow an argument", $e->getMessage());
         }
 
         $args = array('--foo', 'hoge', 'bar');
