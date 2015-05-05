@@ -5,6 +5,7 @@ re-invention of PEAR's Console_Getopt
 ## INSTALL
 
 In you composer.json
+
 ```json
 {
   "require" : {
@@ -15,7 +16,7 @@ In you composer.json
 
 ## USAGE
 
-``php
+```php
 use Ethnam\Getopt\Getopt;
 $opt = new Getopt();
 $arg_list = $opt->readGlobalArgv();
