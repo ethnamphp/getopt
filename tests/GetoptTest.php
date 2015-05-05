@@ -93,24 +93,22 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
 
     function test_shortopt_optional()
     {
-        return;
         // no args
         $args = array();
         $shortopt = 'a::';
         $r = $this->opt->getopt($args, $shortopt);
-        $this->assertFalse(Ethna::isError($r));
+        $this->assertEquals([[],[]], $r);
 
         // option -a is defined, but no args.
         $args = array('-a');
         $shortopt = 'a::';
         $r = $this->opt->getopt($args, $shortopt);
-        $this->assertFalse(Ethna::isError($r));
+        $this->assertEquals([[["a",null]],[]], $r);
 
         // -a value is bcd, e is nonparsed arg.
         $args = array('-abcd', 'e');
         $shortopt = 'a::';
         $r = $this->opt->getopt($args, $shortopt);
-        $this->assertFalse(Ethna::isError($r));
 
         $parsed_arg = array_shift($r);
         $this->assertEquals('a', $parsed_arg[0][0]);
@@ -123,7 +121,6 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
         $args = array('-a', 'b', 'c');
         $shortopt = 'a::';
         $r = $this->opt->getopt($args, $shortopt);
-        $this->assertFalse(Ethna::isError($r));
         $parsed_arg = array_shift($r);
         $this->assertEquals('a', $parsed_arg[0][0]);
         $this->assertNULL($parsed_arg[0][1]);
