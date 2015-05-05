@@ -3,9 +3,8 @@
 namespace Ethnam\Getopt;
 
 /**
- *  Test Case For Ethna_Getopt
+ *  Test Case For Getopt
  *
- *  @access public
  */
 class Getopt_Test extends \PHPUnit_Framework_TestCase
 {
