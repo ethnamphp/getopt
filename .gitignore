@@ -1,6 +1,7 @@
 package.xml
 coverage/
 vendor/
+composer.lock
 
 # for local test
 ,
