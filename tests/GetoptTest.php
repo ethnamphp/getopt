@@ -320,14 +320,14 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
         $shortopt = NULL;
         $longopt = array("foo==");
         $r = $this->opt->getopt($args, $shortopt, $longopt);
-        $this->assertFalse(Ethna::isError($r));
+
 
         // -foo value is bar, hoge is nonparsed arg.
         $args = array('--foo', 'bar', 'hoge');
         $shortopt = NULL;
         $longopt = array("foo==");
         $r = $this->opt->getopt($args, $shortopt, $longopt);
-        $this->assertFalse(Ethna::isError($r));
+
 
         $parsed_arg = array_shift($r);
         $this->assertEquals('--foo', $parsed_arg[0][0]);
@@ -342,7 +342,7 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
         $shortopt = NULL;
         $longopt = array("foo==");
         $r = $this->opt->getopt($args, $shortopt, $longopt);
-        $this->assertFalse(Ethna::isError($r));
+
 
         $parsed_arg = array_shift($r);
         $this->assertEquals('--foo', $parsed_arg[0][0]);
@@ -361,14 +361,14 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
         $shortopt = NULL;
         $longopt = array("foo");
         $r = $this->opt->getopt($args, $shortopt, $longopt);
-        $this->assertFalse(Ethna::isError($r));
+
 
         // option -foo is defined, but no args.
         $args = array('--foo');
         $shortopt = null;
         $longopt = array("foo");
         $r = $this->opt->getopt($args, $shortopt, $longopt);
-        $this->assertfalse(Ethna::isError($r));
+
 
         $parsed_arg = array_shift($r);
         $this->assertEquals('--foo', $parsed_arg[0][0]);
@@ -386,7 +386,7 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
         $shortopt = null;
         $longopt = array("foo");
         $r = $this->opt->getopt($args, $shortopt, $longopt);
-        $this->assertFalse(Ethna::isError($r));
+
 
         $parsed_arg = array_shift($r);
         $this->assertEquals('--foo', $parsed_arg[0][0]);
@@ -399,18 +399,15 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
 
     function test_mixed_option()
     {
-        return;
         // no args
         $shortopt = 'ab:c::';
         $longopt = array('foo=', 'bar==', 'hoge');
 
         $args = array();
         $r = $this->opt->getopt($args, $shortopt, $longopt);
-        $this->assertFalse(Ethna::isError($r));
 
         $args = array('-a', '--foo', 'bar', '--bar=moge', 'hoge', '--hoge');
         $r = $this->opt->getopt($args, $shortopt, $longopt);
-        $this->assertFalse(Ethna::isError($r));
 
         $parsed_arg = array_shift($r);
         $this->assertEquals('a', $parsed_arg[0][0]);
