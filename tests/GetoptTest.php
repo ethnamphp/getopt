@@ -132,18 +132,16 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
 
     function test_shortopt_disabled()
     {
-        return;
         // no args
         $args = array();
         $shortopt = 'a';
         $r = $this->opt->getopt($args, $shortopt);
-        $this->assertFalse(Ethna::isError($r));
+        $this->assertEquals([[],[]], $r);
 
         // option -a is defined, but no args.
         $args = array('-a');
         $shortopt = 'a';
         $r = $this->opt->getopt($args, $shortopt);
-        $this->assertFalse(Ethna::isError($r));
         $parsed_arg = array_shift($r);
         $this->assertEquals('a', $parsed_arg[0][0]);
         $this->assertNULL($parsed_arg[0][1]);
@@ -153,7 +151,6 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
         $args = array('-a', 'b', 'c');
         $shortopt = 'a';
         $r = $this->opt->getopt($args, $shortopt);
-        $this->assertFalse(Ethna::isError($r));
         $parsed_arg = array_shift($r);
         $this->assertEquals('a', $parsed_arg[0][0]);
         $this->assertNULL($parsed_arg[0][1]);
@@ -162,18 +159,21 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
         $this->assertEquals('b', $nonparsed_arg[0]);
         $this->assertEquals('c', $nonparsed_arg[1]);
 
+
         // successive option definition, but unrecognized option. :)
         $args = array('-ab');
         $shortopt = 'a';
-        $r = $this->opt->getopt($args, $shortopt);
-        $this->assertTrue(Ethna::isError($r));
-        $this->assertEquals("unrecognized option -b", $r->getMessage());
+        try {
+            $r = $this->opt->getopt($args, $shortopt);
+        } catch (\Exception $e) {
+            $this->assertEquals(get_class($e), 'Exception');
+            $this->assertEquals("unrecognized option -b", $e->getMessage());
+        }
 
         // option setting will be refrected even when after values. :)
         $args = array('-a', 'b', '-c', 'd', '-e', 'f');
         $shortopt = 'ac:e::';
         $r = $this->opt->getopt($args, $shortopt);
-        $this->assertFalse(Ethna::isError($r));
 
         $parsed_arg = array_shift($r);
         $this->assertEquals('a', $parsed_arg[0][0]);
@@ -189,13 +189,11 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
 
     function test_shortopt_complex()
     {
-        return;
         //  complex option part 1.
         $args = array();
         $shortopt = 'ab:c::';
         $args = array('-abcd', '-cd');
         $r = $this->opt->getopt($args, $shortopt);
-        $this->assertFalse(Ethna::isError($r));
 
         $parsed_arg = array_shift($r);
         $this->assertEquals('a', $parsed_arg[0][0]);
@@ -210,7 +208,6 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
         //  complex option part 2.
         $args = array('-a', '-c', 'd', 'e');
         $r = $this->opt->getopt($args, $shortopt);
-        $this->assertFalse(Ethna::isError($r));
 
         $parsed_arg = array_shift($r);
         $this->assertEquals('a', $parsed_arg[0][0]);
@@ -224,9 +221,13 @@ class Getopt_Test extends \PHPUnit_Framework_TestCase
         $this->assertEquals('e', $nonparsed_arg[1]);
 
         $args = array('-cd', '-ad');
-        $r = $this->opt->getopt($args, $shortopt);
-        $this->assertTrue(Ethna::isError($r));
-        $this->assertEquals("unrecognized option -d", $r->getMessage());
+
+        try {
+            $r = $this->opt->getopt($args, $shortopt);
+        } catch (\Exception $e) {
+            $this->assertEquals(get_class($e), 'Exception');
+            $this->assertEquals("unrecognized option -d", $e->getMessage());
+        }
     }
 
     function test_longopt_required()
